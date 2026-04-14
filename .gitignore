@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+.pytest_cache/
+*.so
+.venv/
+venv/
+*.log
+test_diagnosis.png
+test_e2e.py

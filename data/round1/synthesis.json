@@ -1,0 +1,28 @@
+{
+  "models": [
+    "gemma4-4B",
+    "qwen25-7B",
+    "qwen3-14B",
+    "deepseek-r1-14B"
+  ],
+  "timings": {
+    "gemma4-4B_phase1": 17.2279851436615,
+    "gemma4-4B_phase3": 1132.852843761444,
+    "gemma4-4B_phase4": 10.153398275375366,
+    "gemma4-4B_total": 1172.3621227741241,
+    "qwen25-7B_phase1": 13.30253267288208,
+    "qwen25-7B_phase3": 379.77449083328247,
+    "qwen25-7B_phase4": 7.925468683242798,
+    "qwen25-7B_total": 404.3566129207611,
+    "qwen3-14B_phase1": 16.183260679244995,
+    "qwen3-14B_phase3": 644.7058568000793,
+    "qwen3-14B_phase4": 9.819677591323853,
+    "qwen3-14B_total": 936.782833814621,
+    "deepseek-r1-14B_phase1": 16.684767723083496,
+    "deepseek-r1-14B_phase3": 731.4813559055328,
+    "deepseek-r1-14B_phase4": 10.459430932998657,
+    "deepseek-r1-14B_total": 766.326042175293
+  },
+  "n_prompts": 50,
+  "completed": "2026-04-13T22:53:25.861456"
+}

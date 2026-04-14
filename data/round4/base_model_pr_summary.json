@@ -1,0 +1,29 @@
+{
+  "qwen25-7B-base": {
+    "tag": "qwen25-7B-base",
+    "ms_id": "Qwen/Qwen2.5-7B",
+    "n_layers": 28,
+    "s_first": -0.1479352499367855,
+    "s_last": -0.11035633766557171,
+    "delta_s": 0.037578912271213794,
+    "pr_last": 13.269073961529008
+  },
+  "llama31-8B-base": {
+    "tag": "llama31-8B-base",
+    "ms_id": "LLM-Research/Meta-Llama-3.1-8B",
+    "n_layers": 32,
+    "s_first": -0.2349064266246363,
+    "s_last": -0.1510078561666042,
+    "delta_s": 0.08389857045803209,
+    "pr_last": 5.236893938011097
+  },
+  "mistral-7B-base": {
+    "tag": "mistral-7B-base",
+    "ms_id": "AI-ModelScope/Mistral-7B-v0.1",
+    "n_layers": 32,
+    "s_first": -0.22058233094165605,
+    "s_last": -0.13329907553266204,
+    "delta_s": 0.08728325540899401,
+    "pr_last": 4.78224071459838
+  }
+}
