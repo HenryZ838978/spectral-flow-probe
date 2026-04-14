@@ -1,0 +1,15 @@
+{
+  "total_elapsed_min": 53.02336937586467,
+  "A": {
+    "status": "FAILED",
+    "error": "Cannot find decoder layers. Supported: model.model.layers, language_model.model.layers, or any ModuleList with >5 elements."
+  },
+  "B": {
+    "status": "FAILED",
+    "error": "Cannot find decoder layers. Supported: model.model.layers, language_model.model.layers, or any ModuleList with >5 elements."
+  },
+  "C": {
+    "status": "FAILED",
+    "error": "Cannot find decoder layers. Supported: model.model.layers, language_model.model.layers, or any ModuleList with >5 elements."
+  }
+}

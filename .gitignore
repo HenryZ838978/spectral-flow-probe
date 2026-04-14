@@ -12,3 +12,11 @@ venv/
 *.log
 test_diagnosis.png
 test_e2e.py
+experiments/results/run_*/checkpoint-*/*.safetensors
+experiments/results/run_*/checkpoint-*/optimizer.pt
+experiments/results/run_*/checkpoint-*/rng_state.pth
+experiments/results/run_*/checkpoint-*/training_args.bin
+*.log
+experiments/results/run_*/checkpoint-*/ref/*.safetensors
+experiments/results/run_*/checkpoint-*/scheduler.pt
+experiments/results/run_*/

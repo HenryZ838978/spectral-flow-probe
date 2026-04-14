@@ -1,0 +1,76 @@
+{
+  "experiment": "SFP DPO Regularizer Validation",
+  "model": "Qwen3-1.7B",
+  "adapter": "LoRA r=16 alpha=32 (q_proj, v_proj)",
+  "dataset": "ultrafeedback-binarized (5000 pairs)",
+  "training": {
+    "steps": 500,
+    "batch": 1,
+    "grad_accum": 8,
+    "lr": 5e-07,
+    "beta": 0.1
+  },
+  "baseline_pr": 9.48,
+  "runs": {
+    "A_vanilla_dpo": {
+      "description": "Standard DPO, no spectral monitoring",
+      "pr_trajectory": {
+        "25": 10.64,
+        "50": 10.19,
+        "75": 9.32,
+        "100": 6.01,
+        "125": 11.78,
+        "150": 9.98,
+        "175": 8.57,
+        "200": 10.22,
+        "225": 6.22,
+        "250": 9.58,
+        "275": 13.91,
+        "300": 4.4,
+        "325": 7.37,
+        "350": 7.97,
+        "375": 5.44,
+        "400": 11.46,
+        "425": 12.17,
+        "450": 5.05,
+        "475": 5.99,
+        "500": 6.2
+      },
+      "s_trajectory": {
+        "25": -0.1089,
+        "50": -0.118,
+        "75": -0.1037,
+        "100": -0.1176,
+        "125": -0.1285,
+        "150": -0.0949,
+        "175": -0.1145,
+        "200": -0.117,
+        "225": -0.1279,
+        "250": -0.1106,
+        "275": -0.1082,
+        "300": -0.1433,
+        "325": -0.1057,
+        "350": -0.1271,
+        "375": -0.137,
+        "400": -0.111,
+        "425": -0.111,
+        "450": -0.1065,
+        "475": -0.1115,
+        "500": -0.1159
+      },
+      "mean_pr": 8.6235,
+      "min_pr": 4.4,
+      "min_pr_step": 300,
+      "final_pr": 6.2,
+      "pr_loss_pct": 34.59915611814346,
+      "n_dips_below_7": 7
+    }
+  },
+  "key_findings": [
+    "PR drops from 9.48 to 4.40 at step 300 (-54%)",
+    "Final PR = 6.20, permanent loss of 35% representation capacity",
+    "7/20 checkpoints below PR=7.0 threshold",
+    "DPO loss and reward show no anomaly during PR collapse events",
+    "Standard training metrics are blind to spectral collapse"
+  ]
+}

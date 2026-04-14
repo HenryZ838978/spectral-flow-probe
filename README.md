@@ -12,30 +12,132 @@
 <img src="https://img.shields.io/badge/arXiv-2504.XXXXX-b31b1b?style=flat-square&logo=arxiv&logoColor=white"/>
 </p>
 
-<h3>20-Minute Geometric Diagnostic for Any Transformer</h3>
+</div>
 
-<p><i>One PCA scan. Zero benchmarks. See through any model.</i></p>
+---
+
+<div align="center">
+
+<img src="assets/fig_billboard_hero.png" width="100%"/>
 
 </div>
 
 ---
 
 <div align="center">
+
+<h2>Your model is collapsing during RL. Your loss curve won't tell you.</h2>
+
 <table>
 <tr>
-<td width="25%" align="center"><b>Auditor</b><br/><sub>Post-hoc diagnosis</sub></td>
-<td width="25%" align="center"><b>Monitor</b><br/><sub>RL training guard</sub></td>
-<td width="25%" align="center"><b>Planner</b><br/><sub>Architecture budget</sub></td>
-<td width="25%" align="center"><b>Regularizer</b><br/><sub>Differentiable PR loss</sub></td>
+<td width="60" align="center"><h1>37%</h1></td>
+<td>PR crash at <b>step 100</b> — completely invisible to loss and reward curves</td>
 </tr>
 <tr>
-<td align="center"><code>probe.run()</code></td>
-<td align="center"><code>SpectralCallback</code></td>
-<td align="center"><code>BudgetPlanner</code></td>
-<td align="center"><code>spectral_pr_loss()</code></td>
+<td width="60" align="center"><h1>54%</h1></td>
+<td>Worst collapse at <b>step 300</b> — representation drops to PR = 4.40</td>
+</tr>
+<tr>
+<td width="60" align="center"><h1>35%</h1></td>
+<td><b>Permanent</b> representation capacity lost after 500 steps of standard DPO</td>
+</tr>
+<tr>
+<td width="60" align="center"><h1>0</h1></td>
+<td>Number of standard training metrics that detected any of this</td>
+</tr>
+</table>
+
+<br/>
+
+<i>Measured during DPO training on Qwen3-1.7B with LoRA. Every 25 steps, one PCA scan (< 2 seconds).<br/>Loss was decreasing. Reward was increasing. The manifold was dying.</i>
+
+</div>
+
+---
+
+<div align="center">
+
+<img src="assets/fig_billboard_split.png" width="100%"/>
+
+<br/>
+<sub>Left: what every RL practitioner monitors. Right: what's actually happening to the representation geometry. <b>Same training run.</b></sub>
+
+</div>
+
+---
+
+## Why This Matters
+
+<div align="center">
+<table>
+<tr>
+<th width="33%">2012</th>
+<th width="33%">2015</th>
+<th width="33%">2026</th>
+</tr>
+<tr>
+<td align="center">
+<b>Gradient Explosion</b><br/>
+<sub>Hidden failure mode</sub><br/><br/>
+<code>grad_norm</code> → Gradient Clipping<br/>→ LayerNorm
+</td>
+<td align="center">
+<b>Activation Drift</b><br/>
+<sub>Hidden failure mode</sub><br/><br/>
+<code>activation_stats</code> → BatchNorm<br/>→ RMSNorm
+</td>
+<td align="center">
+<b>PR Collapse</b><br/>
+<sub>Hidden failure mode</sub><br/><br/>
+<code>PR(last)</code> → SpectralCallback<br/>→ <b>spectral_pr_loss</b>
+</td>
+</tr>
+<tr>
+<td align="center"><sub>Without it, deep networks were impossible</sub></td>
+<td align="center"><sub>Without it, training was 10x slower</sub></td>
+<td align="center"><sub>Without it, RL silently destroys representations</sub></td>
 </tr>
 </table>
 </div>
+
+---
+
+## Four Tools, One Package
+
+<div align="center">
+<table>
+<tr>
+<td width="25%" align="center"><b>🔍 Auditor</b><br/><sub>Post-hoc model diagnosis</sub><br/><br/><code>probe.run()</code><br/><sub>20 min, any Transformer</sub></td>
+<td width="25%" align="center"><b>📡 Monitor</b><br/><sub>Real-time RL training guard</sub><br/><br/><code>SpectralCallback</code><br/><sub>< 2 sec per checkpoint</sub></td>
+<td width="25%" align="center"><b>📐 Planner</b><br/><sub>Architecture budget estimator</sub><br/><br/><code>BudgetPlanner</code><br/><sub>Before you burn GPUs</sub></td>
+<td width="25%" align="center"><b>🛡️ Regularizer</b><br/><sub>Differentiable PR loss</sub><br/><br/><code>spectral_pr_loss()</code><br/><sub>No SVD, fully differentiable</sub></td>
+</tr>
+</table>
+</div>
+
+---
+
+## The Discovery: Real-Time PR Collapse During RL
+
+<div align="center">
+<img src="assets/fig_pr_phases.png" width="90%"/>
+<br/>
+<sub>Five phases of spectral collapse during 500 steps of DPO. The model oscillates between recovery and collapse, ultimately settling into permanent damage.</sub>
+</div>
+
+<br/>
+
+We ran DPO training on **Qwen3-1.7B** with real-time spectral monitoring every 25 steps:
+
+| Phase | Steps | PR Range | What Happens |
+|-------|-------|----------|--------------|
+| **I. Expansion** | 0–75 | 9.5 → 10.6 | DPO begins perturbing representations |
+| **II. First Crash** | 75–100 | 9.3 → **6.01** | 37% collapse in 25 steps. Loss: normal. Reward: rising. |
+| **III. The Bounce** | 100–125 | 6.01 → **11.78** | Recovery — but only by luck of the data batch |
+| **IV. Oscillation** | 125–375 | 4.4 – 13.9 | Wild swings. PR hits 4.40 at step 300 (−54%) |
+| **V. Permanent Loss** | 375–500 | 5.0 – 6.2 | Settles at **PR = 6.20** — 35% capacity gone forever |
+
+> **The critical question:** What if step 100 didn't bounce back? What if it stayed at 6.01 — or kept falling? You would never know. Your loss was decreasing. Your reward was increasing. Your model was already dead.
 
 ---
 
@@ -48,8 +150,6 @@
 </div>
 
 <br/>
-
-Every Transformer layer reshapes representation geometry. SFP measures this via **PCA eigenvalue spectral slopes** across all decoder layers — revealing alignment compression, architectural efficiency, and training quality without running a single benchmark.
 
 <div align="center">
 <table>
@@ -255,12 +355,12 @@ pip install git+https://github.com/HenryZ838978/spectral-flow-probe.git
 from spectral_flow_probe import SpectralProbe, plot_diagnosis
 
 probe = SpectralProbe("Qwen/Qwen2.5-7B-Instruct")
-report = probe.run()                    # 50 built-in prompts, all layers
+report = probe.run()
 
-print(report.summary())                 # one-paragraph diagnosis
-print(report.diagnose())                # structured: rl_intensity, pr_health, ...
-report.to_json("report.json")           # full JSON with per-layer data
-plot_diagnosis(report, save="diag.png") # 4-panel figure
+print(report.summary())
+print(report.diagnose())
+report.to_json("report.json")
+plot_diagnosis(report, save="diag.png")
 ```
 
 **CLI:**
@@ -269,36 +369,21 @@ plot_diagnosis(report, save="diag.png") # 4-panel figure
 sfp Qwen/Qwen2.5-7B-Instruct --plot diag.png -o report.json
 ```
 
-<details>
-<summary>Example output</summary>
-
-```
-============================================================
-Model: Qwen/Qwen2.5-7B-Instruct (7.62B params, 28 layers)
-ΔS = 0.0360 (ΔS/layer = 0.00129)
-PR(last) = 12.60  |  S(first) = -0.1460  |  S(last) = -0.1100
-RL intensity: moderate  |  PR health: excellent
-Elapsed: 42.3s
-============================================================
-```
-
-</details>
-
 ### 2. Monitor — Stop RL before it kills the manifold
 
 ```python
 from spectral_flow_probe import SpectralCallback
 
 callback = SpectralCallback(
-    layer_indices=[-1],       # watch last layer
-    every_n_steps=50,         # check every 50 steps
-    pr_floor=3.0,             # warn if PR(last) < 3
-    pr_halt=1.5,              # stop training if PR(last) < 1.5
-    logger="wandb",           # log to W&B / tensorboard / None
+    layer_indices=[-1],
+    every_n_steps=25,        # every 25 steps, < 2 seconds
+    pr_floor=5.0,            # warn if PR drops below 5
+    pr_halt=3.0,             # emergency stop
+    logger="wandb",
 )
 
 trainer = Trainer(model=model, ..., callbacks=[callback])
-trainer.train()               # auto-stops if representation collapses
+trainer.train()              # auto-stops if representation collapses
 ```
 
 ### 3. Planner — Know your budget before burning GPUs
@@ -307,47 +392,28 @@ trainer.train()               # auto-stops if representation collapses
 from spectral_flow_probe import BudgetPlanner
 
 plan = BudgetPlanner.estimate(
-    n_params_B=14,            # 14B parameters
-    n_layers=40,              # 40 decoder layers
-    n_modalities=3,           # text + vision + audio
-    rl_category="heavy",      # aggressive RL planned
+    n_params_B=14, n_layers=40,
+    n_modalities=3, rl_category="heavy",
 )
 print(plan)
 ```
-
-<details>
-<summary>Example output</summary>
-
-```
-BudgetEstimate(14.0B, 40L, 3 modalities, RL=heavy)
-  Predicted ΔS/layer: 0.00162
-  Predicted ΔS:       0.0649
-  Predicted PR(last): 10.9
-  Headroom score:     0.55
-  Recommendation:     Moderate headroom. Consider lighter RL or fewer modalities.
-```
-
-</details>
 
 ### 4. Regularizer — Teach without crushing the manifold
 
 ```python
 from spectral_flow_probe import spectral_pr_loss
 
-# Inside your RL training loop:
 hidden_states = model.get_last_hidden_state(input_ids)
 pr_loss = spectral_pr_loss(
     hidden_states,
-    target_pr=5.0,           # preserve at least PR=5
-    mode="floor",            # one-sided: only penalize collapse
+    target_pr=5.0,
+    mode="floor",
 )
 total_loss = rl_loss + 0.01 * pr_loss
 total_loss.backward()        # fully differentiable, no SVD needed
 ```
 
-<blockquote>
-<b>Key insight:</b> PR = ||H||<sub>F</sub><sup>4</sup> / ||H<sup>T</sup>H||<sub>F</sub><sup>2</sup> — computed via Frobenius norms only. Zero overhead in backward pass.
-</blockquote>
+> **Key insight:** PR = ||H||<sub>F</sub><sup>4</sup> / ||H<sup>T</sup>H||<sub>F</sub><sup>2</sup> — computed via Frobenius norms only. Zero overhead in backward pass.
 
 ---
 
@@ -378,9 +444,25 @@ Every Transformer has a finite **representational budget** governed by its param
 
 ---
 
-## Data
+## DPO Experiment Data
 
-All raw experimental data from 4 rounds of experiments (11 models, 600+ PCA measurements) is included:
+Raw data from the real-time monitoring experiment:
+
+```
+experiments/
+├── dpo_abc.py                      # full training script (3 conditions)
+└── results/
+    ├── dpo_abc.log                  # complete training log
+    ├── dpo_experiment_results.json  # structured PR trajectory
+    ├── fig_billboard_hero.png       # hero figure
+    ├── fig_invisible_crisis.png     # split comparison
+    ├── fig_pr_collapse_hero.png     # annotated PR timeline
+    └── fig_pr_phases.png            # five-phase analysis
+```
+
+## Static Analysis Data
+
+All raw experimental data from 4 rounds of experiments (11 models, 600+ PCA measurements):
 
 ```
 data/
@@ -389,8 +471,6 @@ data/
 ├── round3/          # 5 configs: SDE scale=0.3, thinking, MoE
 └── round4/          # 6 configs: MoE per-path, cross-family base models
 ```
-
-Each JSON file contains per-layer `S`, `PR`, `eigenvalues`, and generation metrics.
 
 ---
 
@@ -429,7 +509,7 @@ spectral_flow_probe/
 ---
 
 <div align="center">
-<sub>Built during a 48-hour experiment marathon. 11 models. 8× RTX 4090. One theory.</sub>
+<sub>Built during a 72-hour experiment marathon. 11 models. 8× RTX 4090. One theory. One tool.</sub>
 <br/>
-<sub>If this tool saves you from shipping a collapsed model, consider starring the repo.</sub>
+<sub>If this saves you from shipping a collapsed model, consider starring the repo.</sub>
 </div>

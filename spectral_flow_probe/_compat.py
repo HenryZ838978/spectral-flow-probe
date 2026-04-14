@@ -16,10 +16,18 @@ def find_decoder_layers(model: Any) -> tuple[Any, list, int, int | None]:
     """Find decoder layer list in a HuggingFace model.
 
     Returns (parent_module, layers_list, n_layers, hidden_size).
-    Handles: CausalLM, multimodal (language_model), MoE, and brute-force fallback.
+    Handles: CausalLM, PEFT-wrapped, multimodal (language_model), MoE, and brute-force fallback.
     """
+    base = model
+    if hasattr(base, "base_model"):
+        base = base.base_model
+    if hasattr(base, "model") and hasattr(base, "peft_config"):
+        base = base.model
+
     candidates = []
-    if hasattr(model, "model") and hasattr(model.model, "layers"):
+    if hasattr(base, "model") and hasattr(base.model, "layers"):
+        candidates.append(("model.model.layers", base.model, base.model.layers))
+    elif hasattr(model, "model") and hasattr(model.model, "layers"):
         candidates.append(("model.model.layers", model.model, model.model.layers))
     if hasattr(model, "language_model"):
         lm = model.language_model
