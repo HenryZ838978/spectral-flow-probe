@@ -139,6 +139,48 @@ We ran DPO training on **Qwen3-1.7B** with real-time spectral monitoring every 2
 
 > **The critical question:** What if step 100 didn't bounce back? What if it stayed at 6.01 — or kept falling? You would never know. Your loss was decreasing. Your reward was increasing. Your model was already dead.
 
+### What If It Didn't Bounce Back?
+
+This time it bounced: 6.01 → 11.78 in 25 steps. But this recovery is **not guaranteed** — it depends on the data batch, the learning rate, the LoRA rank, and the specific optimization trajectory. Change any one of these and the bounce may never come.
+
+Consider the counterfactual:
+
+<div align="center">
+<table>
+<tr>
+<th></th>
+<th>What actually happened</th>
+<th>What could have happened</th>
+</tr>
+<tr>
+<td><b>Step 100</b></td>
+<td>PR = 6.01, then recovered to 11.78</td>
+<td>PR = 6.01, then kept falling to 3.x</td>
+</tr>
+<tr>
+<td><b>Step 200</b></td>
+<td>Training continued, PR oscillating</td>
+<td>Model locked into a low-rank manifold — permanently</td>
+</tr>
+<tr>
+<td><b>Step 500</b></td>
+<td>Final PR = 6.20 (damaged but functional)</td>
+<td>Final PR < 3.0 (template-locked, near-degenerate output)</td>
+</tr>
+<tr>
+<td><b>You notice</b></td>
+<td>Maybe weeks later, from user complaints</td>
+<td>Maybe weeks later, from user complaints</td>
+</tr>
+</table>
+</div>
+
+**In both scenarios, your loss curve and reward curve look identical.** The only difference is whether PR bounced at step 100. And without spectral monitoring, you would never know which timeline you're in.
+
+This is not hypothetical. This is the exact failure mode behind "RLHF-lobotomized" models — models that score well on benchmarks but produce repetitive, template-locked outputs. The manifold collapsed during training. Nobody was watching.
+
+**That's why SFP exists.** One PCA scan every 25 steps. Two seconds. The difference between catching a collapse and shipping a dead model.
+
 ---
 
 ## What Does It See?
