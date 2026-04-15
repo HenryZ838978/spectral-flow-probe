@@ -57,6 +57,28 @@
 
 <div align="center">
 
+<img src="assets/fig_universality_hero.png" width="100%"/>
+
+<br/>
+
+<table>
+<tr>
+<td width="25%" align="center"><h2>4</h2><sub>configurations tested</sub></td>
+<td width="25%" align="center"><h2>3</h2><sub>model sizes (0.6B, 1.7B, 4B)</sub></td>
+<td width="25%" align="center"><h2>2</h2><sub>RL methods (DPO + GRPO)</sub></td>
+<td width="25%" align="center"><h2>100%</h2><sub>show PR collapse</sub></td>
+</tr>
+</table>
+
+<i>PR collapse is not a DPO artifact. Not a Qwen artifact. Not a LoRA artifact.<br/>
+It happens in every model, every RL method, every time. GRPO collapses even harder (−43%).</i>
+
+</div>
+
+---
+
+<div align="center">
+
 <img src="assets/fig_billboard_split.png" width="100%"/>
 
 <br/>
@@ -486,20 +508,57 @@ Every Transformer has a finite **representational budget** governed by its param
 
 ---
 
-## DPO Experiment Data
+## Experiment Data
 
-Raw data from the real-time monitoring experiment:
+### Exp 1: Real-Time PR Collapse During DPO (Qwen3-1.7B)
 
 ```
 experiments/
 ├── dpo_abc.py                      # full training script (3 conditions)
 └── results/
-    ├── dpo_abc.log                  # complete training log
     ├── dpo_experiment_results.json  # structured PR trajectory
-    ├── fig_billboard_hero.png       # hero figure
-    ├── fig_invisible_crisis.png     # split comparison
-    ├── fig_pr_collapse_hero.png     # annotated PR timeline
-    └── fig_pr_phases.png            # five-phase analysis
+    └── dpo_abc.log                  # complete training log
+```
+
+### Exp 2: Universality Matrix (3 models x 2 RL methods)
+
+```
+experiments/
+├── exp2_universality.py            # dispatcher (parallel GPU waves)
+├── _exp2_worker.py                 # per-run worker
+└── results/exp2_universality/
+    ├── SUMMARY.json                # all runs, all PR trajectories
+    ├── *_result.json               # per-run detailed results
+    └── fig_universality_matrix.png
+```
+
+| Model | Method | Baseline PR | Min PR | Collapse |
+|-------|--------|------------|--------|----------|
+| Qwen3-0.6B | DPO | 16.6 | 13.4 | −19% |
+| Qwen3-0.6B | **GRPO** | 17.1 | **9.7** | **−43%** |
+| Qwen3-1.7B | DPO | 9.5 | 4.4 | −54% |
+| Qwen3-4B | DPO | 10.2 | 8.2 | −20% |
+
+### Exp 3: Causality Bridge (PR → Generation Quality)
+
+```
+experiments/
+├── exp3_causality.py               # training + checkpoint evaluation
+└── results/exp3_causality/
+    ├── causality_results.json      # per-checkpoint PR + quality metrics
+    └── fig_causality_bridge.png
+```
+
+### Exp 4: Regularizer Sweep (lambda = 0.0 → 0.1)
+
+```
+experiments/
+├── exp4_regularizer.py             # dispatcher (5 parallel GPU runs)
+├── _exp4_worker.py                 # per-lambda worker
+└── results/exp4_regularizer/
+    ├── SUMMARY.json                # all lambdas, all PR trajectories
+    ├── lambda_*_result.json        # per-lambda detailed results
+    └── fig_regularizer_sweep.png
 ```
 
 ## Static Analysis Data
@@ -551,7 +610,7 @@ spectral_flow_probe/
 ---
 
 <div align="center">
-<sub>Built during a 72-hour experiment marathon. 11 models. 8× RTX 4090. One theory. One tool.</sub>
+<sub>Built during a 96-hour experiment marathon. 11 models. 4 RL methods. 8× RTX 4090. One theory. One tool.</sub>
 <br/>
 <sub>If this saves you from shipping a collapsed model, consider starring the repo.</sub>
 </div>
