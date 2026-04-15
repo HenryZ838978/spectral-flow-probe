@@ -598,12 +598,13 @@ spectral_flow_probe/
 ## Citation
 
 ```bibtex
-@article{zhang2025spectralflow,
-  title   = {Spectral Flow Theory: Representation Geometry as a Diagnostic
-             Framework for Large Language Models},
+@article{zhang2026repbudget,
+  title   = {The Representational Budget: Scale, RL, and Multimodal Alignment
+             Compete for Geometric Potential in Transformers},
   author  = {Zhang, Jing},
-  year    = {2025},
-  journal = {arXiv preprint arXiv:2504.XXXXX}
+  year    = {2026},
+  doi     = {10.5281/zenodo.19585083},
+  url     = {https://doi.org/10.5281/zenodo.19585083}
 }
 ```
 
