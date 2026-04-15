@@ -1,0 +1,89 @@
+Skipping import of cpp extensions due to incompatible torch version 2.9.1+cu128 for torchao version 0.16.0             Please see https://github.com/pytorch/ao/issues/2919 for more info
+2026-04-14 21:21:46 [INFO] === KTO: Mistral-7B on GPU 4 ===
+2026-04-14 21:21:46 [INFO] Loading model: /cache/zhangjing/models/Mistral-7B-v0.1 on GPU 0
+`torch_dtype` is deprecated! Use `dtype` instead!
+2026-04-14 21:21:46 [WARNING] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   3%|▎         | 10/291 [00:00<00:02, 99.74it/s]Loading weights:   8%|▊         | 24/291 [00:00<00:02, 116.66it/s]Loading weights:  14%|█▍        | 41/291 [00:00<00:01, 135.80it/s]Loading weights:  20%|█▉        | 58/291 [00:00<00:01, 143.83it/s]Loading weights:  25%|██▌       | 73/291 [00:00<00:01, 142.54it/s]Loading weights:  30%|███       | 88/291 [00:00<00:01, 138.60it/s]Loading weights:  36%|███▌      | 104/291 [00:00<00:01, 141.77it/s]Loading weights:  42%|████▏     | 121/291 [00:00<00:01, 147.52it/s]Loading weights:  47%|████▋     | 136/291 [00:00<00:01, 146.39it/s]Loading weights:  52%|█████▏    | 151/291 [00:01<00:00, 141.51it/s]Loading weights:  57%|█████▋    | 167/291 [00:01<00:00, 144.57it/s]Loading weights:  63%|██████▎   | 184/291 [00:01<00:00, 149.23it/s]Loading weights:  68%|██████▊   | 199/291 [00:01<00:00, 147.09it/s]Loading weights:  74%|███████▎  | 214/291 [00:01<00:00, 142.40it/s]Loading weights:  79%|███████▉  | 230/291 [00:01<00:00, 145.54it/s]Loading weights:  85%|████████▍ | 247/291 [00:01<00:00, 150.93it/s]Loading weights:  90%|█████████ | 263/291 [00:01<00:00, 149.96it/s]Loading weights:  96%|█████████▌| 279/291 [00:01<00:00, 146.17it/s]Loading weights: 100%|██████████| 291/291 [00:02<00:00, 144.77it/s]
+2026-04-14 21:21:50 [INFO] Found 32 decoder layers at model.model.layers (hidden=4096)
+2026-04-14 21:21:51 [INFO] [baseline] step=1  PR(last)=10.98  S(last)=-0.1155
+2026-04-14 21:21:51 [INFO] Baseline PR: 10.98
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/awq/__init__.py:21: DeprecationWarning: 
+I have left this message as the final dev message to help you transition.
+
+Important Notice:
+- AutoAWQ is officially deprecated and will no longer be maintained.
+- The last tested configuration used Torch 2.6.0 and Transformers 4.51.3.
+- If future versions of Transformers break AutoAWQ compatibility, please report the issue to the Transformers project.
+
+Alternative:
+- AutoAWQ has been adopted by the vLLM Project: https://github.com/vllm-project/llm-compressor
+
+For further inquiries, feel free to reach out:
+- X: https://x.com/casper_hansen_
+- LinkedIn: https://www.linkedin.com/in/casper-hansen-804005170/
+
+  warnings.warn(_FINAL_DEV_MESSAGE, category=DeprecationWarning, stacklevel=1)
+
+WARN  Python GIL is enabled: Multi-gpu quant acceleration for MoE models is sub-optimal and multi-core accelerated cpu packing is also disabled. We recommend Python >= 3.13.3t with Pytorch > 2.8 for mult-gpu quantization and multi-cpu packing with env `PYTHON_GIL=0`.
+WARN  Feature `utils/Perplexity` requires Python < 3.14 and Python GIL enabled and Python >= 3.13.3T (T for Threading-Free edition of Python) plus Torch 2.8. Feature is currently skipped/disabled.
+INFO  ENV: Auto setting PYTORCH_ALLOC_CONF='expandable_segments:True,max_split_size_mb:256,garbage_collection_threshold:0.7' for memory saving.
+INFO  ENV: Auto setting CUDA_DEVICE_ORDER=PCI_BUS_ID for correctness.          
+[W414 21:21:53.070046897 Context.cpp:456] Warning: torch.backends.cuda.preferred_linalg_library is an experimental feature. If you see any error or unexpected behavior when this flag is set please file an issue on GitHub. (function operator())
+INFO  
+
+┌─────────────┐    ┌────────────────────────┐    ┌────────────┐    ┌─────────┐
+│ GPT-QModel  │ -> │ ▓▓▓▓▓▓▓▓▓▓▓▓ 16bit     │ -> │ ▒▒▒▒ 8bit  │ -> │ ░░ 4bit │
+└─────────────┘    └────────────────────────┘    └────────────┘    └─────────┘
+GPT-QModel   : 5.8.0
+Transformers : 5.5.3
+Torch        : 2.9.1+cu128
+Triton       : 3.5.1
+2026-04-14 21:21:53 [INFO] Loading KTO dataset: argilla/ultrafeedback-binarized-preferences-cleaned (via https://hf-mirror.com)
+'[Errno 101] Network is unreachable' thrown while requesting HEAD https://huggingface.co/datasets/argilla/ultrafeedback-binarized-preferences-cleaned/resolve/770076f077c4c5e298498fa32f804857f46d5134/ultrafeedback-binarized-preferences-cleaned.py
+2026-04-14 21:23:14 [WARNING] '[Errno 101] Network is unreachable' thrown while requesting HEAD https://huggingface.co/datasets/argilla/ultrafeedback-binarized-preferences-cleaned/resolve/770076f077c4c5e298498fa32f804857f46d5134/ultrafeedback-binarized-preferences-cleaned.py
+Retrying in 1s [Retry 1/5].
+2026-04-14 21:23:14 [WARNING] Retrying in 1s [Retry 1/5].
+Using the latest cached version of the dataset since argilla/ultrafeedback-binarized-preferences-cleaned couldn't be found on the Hugging Face Hub
+2026-04-14 21:23:15 [WARNING] Using the latest cached version of the dataset since argilla/ultrafeedback-binarized-preferences-cleaned couldn't be found on the Hugging Face Hub
+Found the latest cached dataset configuration 'default' at /cache/zhangjing/.cache/huggingface/datasets/argilla___ultrafeedback-binarized-preferences-cleaned/default/0.0.0/770076f077c4c5e298498fa32f804857f46d5134 (last modified on Tue Apr 14 21:01:39 2026).
+2026-04-14 21:23:15 [WARNING] Found the latest cached dataset configuration 'default' at /cache/zhangjing/.cache/huggingface/datasets/argilla___ultrafeedback-binarized-preferences-cleaned/default/0.0.0/770076f077c4c5e298498fa32f804857f46d5134 (last modified on Tue Apr 14 21:01:39 2026).
+2026-04-14 21:23:22 [INFO] KTO Train: 6000, Eval: 600
+/cache/zhangjing/spectral-flow-probe/experiments/_exp2_worker.py:92: FutureWarning: The `KTOConfig` is now located in `trl.experimental`. Please update your imports to `from trl.experimental.kto import KTOConfig`. For more information, see https://github.com/huggingface/trl/issues/4223. Promoting KTO to the stable API is a high-priority task. Until then, this current path (`from trl import KTOConfig`) will remain, but API changes may occur.
+  kto_config = KTOConfig(
+/cache/zhangjing/spectral-flow-probe/experiments/_exp2_worker.py:111: FutureWarning: The `KTOTrainer` is now located in `trl.experimental`. Please update your imports to `from trl.experimental.kto import KTOTrainer`. For more information, see https://github.com/huggingface/trl/issues/4223. Promoting KTO to the stable API is a high-priority task. Until then, this current path (`from trl import KTOTrainer`) will remain, but API changes may occur.
+  trainer = KTOTrainer(
+trainable params: 6,815,744 || all params: 7,248,547,840 || trainable%: 0.0940
+Extracting prompt from train dataset:   0%|          | 0/6000 [00:00<?, ? examples/s]Extracting prompt from train dataset:  30%|███       | 1809/6000 [00:00<00:00, 17934.37 examples/s]Extracting prompt from train dataset:  69%|██████▉   | 4169/6000 [00:00<00:00, 16431.38 examples/s]Extracting prompt from train dataset: 100%|██████████| 6000/6000 [00:00<00:00, 16304.40 examples/s]Extracting prompt from train dataset: 100%|██████████| 6000/6000 [00:00<00:00, 16365.94 examples/s]
+Applying chat template to train dataset:   0%|          | 0/6000 [00:00<?, ? examples/s]Applying chat template to train dataset:   0%|          | 0/6000 [00:00<?, ? examples/s]
+2026-04-14 21:23:23 [ERROR] FAILED: Cannot use chat template functions because tokenizer.chat_template is not set and no template argument was passed! For information about writing templates and setting the tokenizer.chat_template attribute, please see the documentation at https://huggingface.co/docs/transformers/main/en/chat_templating
+Traceback (most recent call last):
+  File "/cache/zhangjing/spectral-flow-probe/experiments/_exp2_worker.py", line 217, in main
+    result = run_kto(args.model_path, args.model_name, args.gpu_id,
+  File "/cache/zhangjing/spectral-flow-probe/experiments/_exp2_worker.py", line 111, in run_kto
+    trainer = KTOTrainer(
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/trl/trainer/kto_trainer.py", line 36, in __init__
+    super().__init__(*args, **kwargs)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/trl/experimental/kto/kto_trainer.py", line 527, in __init__
+    train_dataset = train_dataset.map(
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/datasets/arrow_dataset.py", line 574, in wrapper
+    out: Union["Dataset", "DatasetDict"] = func(self, *args, **kwargs)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/datasets/arrow_dataset.py", line 3632, in map
+    for rank, done, content in Dataset._map_single(**unprocessed_kwargs):
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/datasets/arrow_dataset.py", line 3972, in _map_single
+    for i, example in iter_outputs(shard_iterable):
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/datasets/arrow_dataset.py", line 3950, in iter_outputs
+    yield i, apply_function(example, i, offset=offset)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/datasets/arrow_dataset.py", line 3871, in apply_function
+    processed_inputs = function(*fn_args, *additional_args, **fn_kwargs)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/trl/data_utils.py", line 396, in maybe_apply_chat_template
+    return apply_chat_template(example, tokenizer, tools, **template_kwargs)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/trl/data_utils.py", line 249, in apply_chat_template
+    prompt = tokenizer.apply_chat_template(
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/transformers/tokenization_utils_base.py", line 3051, in apply_chat_template
+    chat_template = self.get_chat_template(chat_template, tools)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/transformers/tokenization_utils_base.py", line 3233, in get_chat_template
+    raise ValueError(
+ValueError: Cannot use chat template functions because tokenizer.chat_template is not set and no template argument was passed! For information about writing templates and setting the tokenizer.chat_template attribute, please see the documentation at https://huggingface.co/docs/transformers/main/en/chat_templating
+2026-04-14 21:23:23 [INFO] Saved: /cache/zhangjing/spectral-flow-probe/experiments/results/exp2_universality/Mistral-7B_KTO_result.json
+2026-04-14 21:23:23 [INFO] [Mistral-7B_KTO] Done in 1.6 min — FAILED
+sys:1: DeprecationWarning: builtin type swigvarlink has no __module__ attribute

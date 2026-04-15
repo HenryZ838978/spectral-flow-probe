@@ -1,0 +1,557 @@
+Skipping import of cpp extensions due to incompatible torch version 2.9.1+cu128 for torchao version 0.16.0             Please see https://github.com/pytorch/ao/issues/2919 for more info
+2026-04-14 20:41:24 [INFO] === Exp 4 Worker: lambda=0.010, mode=floor, GPU=5 ===
+2026-04-14 20:41:24 [INFO] Loading model: /cache/zhangjing/models/Qwen3-1.7B on GPU 0
+`torch_dtype` is deprecated! Use `dtype` instead!
+2026-04-14 20:41:25 [WARNING] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights:   1%|          | 2/311 [00:00<00:33,  9.20it/s]Loading weights:  19%|█▉        | 59/311 [00:00<00:01, 231.47it/s]Loading weights:  39%|███▊      | 120/311 [00:00<00:00, 367.64it/s]Loading weights:  55%|█████▍    | 170/311 [00:00<00:00, 408.72it/s]Loading weights:  70%|███████   | 219/311 [00:00<00:00, 432.67it/s]Loading weights:  86%|████████▌ | 268/311 [00:00<00:00, 449.32it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 383.83it/s]
+2026-04-14 20:41:26 [INFO] Found 28 decoder layers at model.model.layers (hidden=2048)
+2026-04-14 20:41:27 [INFO] [baseline] step=1  PR(last)=13.81  S(last)=-0.1131
+2026-04-14 20:41:27 [INFO] Baseline PR: 13.81
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/awq/__init__.py:21: DeprecationWarning: 
+I have left this message as the final dev message to help you transition.
+
+Important Notice:
+- AutoAWQ is officially deprecated and will no longer be maintained.
+- The last tested configuration used Torch 2.6.0 and Transformers 4.51.3.
+- If future versions of Transformers break AutoAWQ compatibility, please report the issue to the Transformers project.
+
+Alternative:
+- AutoAWQ has been adopted by the vLLM Project: https://github.com/vllm-project/llm-compressor
+
+For further inquiries, feel free to reach out:
+- X: https://x.com/casper_hansen_
+- LinkedIn: https://www.linkedin.com/in/casper-hansen-804005170/
+
+  warnings.warn(_FINAL_DEV_MESSAGE, category=DeprecationWarning, stacklevel=1)
+
+WARN  Python GIL is enabled: Multi-gpu quant acceleration for MoE models is sub-optimal and multi-core accelerated cpu packing is also disabled. We recommend Python >= 3.13.3t with Pytorch > 2.8 for mult-gpu quantization and multi-cpu packing with env `PYTHON_GIL=0`.
+WARN  Feature `utils/Perplexity` requires Python < 3.14 and Python GIL enabled and Python >= 3.13.3T (T for Threading-Free edition of Python) plus Torch 2.8. Feature is currently skipped/disabled.
+INFO  ENV: Auto setting PYTORCH_ALLOC_CONF='expandable_segments:True,max_split_size_mb:256,garbage_collection_threshold:0.7' for memory saving.
+INFO  ENV: Auto setting CUDA_DEVICE_ORDER=PCI_BUS_ID for correctness.          
+[W414 20:41:31.665699377 Context.cpp:456] Warning: torch.backends.cuda.preferred_linalg_library is an experimental feature. If you see any error or unexpected behavior when this flag is set please file an issue on GitHub. (function operator())
+INFO  
+
+┌─────────────┐    ┌────────────────────────┐    ┌────────────┐    ┌─────────┐
+│ GPT-QModel  │ -> │ ▓▓▓▓▓▓▓▓▓▓▓▓ 16bit     │ -> │ ▒▒▒▒ 8bit  │ -> │ ░░ 4bit │
+└─────────────┘    └────────────────────────┘    └────────────┘    └─────────┘
+GPT-QModel   : 5.8.0
+Transformers : 5.5.3
+Torch        : 2.9.1+cu128
+Triton       : 3.5.1
+2026-04-14 20:41:31 [INFO] Loading dataset: argilla/ultrafeedback-binarized-preferences-cleaned (via https://hf-mirror.com)
+'[Errno 101] Network is unreachable' thrown while requesting HEAD https://huggingface.co/datasets/argilla/ultrafeedback-binarized-preferences-cleaned/resolve/770076f077c4c5e298498fa32f804857f46d5134/ultrafeedback-binarized-preferences-cleaned.py
+2026-04-14 20:42:51 [WARNING] '[Errno 101] Network is unreachable' thrown while requesting HEAD https://huggingface.co/datasets/argilla/ultrafeedback-binarized-preferences-cleaned/resolve/770076f077c4c5e298498fa32f804857f46d5134/ultrafeedback-binarized-preferences-cleaned.py
+Retrying in 1s [Retry 1/5].
+2026-04-14 20:42:51 [WARNING] Retrying in 1s [Retry 1/5].
+Using the latest cached version of the dataset since argilla/ultrafeedback-binarized-preferences-cleaned couldn't be found on the Hugging Face Hub
+2026-04-14 20:42:52 [WARNING] Using the latest cached version of the dataset since argilla/ultrafeedback-binarized-preferences-cleaned couldn't be found on the Hugging Face Hub
+Found the latest cached dataset configuration 'default' at /cache/zhangjing/.cache/huggingface/datasets/argilla___ultrafeedback-binarized-preferences-cleaned/default/0.0.0/770076f077c4c5e298498fa32f804857f46d5134 (last modified on Tue Apr 14 19:38:40 2026).
+2026-04-14 20:42:52 [WARNING] Found the latest cached dataset configuration 'default' at /cache/zhangjing/.cache/huggingface/datasets/argilla___ultrafeedback-binarized-preferences-cleaned/default/0.0.0/770076f077c4c5e298498fa32f804857f46d5134 (last modified on Tue Apr 14 19:38:40 2026).
+trainable params: 3,211,264 || all params: 1,723,786,240 || trainable%: 0.1863
+Map:   0%|          | 0/60917 [00:00<?, ? examples/s]Map:   2%|▏         | 1000/60917 [00:00<00:06, 9464.64 examples/s]Map:   3%|▎         | 2051/60917 [00:00<00:05, 10060.78 examples/s]Map:   5%|▌         | 3085/60917 [00:00<00:05, 10185.63 examples/s]Map:   7%|▋         | 4123/60917 [00:00<00:05, 10256.82 examples/s]Map:   9%|▉         | 5720/60917 [00:00<00:05, 10431.81 examples/s]Map:  12%|█▏        | 7228/60917 [00:00<00:05, 10280.74 examples/s]Map:  14%|█▎        | 8278/60917 [00:00<00:05, 10340.09 examples/s]Map:  15%|█▌        | 9318/60917 [00:00<00:04, 10353.15 examples/s]Map:  17%|█▋        | 10421/60917 [00:01<00:04, 10545.66 examples/s]Map:  19%|█▉        | 11595/60917 [00:01<00:04, 10750.97 examples/s]Map:  21%|██        | 12675/60917 [00:01<00:04, 10764.10 examples/s]Map:  23%|██▎       | 14214/60917 [00:01<00:04, 10565.65 examples/s]Map:  26%|██▌       | 15840/60917 [00:01<00:04, 10658.00 examples/s]Map:  29%|██▊       | 17378/60917 [00:01<00:04, 10518.26 examples/s]Map:  31%|███       | 18990/60917 [00:01<00:03, 10589.13 examples/s]Map:  34%|███▍      | 20572/60917 [00:01<00:03, 10491.07 examples/s]Map:  36%|███▌      | 21640/60917 [00:02<00:03, 10533.04 examples/s]Map:  38%|███▊      | 23163/60917 [00:02<00:03, 10405.28 examples/s]Map:  40%|███▉      | 24218/60917 [00:02<00:03, 10437.38 examples/s]Map:  42%|████▏     | 25779/60917 [00:02<00:03, 10424.89 examples/s]Map:  45%|████▍     | 27261/60917 [00:02<00:03, 10244.96 examples/s]Map:  46%|████▋     | 28294/60917 [00:02<00:03, 10262.47 examples/s]Map:  49%|████▉     | 29881/60917 [00:02<00:02, 10365.11 examples/s]Map:  51%|█████     | 30933/60917 [00:02<00:02, 10401.19 examples/s]Map:  52%|█████▏    | 31977/60917 [00:03<00:02, 10410.17 examples/s]Map:  55%|█████▌    | 33573/60917 [00:03<00:02, 10296.51 examples/s]Map:  58%|█████▊    | 35068/60917 [00:03<00:02, 10183.23 examples/s]Map:  59%|█████▉    | 36115/60917 [00:03<00:02, 10251.76 examples/s]Map:  61%|██████    | 37168/60917 [00:03<00:02, 10321.95 examples/s]Map:  64%|██████▎   | 38763/60917 [00:03<00:02, 10428.70 examples/s]Map:  65%|██████▌   | 39813/60917 [00:03<00:02, 10444.40 examples/s]Map:  67%|██████▋   | 40862/60917 [00:03<00:01, 10454.40 examples/s]Map:  70%|██████▉   | 42370/60917 [00:04<00:01, 10304.91 examples/s]Map:  71%|███████▏  | 43407/60917 [00:04<00:01, 10318.92 examples/s]Map:  73%|███████▎  | 44457/60917 [00:04<00:01, 10364.20 examples/s]Map:  75%|███████▍  | 45574/60917 [00:04<00:01, 10355.84 examples/s]Map:  77%|███████▋  | 46617/60917 [00:04<00:01, 10373.60 examples/s]Map:  78%|███████▊  | 47665/60917 [00:04<00:01, 10402.00 examples/s]Map:  80%|███████▉  | 48720/60917 [00:04<00:01, 10443.80 examples/s]Map:  82%|████████▏ | 49766/60917 [00:04<00:01, 10446.42 examples/s]Map:  84%|████████▍ | 51263/60917 [00:04<00:00, 10261.86 examples/s]Map:  87%|████████▋ | 52714/60917 [00:05<00:01, 5536.77 examples/s] Map:  88%|████████▊ | 53715/60917 [00:05<00:01, 6237.46 examples/s]Map:  90%|████████▉ | 54721/60917 [00:05<00:00, 6936.86 examples/s]Map:  91%|█████████▏| 55693/60917 [00:05<00:00, 7512.75 examples/s]Map:  93%|█████████▎| 56679/60917 [00:05<00:00, 8048.38 examples/s]Map:  95%|█████████▍| 57663/60917 [00:05<00:00, 8487.64 examples/s]Map:  96%|█████████▋| 58661/60917 [00:06<00:00, 8873.64 examples/s]Map:  98%|█████████▊| 59639/60917 [00:06<00:00, 9116.42 examples/s]Map: 100%|█████████▉| 60631/60917 [00:06<00:00, 9339.31 examples/s]Map: 100%|██████████| 60917/60917 [00:06<00:00, 9642.83 examples/s]
+2026-04-14 20:42:58 [INFO] Train: 5000, Eval: 500
+Tokenizing train dataset:   0%|          | 0/5000 [00:00<?, ? examples/s]Tokenizing train dataset:   1%|          | 28/5000 [00:00<00:18, 268.81 examples/s]Tokenizing train dataset:   1%|▏         | 68/5000 [00:00<00:14, 337.26 examples/s]Tokenizing train dataset:   2%|▏         | 108/5000 [00:00<00:13, 360.43 examples/s]Tokenizing train dataset:   3%|▎         | 149/5000 [00:00<00:12, 378.20 examples/s]Tokenizing train dataset:   4%|▍         | 188/5000 [00:00<00:12, 378.47 examples/s]Tokenizing train dataset:   5%|▍         | 240/5000 [00:00<00:13, 357.41 examples/s]Tokenizing train dataset:   6%|▌         | 296/5000 [00:00<00:13, 361.33 examples/s]Tokenizing train dataset:   7%|▋         | 335/5000 [00:00<00:12, 364.91 examples/s]Tokenizing train dataset:   8%|▊         | 391/5000 [00:01<00:12, 361.19 examples/s]Tokenizing train dataset:   9%|▉         | 444/5000 [00:01<00:12, 354.58 examples/s]Tokenizing train dataset:  10%|▉         | 484/5000 [00:01<00:12, 356.83 examples/s]Tokenizing train dataset:  11%|█         | 535/5000 [00:01<00:12, 347.91 examples/s]Tokenizing train dataset:  12%|█▏        | 575/5000 [00:01<00:12, 358.13 examples/s]Tokenizing train dataset:  12%|█▏        | 618/5000 [00:01<00:13, 329.76 examples/s]Tokenizing train dataset:  13%|█▎        | 655/5000 [00:01<00:12, 335.96 examples/s]Tokenizing train dataset:  14%|█▍        | 693/5000 [00:01<00:12, 346.24 examples/s]Tokenizing train dataset:  15%|█▍        | 734/5000 [00:02<00:11, 361.84 examples/s]Tokenizing train dataset:  15%|█▌        | 771/5000 [00:02<00:11, 362.60 examples/s]Tokenizing train dataset:  16%|█▌        | 809/5000 [00:02<00:11, 362.71 examples/s]Tokenizing train dataset:  17%|█▋        | 867/5000 [00:02<00:11, 366.98 examples/s]Tokenizing train dataset:  18%|█▊        | 906/5000 [00:02<00:11, 368.97 examples/s]Tokenizing train dataset:  19%|█▉        | 954/5000 [00:02<00:11, 345.07 examples/s]Tokenizing train dataset:  20%|█▉        | 995/5000 [00:02<00:11, 359.22 examples/s]Tokenizing train dataset:  21%|██        | 1035/5000 [00:03<00:15, 249.35 examples/s]Tokenizing train dataset:  22%|██▏       | 1076/5000 [00:03<00:14, 278.62 examples/s]Tokenizing train dataset:  22%|██▏       | 1117/5000 [00:03<00:12, 306.73 examples/s]Tokenizing train dataset:  23%|██▎       | 1161/5000 [00:03<00:11, 337.24 examples/s]Tokenizing train dataset:  24%|██▍       | 1215/5000 [00:03<00:11, 341.26 examples/s]Tokenizing train dataset:  25%|██▌       | 1253/5000 [00:03<00:10, 344.36 examples/s]Tokenizing train dataset:  26%|██▌       | 1309/5000 [00:03<00:10, 351.36 examples/s]Tokenizing train dataset:  27%|██▋       | 1358/5000 [00:03<00:10, 341.56 examples/s]Tokenizing train dataset:  28%|██▊       | 1409/5000 [00:04<00:10, 337.99 examples/s]Tokenizing train dataset:  29%|██▉       | 1463/5000 [00:04<00:10, 340.02 examples/s]Tokenizing train dataset:  30%|██▉       | 1499/5000 [00:04<00:10, 339.72 examples/s]Tokenizing train dataset:  31%|███       | 1536/5000 [00:04<00:10, 344.06 examples/s]Tokenizing train dataset:  31%|███▏      | 1574/5000 [00:04<00:09, 350.92 examples/s]Tokenizing train dataset:  32%|███▎      | 1625/5000 [00:04<00:09, 343.44 examples/s]Tokenizing train dataset:  33%|███▎      | 1664/5000 [00:04<00:09, 353.96 examples/s]Tokenizing train dataset:  34%|███▍      | 1702/5000 [00:04<00:09, 353.01 examples/s]Tokenizing train dataset:  35%|███▌      | 1754/5000 [00:05<00:09, 348.58 examples/s]Tokenizing train dataset:  36%|███▌      | 1805/5000 [00:05<00:09, 342.42 examples/s]Tokenizing train dataset:  37%|███▋      | 1847/5000 [00:05<00:08, 358.08 examples/s]Tokenizing train dataset:  38%|███▊      | 1896/5000 [00:05<00:09, 344.19 examples/s]Tokenizing train dataset:  39%|███▊      | 1932/5000 [00:05<00:08, 343.66 examples/s]Tokenizing train dataset:  39%|███▉      | 1971/5000 [00:05<00:08, 347.82 examples/s]Tokenizing train dataset:  40%|████      | 2018/5000 [00:05<00:10, 280.44 examples/s]Tokenizing train dataset:  41%|████      | 2057/5000 [00:06<00:09, 303.10 examples/s]Tokenizing train dataset:  42%|████▏     | 2097/5000 [00:06<00:08, 324.11 examples/s]Tokenizing train dataset:  43%|████▎     | 2138/5000 [00:06<00:08, 341.74 examples/s]Tokenizing train dataset:  44%|████▎     | 2179/5000 [00:06<00:07, 356.01 examples/s]Tokenizing train dataset:  44%|████▍     | 2224/5000 [00:06<00:08, 334.09 examples/s]Tokenizing train dataset:  45%|████▌     | 2264/5000 [00:06<00:07, 349.47 examples/s]Tokenizing train dataset:  46%|████▌     | 2305/5000 [00:06<00:07, 363.86 examples/s]Tokenizing train dataset:  47%|████▋     | 2365/5000 [00:06<00:07, 372.21 examples/s]Tokenizing train dataset:  48%|████▊     | 2418/5000 [00:07<00:07, 363.76 examples/s]Tokenizing train dataset:  49%|████▉     | 2455/5000 [00:07<00:07, 363.01 examples/s]Tokenizing train dataset:  50%|████▉     | 2494/5000 [00:07<00:06, 366.43 examples/s]Tokenizing train dataset:  51%|█████     | 2534/5000 [00:07<00:06, 372.36 examples/s]Tokenizing train dataset:  52%|█████▏    | 2592/5000 [00:07<00:06, 369.81 examples/s]Tokenizing train dataset:  53%|█████▎    | 2634/5000 [00:07<00:06, 380.63 examples/s]Tokenizing train dataset:  53%|█████▎    | 2673/5000 [00:07<00:06, 376.55 examples/s]Tokenizing train dataset:  54%|█████▍    | 2711/5000 [00:07<00:06, 374.08 examples/s]Tokenizing train dataset:  55%|█████▌    | 2763/5000 [00:07<00:06, 360.31 examples/s]Tokenizing train dataset:  56%|█████▋    | 2817/5000 [00:08<00:06, 356.58 examples/s]Tokenizing train dataset:  57%|█████▋    | 2855/5000 [00:08<00:06, 355.27 examples/s]Tokenizing train dataset:  58%|█████▊    | 2896/5000 [00:08<00:06, 324.83 examples/s]Tokenizing train dataset:  59%|█████▊    | 2933/5000 [00:08<00:06, 331.41 examples/s]Tokenizing train dataset:  60%|█████▉    | 2984/5000 [00:08<00:06, 327.50 examples/s]Tokenizing train dataset:  61%|██████    | 3034/5000 [00:08<00:06, 287.19 examples/s]Tokenizing train dataset:  61%|██████▏   | 3067/5000 [00:08<00:06, 294.60 examples/s]Tokenizing train dataset:  62%|██████▏   | 3107/5000 [00:09<00:05, 316.50 examples/s]Tokenizing train dataset:  63%|██████▎   | 3159/5000 [00:09<00:05, 324.17 examples/s]Tokenizing train dataset:  64%|██████▍   | 3207/5000 [00:09<00:05, 320.03 examples/s]Tokenizing train dataset:  65%|██████▍   | 3245/5000 [00:09<00:05, 329.54 examples/s]Tokenizing train dataset:  66%|██████▌   | 3284/5000 [00:09<00:05, 342.71 examples/s]Tokenizing train dataset:  66%|██████▋   | 3322/5000 [00:09<00:04, 349.58 examples/s]Tokenizing train dataset:  67%|██████▋   | 3362/5000 [00:09<00:04, 359.63 examples/s]Tokenizing train dataset:  68%|██████▊   | 3414/5000 [00:09<00:04, 353.48 examples/s]Tokenizing train dataset:  69%|██████▉   | 3450/5000 [00:10<00:04, 352.02 examples/s]Tokenizing train dataset:  70%|███████   | 3504/5000 [00:10<00:04, 344.87 examples/s]Tokenizing train dataset:  71%|███████   | 3542/5000 [00:10<00:04, 352.41 examples/s]Tokenizing train dataset:  72%|███████▏  | 3594/5000 [00:10<00:04, 346.81 examples/s]Tokenizing train dataset:  73%|███████▎  | 3633/5000 [00:10<00:03, 355.57 examples/s]Tokenizing train dataset:  74%|███████▎  | 3684/5000 [00:10<00:03, 345.35 examples/s]Tokenizing train dataset:  74%|███████▍  | 3719/5000 [00:10<00:03, 341.95 examples/s]Tokenizing train dataset:  75%|███████▌  | 3754/5000 [00:10<00:03, 342.34 examples/s]Tokenizing train dataset:  76%|███████▌  | 3791/5000 [00:11<00:03, 347.15 examples/s]Tokenizing train dataset:  77%|███████▋  | 3826/5000 [00:11<00:03, 343.27 examples/s]Tokenizing train dataset:  77%|███████▋  | 3866/5000 [00:11<00:03, 356.38 examples/s]Tokenizing train dataset:  78%|███████▊  | 3902/5000 [00:11<00:03, 354.49 examples/s]Tokenizing train dataset:  79%|███████▉  | 3941/5000 [00:11<00:02, 363.37 examples/s]Tokenizing train dataset:  80%|███████▉  | 3994/5000 [00:11<00:02, 354.33 examples/s]Tokenizing train dataset:  81%|████████  | 4036/5000 [00:11<00:03, 304.87 examples/s]Tokenizing train dataset:  81%|████████▏ | 4074/5000 [00:11<00:02, 316.20 examples/s]Tokenizing train dataset:  82%|████████▏ | 4111/5000 [00:11<00:02, 328.38 examples/s]Tokenizing train dataset:  83%|████████▎ | 4147/5000 [00:12<00:02, 332.58 examples/s]Tokenizing train dataset:  84%|████████▎ | 4187/5000 [00:12<00:02, 349.17 examples/s]Tokenizing train dataset:  85%|████████▍ | 4227/5000 [00:12<00:02, 358.23 examples/s]Tokenizing train dataset:  85%|████████▌ | 4264/5000 [00:12<00:02, 357.13 examples/s]Tokenizing train dataset:  86%|████████▌ | 4310/5000 [00:12<00:02, 336.32 examples/s]Tokenizing train dataset:  87%|████████▋ | 4349/5000 [00:12<00:01, 348.76 examples/s]Tokenizing train dataset:  88%|████████▊ | 4385/5000 [00:12<00:01, 343.63 examples/s]Tokenizing train dataset:  89%|████████▉ | 4438/5000 [00:12<00:01, 342.59 examples/s]Tokenizing train dataset:  90%|████████▉ | 4478/5000 [00:13<00:01, 353.32 examples/s]Tokenizing train dataset:  90%|█████████ | 4518/5000 [00:13<00:01, 362.81 examples/s]Tokenizing train dataset:  91%|█████████ | 4557/5000 [00:13<00:01, 362.02 examples/s]Tokenizing train dataset:  92%|█████████▏| 4605/5000 [00:13<00:01, 343.23 examples/s]Tokenizing train dataset:  93%|█████████▎| 4644/5000 [00:13<00:01, 350.46 examples/s]Tokenizing train dataset:  94%|█████████▎| 4682/5000 [00:13<00:00, 355.19 examples/s]Tokenizing train dataset:  94%|█████████▍| 4721/5000 [00:13<00:00, 356.01 examples/s]Tokenizing train dataset:  95%|█████████▌| 4757/5000 [00:13<00:00, 355.57 examples/s]Tokenizing train dataset:  96%|█████████▌| 4796/5000 [00:13<00:00, 361.98 examples/s]Tokenizing train dataset:  97%|█████████▋| 4839/5000 [00:14<00:00, 374.68 examples/s]Tokenizing train dataset:  98%|█████████▊| 4892/5000 [00:14<00:00, 361.45 examples/s]Tokenizing train dataset:  99%|█████████▉| 4948/5000 [00:14<00:00, 359.25 examples/s]Tokenizing train dataset: 100%|█████████▉| 4986/5000 [00:14<00:00, 361.60 examples/s]Tokenizing train dataset: 100%|██████████| 5000/5000 [00:14<00:00, 343.13 examples/s]
+Tokenizing eval dataset:   0%|          | 0/500 [00:00<?, ? examples/s]Tokenizing eval dataset:   6%|▋         | 32/500 [00:00<00:01, 304.03 examples/s]Tokenizing eval dataset:  14%|█▍        | 69/500 [00:00<00:01, 332.92 examples/s]Tokenizing eval dataset:  22%|██▏       | 112/500 [00:00<00:01, 370.55 examples/s]Tokenizing eval dataset:  31%|███       | 154/500 [00:00<00:00, 382.70 examples/s]Tokenizing eval dataset:  42%|████▏     | 209/500 [00:00<00:00, 370.81 examples/s]Tokenizing eval dataset:  50%|█████     | 250/500 [00:00<00:00, 373.46 examples/s]Tokenizing eval dataset:  60%|██████    | 302/500 [00:00<00:00, 358.32 examples/s]Tokenizing eval dataset:  68%|██████▊   | 342/500 [00:00<00:00, 364.46 examples/s]Tokenizing eval dataset:  76%|███████▌  | 381/500 [00:01<00:00, 370.43 examples/s]Tokenizing eval dataset:  84%|████████▍ | 421/500 [00:01<00:00, 376.35 examples/s]Tokenizing eval dataset:  92%|█████████▏| 462/500 [00:01<00:00, 385.11 examples/s]Tokenizing eval dataset: 100%|██████████| 500/500 [00:01<00:00, 349.51 examples/s]
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 151643}.
+2026-04-14 20:43:19 [WARNING] The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 151643}.
+  0%|          | 0/500 [00:00<?, ?it/s]/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.pin_memory() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:46.)
+  return data.pin_memory(device)
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.is_pinned() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:31.)
+  return data.pin_memory(device)
+2026-04-14 20:43:19 [INFO] Found 28 decoder layers at model.model.layers (hidden=2048)
+  0%|          | 1/500 [00:01<14:22,  1.73s/it]  0%|          | 2/500 [00:03<13:28,  1.62s/it]  1%|          | 3/500 [00:04<13:04,  1.58s/it]  1%|          | 4/500 [00:06<12:53,  1.56s/it]  1%|          | 5/500 [00:07<12:40,  1.54s/it]  1%|          | 6/500 [00:09<12:28,  1.52s/it]  1%|▏         | 7/500 [00:10<12:24,  1.51s/it]  2%|▏         | 8/500 [00:12<12:18,  1.50s/it]  2%|▏         | 9/500 [00:13<12:19,  1.51s/it]  2%|▏         | 10/500 [00:15<12:12,  1.50s/it]                                                  2%|▏         | 10/500 [00:15<12:12,  1.50s/it]  2%|▏         | 11/500 [00:16<12:10,  1.49s/it]  2%|▏         | 12/500 [00:18<12:10,  1.50s/it]  3%|▎         | 13/500 [00:19<12:08,  1.50s/it]  3%|▎         | 14/500 [00:21<12:05,  1.49s/it]  3%|▎         | 15/500 [00:22<12:07,  1.50s/it]  3%|▎         | 16/500 [00:24<12:07,  1.50s/it]  3%|▎         | 17/500 [00:25<12:05,  1.50s/it]  4%|▎         | 18/500 [00:27<12:01,  1.50s/it]  4%|▍         | 19/500 [00:28<12:02,  1.50s/it]  4%|▍         | 20/500 [00:30<12:06,  1.51s/it]                                                  4%|▍         | 20/500 [00:30<12:06,  1.51s/it]  4%|▍         | 21/500 [00:31<12:03,  1.51s/it]  4%|▍         | 22/500 [00:33<12:00,  1.51s/it]  5%|▍         | 23/500 [00:34<11:58,  1.51s/it]  5%|▍         | 24/500 [00:36<11:57,  1.51s/it]2026-04-14 20:43:57 [INFO] Found 28 decoder layers at model.model.layers (hidden=2048)
+2026-04-14 20:43:58 [INFO] [lambda_0.010] step=25  PR(last)=10.55  S(last)=-0.1092
+  5%|▌         | 25/500 [00:39<14:56,  1.89s/it]/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.pin_memory() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:46.)
+  return data.pin_memory(device)
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.is_pinned() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:31.)
+  return data.pin_memory(device)
+  5%|▌         | 26/500 [00:40<14:00,  1.77s/it]  5%|▌         | 27/500 [00:42<13:21,  1.69s/it]  6%|▌         | 28/500 [00:43<12:54,  1.64s/it]  6%|▌         | 29/500 [00:45<12:34,  1.60s/it]  6%|▌         | 30/500 [00:46<12:17,  1.57s/it]                                                  6%|▌         | 30/500 [00:46<12:17,  1.57s/it]  6%|▌         | 31/500 [00:48<12:07,  1.55s/it]  6%|▋         | 32/500 [00:49<11:55,  1.53s/it]  7%|▋         | 33/500 [00:51<11:49,  1.52s/it]  7%|▋         | 34/500 [00:52<11:43,  1.51s/it]  7%|▋         | 35/500 [00:54<11:39,  1.50s/it]  7%|▋         | 36/500 [00:55<11:37,  1.50s/it]  7%|▋         | 37/500 [00:57<11:33,  1.50s/it]  8%|▊         | 38/500 [00:58<11:30,  1.49s/it]  8%|▊         | 39/500 [01:00<11:30,  1.50s/it]  8%|▊         | 40/500 [01:01<11:29,  1.50s/it]                                                  8%|▊         | 40/500 [01:01<11:29,  1.50s/it]  8%|▊         | 41/500 [01:03<11:25,  1.49s/it]  8%|▊         | 42/500 [01:04<11:22,  1.49s/it]  9%|▊         | 43/500 [01:06<11:20,  1.49s/it]  9%|▉         | 44/500 [01:07<11:21,  1.50s/it]  9%|▉         | 45/500 [01:09<11:18,  1.49s/it]  9%|▉         | 46/500 [01:10<11:18,  1.49s/it]  9%|▉         | 47/500 [01:12<11:16,  1.49s/it] 10%|▉         | 48/500 [01:13<11:14,  1.49s/it] 10%|▉         | 49/500 [01:14<11:13,  1.49s/it]2026-04-14 20:44:37 [INFO] [lambda_0.010] step=50  PR(last)=10.16  S(last)=-0.1181
+ 10%|█         | 50/500 [01:17<13:58,  1.86s/it]                                                 10%|█         | 50/500 [01:17<13:58,  1.86s/it]/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.pin_memory() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:46.)
+  return data.pin_memory(device)
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.is_pinned() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:31.)
+  return data.pin_memory(device)
+ 10%|█         | 51/500 [01:19<13:13,  1.77s/it] 10%|█         | 52/500 [01:20<12:38,  1.69s/it] 11%|█         | 53/500 [01:22<12:15,  1.65s/it] 11%|█         | 54/500 [01:23<11:51,  1.60s/it] 11%|█         | 55/500 [01:25<11:38,  1.57s/it] 11%|█         | 56/500 [01:26<11:24,  1.54s/it] 11%|█▏        | 57/500 [01:28<11:17,  1.53s/it] 12%|█▏        | 58/500 [01:29<11:13,  1.52s/it] 12%|█▏        | 59/500 [01:31<11:12,  1.52s/it] 12%|█▏        | 60/500 [01:32<11:11,  1.53s/it]                                                 12%|█▏        | 60/500 [01:32<11:11,  1.53s/it] 12%|█▏        | 61/500 [01:34<11:11,  1.53s/it] 12%|█▏        | 62/500 [01:35<11:10,  1.53s/it] 13%|█▎        | 63/500 [01:37<11:10,  1.53s/it] 13%|█▎        | 64/500 [01:39<11:09,  1.54s/it] 13%|█▎        | 65/500 [01:40<11:09,  1.54s/it] 13%|█▎        | 66/500 [01:42<11:07,  1.54s/it] 13%|█▎        | 67/500 [01:43<11:06,  1.54s/it] 14%|█▎        | 68/500 [01:45<11:06,  1.54s/it] 14%|█▍        | 69/500 [01:46<11:02,  1.54s/it] 14%|█▍        | 70/500 [01:48<10:56,  1.53s/it]                                                 14%|█▍        | 70/500 [01:48<10:56,  1.53s/it] 14%|█▍        | 71/500 [01:49<10:53,  1.52s/it] 14%|█▍        | 72/500 [01:51<10:47,  1.51s/it] 15%|█▍        | 73/500 [01:52<10:45,  1.51s/it] 15%|█▍        | 74/500 [01:54<10:41,  1.51s/it]2026-04-14 20:45:16 [INFO] [lambda_0.010] step=75  PR(last)=9.37  S(last)=-0.1034
+ 15%|█▌        | 75/500 [01:56<13:17,  1.88s/it]/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.pin_memory() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:46.)
+  return data.pin_memory(device)
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.is_pinned() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:31.)
+  return data.pin_memory(device)
+ 15%|█▌        | 76/500 [01:58<12:30,  1.77s/it] 15%|█▌        | 77/500 [02:00<12:11,  1.73s/it] 16%|█▌        | 78/500 [02:01<11:56,  1.70s/it] 16%|█▌        | 79/500 [02:03<11:38,  1.66s/it] 16%|█▌        | 80/500 [02:04<11:26,  1.64s/it]                                                 16%|█▌        | 80/500 [02:04<11:26,  1.64s/it] 16%|█▌        | 81/500 [02:06<11:15,  1.61s/it] 16%|█▋        | 82/500 [02:07<11:04,  1.59s/it] 17%|█▋        | 83/500 [02:09<10:59,  1.58s/it] 17%|█▋        | 84/500 [02:11<10:49,  1.56s/it] 17%|█▋        | 85/500 [02:12<10:42,  1.55s/it] 17%|█▋        | 86/500 [02:14<10:40,  1.55s/it] 17%|█▋        | 87/500 [02:15<10:37,  1.54s/it] 18%|█▊        | 88/500 [02:17<10:33,  1.54s/it] 18%|█▊        | 89/500 [02:18<10:35,  1.55s/it] 18%|█▊        | 90/500 [02:20<10:31,  1.54s/it]                                                 18%|█▊        | 90/500 [02:20<10:31,  1.54s/it] 18%|█▊        | 91/500 [02:21<10:31,  1.54s/it] 18%|█▊        | 92/500 [02:23<10:27,  1.54s/it] 19%|█▊        | 93/500 [02:24<10:27,  1.54s/it] 19%|█▉        | 94/500 [02:26<10:22,  1.53s/it] 19%|█▉        | 95/500 [02:27<10:24,  1.54s/it] 19%|█▉        | 96/500 [02:29<10:20,  1.54s/it] 19%|█▉        | 97/500 [02:31<10:19,  1.54s/it] 20%|█▉        | 98/500 [02:32<10:16,  1.53s/it] 20%|█▉        | 99/500 [02:34<10:15,  1.53s/it]2026-04-14 20:45:56 [INFO] [lambda_0.010] step=100  PR(last)=6.01  S(last)=-0.1173
+ 20%|██        | 100/500 [02:36<12:44,  1.91s/it]                                                  20%|██        | 100/500 [02:36<12:44,  1.91s/it]/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.pin_memory() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:46.)
+  return data.pin_memory(device)
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.is_pinned() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:31.)
+  return data.pin_memory(device)
+{'loss': '0.7052', 'grad_norm': '1.189', 'learning_rate': '4.91e-07', 'entropy': 'nan', 'num_tokens': '4.77e+04', 'logits/chosen': '-3.226', 'logits/rejected': '-2.664', 'mean_token_accuracy': '0.5304', 'rewards/chosen': '-0.02295', 'rewards/rejected': '-0.006847', 'rewards/accuracies': '0.35', 'rewards/margins': '-0.0161', 'logps/chosen': '-293.3', 'logps/rejected': '-312.1', 'epoch': '0.016'}
+{'loss': '0.6939', 'grad_norm': '1.433', 'learning_rate': '4.81e-07', 'entropy': 'nan', 'num_tokens': '9.254e+04', 'logits/chosen': '-3.335', 'logits/rejected': '-3.049', 'mean_token_accuracy': '0.5467', 'rewards/chosen': '-0.02141', 'rewards/rejected': '-0.02744', 'rewards/accuracies': '0.4', 'rewards/margins': '0.006025', 'logps/chosen': '-369.7', 'logps/rejected': '-317.1', 'epoch': '0.032'}
+{'loss': '0.6917', 'grad_norm': '1.42', 'learning_rate': '4.71e-07', 'entropy': 'nan', 'num_tokens': '1.393e+05', 'logits/chosen': '-3.498', 'logits/rejected': '-3.209', 'mean_token_accuracy': '0.582', 'rewards/chosen': '-0.02007', 'rewards/rejected': '-0.02738', 'rewards/accuracies': '0.45', 'rewards/margins': '0.007306', 'logps/chosen': '-347.2', 'logps/rejected': '-318.5', 'epoch': '0.048'}
+{'loss': '0.6991', 'grad_norm': '1.513', 'learning_rate': '4.61e-07', 'entropy': 'nan', 'num_tokens': '1.879e+05', 'logits/chosen': '-3.649', 'logits/rejected': '-3.402', 'mean_token_accuracy': '0.5946', 'rewards/chosen': '-0.04949', 'rewards/rejected': '-0.04611', 'rewards/accuracies': '0.4', 'rewards/margins': '-0.00338', 'logps/chosen': '-409.3', 'logps/rejected': '-379.3', 'epoch': '0.064'}
+{'loss': '0.7198', 'grad_norm': '0.9839', 'learning_rate': '4.51e-07', 'entropy': 'nan', 'num_tokens': '2.364e+05', 'logits/chosen': '-3.025', 'logits/rejected': '-2.972', 'mean_token_accuracy': '0.4995', 'rewards/chosen': '-0.04095', 'rewards/rejected': '-0.0007396', 'rewards/accuracies': '0.3125', 'rewards/margins': '-0.04021', 'logps/chosen': '-365.4', 'logps/rejected': '-336.3', 'epoch': '0.08'}
+{'loss': '0.7166', 'grad_norm': '1.594', 'learning_rate': '4.41e-07', 'entropy': 'nan', 'num_tokens': '2.846e+05', 'logits/chosen': '-3.593', 'logits/rejected': '-2.992', 'mean_token_accuracy': '0.5582', 'rewards/chosen': '-0.05428', 'rewards/rejected': '-0.01781', 'rewards/accuracies': '0.3', 'rewards/margins': '-0.03647', 'logps/chosen': '-392.1', 'logps/rejected': '-358', 'epoch': '0.096'}
+{'loss': '0.6909', 'grad_norm': '1.994', 'learning_rate': '4.31e-07', 'entropy': 'nan', 'num_tokens': '3.326e+05', 'logits/chosen': '-3.332', 'logits/rejected': '-2.855', 'mean_token_accuracy': '0.5443', 'rewards/chosen': '-0.0007253', 'rewards/rejected': '-0.01427', 'rewards/accuracies': '0.4625', 'rewards/margins': '0.01354', 'logps/chosen': '-414.4', 'logps/rejected': '-360.7', 'epoch': '0.112'}
+{'loss': '0.6969', 'grad_norm': '1.668', 'learning_rate': '4.21e-07', 'entropy': 'nan', 'num_tokens': '3.776e+05', 'logits/chosen': '-3.616', 'logits/rejected': '-2.589', 'mean_token_accuracy': '0.5963', 'rewards/chosen': '0.01952', 'rewards/rejected': '0.01781', 'rewards/accuracies': '0.4625', 'rewards/margins': '0.0017', 'logps/chosen': '-390.1', 'logps/rejected': '-303.5', 'epoch': '0.128'}
+{'loss': '0.6954', 'grad_norm': '1.596', 'learning_rate': '4.11e-07', 'entropy': 'nan', 'num_tokens': '4.236e+05', 'logits/chosen': '-3.723', 'logits/rejected': '-3.282', 'mean_token_accuracy': '0.6158', 'rewards/chosen': '-0.01723', 'rewards/rejected': '-0.02203', 'rewards/accuracies': '0.5125', 'rewards/margins': '0.004801', 'logps/chosen': '-385', 'logps/rejected': '-329.7', 'epoch': '0.144'}
+{'loss': '0.6952', 'grad_norm': '1.409', 'learning_rate': '4.01e-07', 'entropy': 'nan', 'num_tokens': '4.722e+05', 'logits/chosen': '-3.363', 'logits/rejected': '-3.167', 'mean_token_accuracy': '0.5693', 'rewards/chosen': '-0.01673', 'rewards/rejected': '-0.02276', 'rewards/accuracies': '0.475', 'rewards/margins': '0.006027', 'logps/chosen': '-346.4', 'logps/rejected': '-327.9', 'epoch': '0.16'}
+
+  0%|          | 0/63 [00:00<?, ?it/s][A
+  3%|▎         | 2/63 [00:00<00:15,  3.82it/s][A
+  5%|▍         | 3/63 [00:01<00:22,  2.70it/s][A
+  6%|▋         | 4/63 [00:01<00:25,  2.34it/s][A
+  8%|▊         | 5/63 [00:02<00:26,  2.17it/s][A
+ 10%|▉         | 6/63 [00:02<00:27,  2.08it/s][A
+ 11%|█         | 7/63 [00:03<00:27,  2.02it/s][A
+ 13%|█▎        | 8/63 [00:03<00:27,  1.98it/s][A
+ 14%|█▍        | 9/63 [00:04<00:27,  1.96it/s][A
+ 16%|█▌        | 10/63 [00:04<00:27,  1.94it/s][A
+ 17%|█▋        | 11/63 [00:05<00:26,  1.93it/s][A
+ 19%|█▉        | 12/63 [00:05<00:26,  1.92it/s][A
+ 21%|██        | 13/63 [00:06<00:26,  1.92it/s][A
+ 22%|██▏       | 14/63 [00:06<00:26,  1.83it/s][A
+ 24%|██▍       | 15/63 [00:07<00:25,  1.86it/s][A
+ 25%|██▌       | 16/63 [00:07<00:25,  1.87it/s][A
+ 27%|██▋       | 17/63 [00:08<00:24,  1.88it/s][A
+ 29%|██▊       | 18/63 [00:08<00:23,  1.89it/s][A
+ 30%|███       | 19/63 [00:09<00:23,  1.89it/s][A
+ 32%|███▏      | 20/63 [00:10<00:22,  1.90it/s][A
+ 33%|███▎      | 21/63 [00:10<00:22,  1.90it/s][A
+ 35%|███▍      | 22/63 [00:11<00:21,  1.90it/s][A
+ 37%|███▋      | 23/63 [00:11<00:21,  1.90it/s][A
+ 38%|███▊      | 24/63 [00:12<00:20,  1.90it/s][A
+ 40%|███▉      | 25/63 [00:12<00:19,  1.90it/s][A
+ 41%|████▏     | 26/63 [00:13<00:19,  1.90it/s][A
+ 43%|████▎     | 27/63 [00:13<00:18,  1.90it/s][A
+ 44%|████▍     | 28/63 [00:14<00:18,  1.90it/s][A
+ 46%|████▌     | 29/63 [00:14<00:17,  1.90it/s][A
+ 48%|████▊     | 30/63 [00:15<00:17,  1.90it/s][A
+ 49%|████▉     | 31/63 [00:15<00:16,  1.90it/s][A
+ 51%|█████     | 32/63 [00:16<00:16,  1.90it/s][A
+ 52%|█████▏    | 33/63 [00:16<00:15,  1.90it/s][A
+ 54%|█████▍    | 34/63 [00:17<00:15,  1.89it/s][A
+ 56%|█████▌    | 35/63 [00:17<00:14,  1.89it/s][A
+ 57%|█████▋    | 36/63 [00:18<00:14,  1.89it/s][A
+ 59%|█████▊    | 37/63 [00:18<00:13,  1.89it/s][A
+ 60%|██████    | 38/63 [00:19<00:13,  1.89it/s][A
+ 62%|██████▏   | 39/63 [00:20<00:12,  1.89it/s][A
+ 63%|██████▎   | 40/63 [00:20<00:12,  1.89it/s][A
+ 65%|██████▌   | 41/63 [00:21<00:11,  1.89it/s][A
+ 67%|██████▋   | 42/63 [00:21<00:11,  1.89it/s][A
+ 68%|██████▊   | 43/63 [00:22<00:10,  1.89it/s][A
+ 70%|██████▉   | 44/63 [00:22<00:10,  1.89it/s][A
+ 71%|███████▏  | 45/63 [00:23<00:09,  1.89it/s][A
+ 73%|███████▎  | 46/63 [00:23<00:08,  1.89it/s][A
+ 75%|███████▍  | 47/63 [00:24<00:08,  1.89it/s][A
+ 76%|███████▌  | 48/63 [00:24<00:07,  1.89it/s][A
+ 78%|███████▊  | 49/63 [00:25<00:07,  1.89it/s][A
+ 79%|███████▉  | 50/63 [00:25<00:06,  1.89it/s][A
+ 81%|████████  | 51/63 [00:26<00:06,  1.89it/s][A
+ 83%|████████▎ | 52/63 [00:26<00:05,  1.89it/s][A
+ 84%|████████▍ | 53/63 [00:27<00:05,  1.89it/s][A
+ 86%|████████▌ | 54/63 [00:27<00:04,  1.89it/s][A
+ 87%|████████▋ | 55/63 [00:28<00:04,  1.89it/s][A
+ 89%|████████▉ | 56/63 [00:29<00:03,  1.89it/s][A
+ 90%|█████████ | 57/63 [00:29<00:03,  1.89it/s][A
+ 92%|█████████▏| 58/63 [00:30<00:02,  1.89it/s][A
+ 94%|█████████▎| 59/63 [00:30<00:02,  1.89it/s][A
+ 95%|█████████▌| 60/63 [00:31<00:01,  1.89it/s][A
+ 97%|█████████▋| 61/63 [00:31<00:01,  1.89it/s][A
+ 98%|█████████▊| 62/63 [00:32<00:00,  1.89it/s][A
+100%|██████████| 63/63 [00:32<00:00,  2.24it/s][A                                                 
+                                               [A 20%|██        | 100/500 [03:10<12:44,  1.91s/it]
+100%|██████████| 63/63 [00:32<00:00,  2.24it/s][A
+                                               [A 20%|██        | 101/500 [03:11<1:18:08, 11.75s/it] 20%|██        | 102/500 [03:13<57:36,  8.69s/it]   21%|██        | 103/500 [03:14<43:15,  6.54s/it] 21%|██        | 104/500 [03:16<33:14,  5.04s/it] 21%|██        | 105/500 [03:17<26:14,  3.99s/it] 21%|██        | 106/500 [03:19<21:18,  3.25s/it] 21%|██▏       | 107/500 [03:20<17:53,  2.73s/it] 22%|██▏       | 108/500 [03:22<15:29,  2.37s/it] 22%|██▏       | 109/500 [03:23<13:49,  2.12s/it] 22%|██▏       | 110/500 [03:25<12:38,  1.95s/it]                                                  22%|██▏       | 110/500 [03:25<12:38,  1.95s/it] 22%|██▏       | 111/500 [03:26<11:49,  1.82s/it] 22%|██▏       | 112/500 [03:28<11:16,  1.74s/it] 23%|██▎       | 113/500 [03:30<10:50,  1.68s/it] 23%|██▎       | 114/500 [03:31<10:31,  1.64s/it] 23%|██▎       | 115/500 [03:33<10:18,  1.61s/it] 23%|██▎       | 116/500 [03:34<10:07,  1.58s/it] 23%|██▎       | 117/500 [03:36<09:59,  1.57s/it] 24%|██▎       | 118/500 [03:37<09:50,  1.55s/it] 24%|██▍       | 119/500 [03:39<09:42,  1.53s/it] 24%|██▍       | 120/500 [03:40<09:38,  1.52s/it]                                                  24%|██▍       | 120/500 [03:40<09:38,  1.52s/it] 24%|██▍       | 121/500 [03:42<09:37,  1.52s/it] 24%|██▍       | 122/500 [03:43<09:33,  1.52s/it] 25%|██▍       | 123/500 [03:45<09:35,  1.53s/it] 25%|██▍       | 124/500 [03:46<09:36,  1.53s/it]2026-04-14 20:47:09 [INFO] [lambda_0.010] step=125  PR(last)=11.87  S(last)=-0.1286
+ 25%|██▌       | 125/500 [03:49<11:55,  1.91s/it]/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.pin_memory() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:46.)
+  return data.pin_memory(device)
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.is_pinned() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:31.)
+  return data.pin_memory(device)
+ 25%|██▌       | 126/500 [03:51<11:11,  1.79s/it] 25%|██▌       | 127/500 [03:52<10:42,  1.72s/it] 26%|██▌       | 128/500 [03:54<10:24,  1.68s/it] 26%|██▌       | 129/500 [03:55<10:08,  1.64s/it] 26%|██▌       | 130/500 [03:57<09:54,  1.61s/it]                                                  26%|██▌       | 130/500 [03:57<09:54,  1.61s/it] 26%|██▌       | 131/500 [03:58<09:43,  1.58s/it] 26%|██▋       | 132/500 [04:00<09:36,  1.57s/it] 27%|██▋       | 133/500 [04:01<09:31,  1.56s/it] 27%|██▋       | 134/500 [04:03<09:26,  1.55s/it] 27%|██▋       | 135/500 [04:04<09:21,  1.54s/it] 27%|██▋       | 136/500 [04:06<09:19,  1.54s/it] 27%|██▋       | 137/500 [04:07<09:17,  1.54s/it] 28%|██▊       | 138/500 [04:09<09:16,  1.54s/it] 28%|██▊       | 139/500 [04:11<09:14,  1.54s/it] 28%|██▊       | 140/500 [04:12<09:13,  1.54s/it]                                                  28%|██▊       | 140/500 [04:12<09:13,  1.54s/it] 28%|██▊       | 141/500 [04:14<09:05,  1.52s/it] 28%|██▊       | 142/500 [04:15<09:03,  1.52s/it] 29%|██▊       | 143/500 [04:17<08:57,  1.51s/it] 29%|██▉       | 144/500 [04:18<08:52,  1.50s/it] 29%|██▉       | 145/500 [04:19<08:48,  1.49s/it] 29%|██▉       | 146/500 [04:21<08:46,  1.49s/it] 29%|██▉       | 147/500 [04:22<08:46,  1.49s/it] 30%|██▉       | 148/500 [04:24<08:44,  1.49s/it] 30%|██▉       | 149/500 [04:25<08:45,  1.50s/it]2026-04-14 20:47:48 [INFO] [lambda_0.010] step=150  PR(last)=10.01  S(last)=-0.0950
+ 30%|███       | 150/500 [04:28<10:57,  1.88s/it]                                                  30%|███       | 150/500 [04:28<10:57,  1.88s/it]/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.pin_memory() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:46.)
+  return data.pin_memory(device)
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.is_pinned() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:31.)
+  return data.pin_memory(device)
+ 30%|███       | 151/500 [04:30<10:13,  1.76s/it] 30%|███       | 152/500 [04:31<09:46,  1.68s/it] 31%|███       | 153/500 [04:33<09:26,  1.63s/it] 31%|███       | 154/500 [04:34<09:10,  1.59s/it] 31%|███       | 155/500 [04:36<08:59,  1.56s/it] 31%|███       | 156/500 [04:37<08:50,  1.54s/it] 31%|███▏      | 157/500 [04:39<08:44,  1.53s/it] 32%|███▏      | 158/500 [04:40<08:39,  1.52s/it] 32%|███▏      | 159/500 [04:42<08:35,  1.51s/it] 32%|███▏      | 160/500 [04:43<08:33,  1.51s/it]                                                  32%|███▏      | 160/500 [04:43<08:33,  1.51s/it] 32%|███▏      | 161/500 [04:45<08:29,  1.50s/it] 32%|███▏      | 162/500 [04:46<08:25,  1.50s/it] 33%|███▎      | 163/500 [04:48<08:26,  1.50s/it] 33%|███▎      | 164/500 [04:49<08:24,  1.50s/it] 33%|███▎      | 165/500 [04:51<08:22,  1.50s/it] 33%|███▎      | 166/500 [04:52<08:20,  1.50s/it] 33%|███▎      | 167/500 [04:54<08:20,  1.50s/it] 34%|███▎      | 168/500 [04:55<08:17,  1.50s/it] 34%|███▍      | 169/500 [04:57<08:16,  1.50s/it] 34%|███▍      | 170/500 [04:58<08:12,  1.49s/it]                                                  34%|███▍      | 170/500 [04:58<08:12,  1.49s/it] 34%|███▍      | 171/500 [05:00<08:11,  1.49s/it] 34%|███▍      | 172/500 [05:01<08:10,  1.50s/it] 35%|███▍      | 173/500 [05:03<08:08,  1.49s/it] 35%|███▍      | 174/500 [05:04<08:09,  1.50s/it]2026-04-14 20:48:27 [INFO] [lambda_0.010] step=175  PR(last)=8.50  S(last)=-0.1143
+ 35%|███▌      | 175/500 [05:07<10:13,  1.89s/it]/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.pin_memory() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:46.)
+  return data.pin_memory(device)
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.is_pinned() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:31.)
+  return data.pin_memory(device)
+ 35%|███▌      | 176/500 [05:09<09:39,  1.79s/it] 35%|███▌      | 177/500 [05:10<09:13,  1.71s/it] 36%|███▌      | 178/500 [05:12<08:56,  1.67s/it] 36%|███▌      | 179/500 [05:13<08:42,  1.63s/it] 36%|███▌      | 180/500 [05:15<08:31,  1.60s/it]                                                  36%|███▌      | 180/500 [05:15<08:31,  1.60s/it] 36%|███▌      | 181/500 [05:16<08:24,  1.58s/it] 36%|███▋      | 182/500 [05:18<08:20,  1.58s/it] 37%|███▋      | 183/500 [05:19<08:16,  1.57s/it] 37%|███▋      | 184/500 [05:21<08:12,  1.56s/it] 37%|███▋      | 185/500 [05:22<08:09,  1.55s/it] 37%|███▋      | 186/500 [05:24<08:05,  1.55s/it] 37%|███▋      | 187/500 [05:26<08:05,  1.55s/it] 38%|███▊      | 188/500 [05:27<07:59,  1.54s/it] 38%|███▊      | 189/500 [05:29<07:53,  1.52s/it] 38%|███▊      | 190/500 [05:30<07:48,  1.51s/it]                                                  38%|███▊      | 190/500 [05:30<07:48,  1.51s/it] 38%|███▊      | 191/500 [05:32<07:46,  1.51s/it] 38%|███▊      | 192/500 [05:33<07:43,  1.51s/it] 39%|███▊      | 193/500 [05:35<07:42,  1.51s/it] 39%|███▉      | 194/500 [05:36<07:40,  1.51s/it] 39%|███▉      | 195/500 [05:37<07:36,  1.50s/it] 39%|███▉      | 196/500 [05:39<07:35,  1.50s/it] 39%|███▉      | 197/500 [05:40<07:33,  1.50s/it] 40%|███▉      | 198/500 [05:42<07:32,  1.50s/it] 40%|███▉      | 199/500 [05:43<07:30,  1.50s/it]2026-04-14 20:49:06 [INFO] [lambda_0.010] step=200  PR(last)=10.18  S(last)=-0.1171
+ 40%|████      | 200/500 [05:46<09:21,  1.87s/it]                                                  40%|████      | 200/500 [05:46<09:21,  1.87s/it]/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.pin_memory() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:46.)
+  return data.pin_memory(device)
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.is_pinned() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:31.)
+  return data.pin_memory(device)
+{'eval_loss': '0.7349', 'eval_runtime': '33.13', 'eval_samples_per_second': '15.09', 'eval_steps_per_second': '1.902', 'eval_entropy': '0.4156', 'eval_num_tokens': '4.722e+05', 'eval_logits/chosen': '-4.179', 'eval_logits/rejected': '-3.789', 'eval_mean_token_accuracy': '0.6561', 'eval_rewards/chosen': '0.02219', 'eval_rewards/rejected': '0.01942', 'eval_rewards/accuracies': '0.4583', 'eval_rewards/margins': '0.002773', 'eval_logps/chosen': '-388.5', 'eval_logps/rejected': '-345.5', 'epoch': '0.16'}
+{'loss': '0.6944', 'grad_norm': '1.449', 'learning_rate': '3.91e-07', 'entropy': 'nan', 'num_tokens': '5.182e+05', 'logits/chosen': '-3.643', 'logits/rejected': '-3.528', 'mean_token_accuracy': '0.6001', 'rewards/chosen': '0.01089', 'rewards/rejected': '0.00138', 'rewards/accuracies': '0.5125', 'rewards/margins': '0.009511', 'logps/chosen': '-373.5', 'logps/rejected': '-348.4', 'epoch': '0.176'}
+{'loss': '0.7113', 'grad_norm': '1.382', 'learning_rate': '3.81e-07', 'entropy': 'nan', 'num_tokens': '5.654e+05', 'logits/chosen': '-3.334', 'logits/rejected': '-3.192', 'mean_token_accuracy': '0.5695', 'rewards/chosen': '-0.03426', 'rewards/rejected': '-0.00861', 'rewards/accuracies': '0.375', 'rewards/margins': '-0.02565', 'logps/chosen': '-368.4', 'logps/rejected': '-351.8', 'epoch': '0.192'}
+{'loss': '0.7141', 'grad_norm': '1.544', 'learning_rate': '3.71e-07', 'entropy': 'nan', 'num_tokens': '6.101e+05', 'logits/chosen': '-3.684', 'logits/rejected': '-3.152', 'mean_token_accuracy': '0.5748', 'rewards/chosen': '-0.01896', 'rewards/rejected': '0.008507', 'rewards/accuracies': '0.45', 'rewards/margins': '-0.02747', 'logps/chosen': '-430.6', 'logps/rejected': '-349.9', 'epoch': '0.208'}
+{'loss': '0.6968', 'grad_norm': '1.463', 'learning_rate': '3.61e-07', 'entropy': 'nan', 'num_tokens': '6.589e+05', 'logits/chosen': '-3.504', 'logits/rejected': '-3.161', 'mean_token_accuracy': '0.5791', 'rewards/chosen': '0.001009', 'rewards/rejected': '-0.0003716', 'rewards/accuracies': '0.4125', 'rewards/margins': '0.00138', 'logps/chosen': '-372.1', 'logps/rejected': '-351.4', 'epoch': '0.224'}
+{'loss': '0.7048', 'grad_norm': '1.544', 'learning_rate': '3.51e-07', 'entropy': 'nan', 'num_tokens': '7.071e+05', 'logits/chosen': '-3.733', 'logits/rejected': '-3.163', 'mean_token_accuracy': '0.6211', 'rewards/chosen': '-0.004115', 'rewards/rejected': '0.01168', 'rewards/accuracies': '0.475', 'rewards/margins': '-0.01579', 'logps/chosen': '-417.8', 'logps/rejected': '-359', 'epoch': '0.24'}
+{'loss': '0.6951', 'grad_norm': '1.61', 'learning_rate': '3.41e-07', 'entropy': 'nan', 'num_tokens': '7.555e+05', 'logits/chosen': '-3.223', 'logits/rejected': '-2.764', 'mean_token_accuracy': '0.5243', 'rewards/chosen': '0.02173', 'rewards/rejected': '0.01674', 'rewards/accuracies': '0.425', 'rewards/margins': '0.004992', 'logps/chosen': '-405.7', 'logps/rejected': '-347.6', 'epoch': '0.256'}
+{'loss': '0.6905', 'grad_norm': '1.504', 'learning_rate': '3.31e-07', 'entropy': 'nan', 'num_tokens': '8.029e+05', 'logits/chosen': '-3.18', 'logits/rejected': '-2.913', 'mean_token_accuracy': '0.5615', 'rewards/chosen': '0.01641', 'rewards/rejected': '0.003763', 'rewards/accuracies': '0.4125', 'rewards/margins': '0.01265', 'logps/chosen': '-380.4', 'logps/rejected': '-327.9', 'epoch': '0.272'}
+{'loss': '0.7078', 'grad_norm': '1.85', 'learning_rate': '3.21e-07', 'entropy': 'nan', 'num_tokens': '8.502e+05', 'logits/chosen': '-3.372', 'logits/rejected': '-3.219', 'mean_token_accuracy': '0.5802', 'rewards/chosen': '0.001036', 'rewards/rejected': '0.02249', 'rewards/accuracies': '0.4375', 'rewards/margins': '-0.02146', 'logps/chosen': '-369.6', 'logps/rejected': '-322.7', 'epoch': '0.288'}
+{'loss': '0.7113', 'grad_norm': '2.089', 'learning_rate': '3.11e-07', 'entropy': 'nan', 'num_tokens': '8.985e+05', 'logits/chosen': '-3.488', 'logits/rejected': '-2.957', 'mean_token_accuracy': '0.5536', 'rewards/chosen': '0.001517', 'rewards/rejected': '0.03025', 'rewards/accuracies': '0.3875', 'rewards/margins': '-0.02874', 'logps/chosen': '-395.3', 'logps/rejected': '-340', 'epoch': '0.304'}
+{'loss': '0.7008', 'grad_norm': '1.506', 'learning_rate': '3.01e-07', 'entropy': 'nan', 'num_tokens': '9.452e+05', 'logits/chosen': '-3.759', 'logits/rejected': '-3.029', 'mean_token_accuracy': '0.5908', 'rewards/chosen': '0.004673', 'rewards/rejected': '0.01177', 'rewards/accuracies': '0.475', 'rewards/margins': '-0.007092', 'logps/chosen': '-369', 'logps/rejected': '-328.3', 'epoch': '0.32'}
+
+  0%|          | 0/63 [00:00<?, ?it/s][A
+  3%|▎         | 2/63 [00:00<00:15,  3.82it/s][A
+  5%|▍         | 3/63 [00:01<00:22,  2.70it/s][A
+  6%|▋         | 4/63 [00:01<00:25,  2.33it/s][A
+  8%|▊         | 5/63 [00:02<00:26,  2.17it/s][A
+ 10%|▉         | 6/63 [00:02<00:27,  2.08it/s][A
+ 11%|█         | 7/63 [00:03<00:27,  2.02it/s][A
+ 13%|█▎        | 8/63 [00:03<00:27,  1.99it/s][A
+ 14%|█▍        | 9/63 [00:04<00:27,  1.96it/s][A
+ 16%|█▌        | 10/63 [00:04<00:27,  1.94it/s][A
+ 17%|█▋        | 11/63 [00:05<00:26,  1.93it/s][A
+ 19%|█▉        | 12/63 [00:05<00:26,  1.92it/s][A
+ 21%|██        | 13/63 [00:06<00:26,  1.92it/s][A
+ 22%|██▏       | 14/63 [00:06<00:25,  1.92it/s][A
+ 24%|██▍       | 15/63 [00:07<00:25,  1.91it/s][A
+ 25%|██▌       | 16/63 [00:07<00:24,  1.91it/s][A
+ 27%|██▋       | 17/63 [00:08<00:24,  1.91it/s][A
+ 29%|██▊       | 18/63 [00:08<00:23,  1.90it/s][A
+ 30%|███       | 19/63 [00:09<00:23,  1.90it/s][A
+ 32%|███▏      | 20/63 [00:09<00:22,  1.90it/s][A
+ 33%|███▎      | 21/63 [00:10<00:22,  1.90it/s][A
+ 35%|███▍      | 22/63 [00:11<00:21,  1.90it/s][A
+ 37%|███▋      | 23/63 [00:11<00:21,  1.89it/s][A
+ 38%|███▊      | 24/63 [00:12<00:20,  1.90it/s][A
+ 40%|███▉      | 25/63 [00:12<00:20,  1.90it/s][A
+ 41%|████▏     | 26/63 [00:13<00:19,  1.90it/s][A
+ 43%|████▎     | 27/63 [00:13<00:18,  1.90it/s][A
+ 44%|████▍     | 28/63 [00:14<00:18,  1.90it/s][A
+ 46%|████▌     | 29/63 [00:14<00:17,  1.90it/s][A
+ 48%|████▊     | 30/63 [00:15<00:17,  1.90it/s][A
+ 49%|████▉     | 31/63 [00:15<00:16,  1.90it/s][A
+ 51%|█████     | 32/63 [00:16<00:16,  1.89it/s][A
+ 52%|█████▏    | 33/63 [00:16<00:15,  1.89it/s][A
+ 54%|█████▍    | 34/63 [00:17<00:15,  1.89it/s][A
+ 56%|█████▌    | 35/63 [00:17<00:14,  1.89it/s][A
+ 57%|█████▋    | 36/63 [00:18<00:14,  1.89it/s][A
+ 59%|█████▊    | 37/63 [00:18<00:13,  1.89it/s][A
+ 60%|██████    | 38/63 [00:19<00:13,  1.89it/s][A
+ 62%|██████▏   | 39/63 [00:20<00:12,  1.89it/s][A
+ 63%|██████▎   | 40/63 [00:20<00:12,  1.89it/s][A
+ 65%|██████▌   | 41/63 [00:21<00:11,  1.89it/s][A
+ 67%|██████▋   | 42/63 [00:21<00:11,  1.89it/s][A
+ 68%|██████▊   | 43/63 [00:22<00:10,  1.89it/s][A
+ 70%|██████▉   | 44/63 [00:22<00:10,  1.89it/s][A
+ 71%|███████▏  | 45/63 [00:23<00:09,  1.89it/s][A
+ 73%|███████▎  | 46/63 [00:23<00:09,  1.89it/s][A
+ 75%|███████▍  | 47/63 [00:24<00:08,  1.89it/s][A
+ 76%|███████▌  | 48/63 [00:24<00:07,  1.89it/s][A
+ 78%|███████▊  | 49/63 [00:25<00:07,  1.89it/s][A
+ 79%|███████▉  | 50/63 [00:25<00:06,  1.89it/s][A
+ 81%|████████  | 51/63 [00:26<00:06,  1.89it/s][A
+ 83%|████████▎ | 52/63 [00:26<00:05,  1.89it/s][A
+ 84%|████████▍ | 53/63 [00:27<00:05,  1.88it/s][A
+ 86%|████████▌ | 54/63 [00:27<00:04,  1.89it/s][A
+ 87%|████████▋ | 55/63 [00:28<00:04,  1.89it/s][A
+ 89%|████████▉ | 56/63 [00:29<00:03,  1.89it/s][A
+ 90%|█████████ | 57/63 [00:29<00:03,  1.89it/s][A
+ 92%|█████████▏| 58/63 [00:30<00:02,  1.89it/s][A
+ 94%|█████████▎| 59/63 [00:30<00:02,  1.89it/s][A
+ 95%|█████████▌| 60/63 [00:31<00:01,  1.89it/s][A
+ 97%|█████████▋| 61/63 [00:31<00:01,  1.89it/s][A
+ 98%|█████████▊| 62/63 [00:32<00:00,  1.89it/s][A
+100%|██████████| 63/63 [00:32<00:00,  2.24it/s][A                                                 
+                                               [A 40%|████      | 200/500 [06:19<09:21,  1.87s/it]
+100%|██████████| 63/63 [00:32<00:00,  2.24it/s][A
+                                               [A 40%|████      | 201/500 [06:21<58:06, 11.66s/it] 40%|████      | 202/500 [06:22<42:47,  8.61s/it] 41%|████      | 203/500 [06:24<32:04,  6.48s/it] 41%|████      | 204/500 [06:25<24:34,  4.98s/it] 41%|████      | 205/500 [06:27<19:21,  3.94s/it] 41%|████      | 206/500 [06:28<15:42,  3.21s/it] 41%|████▏     | 207/500 [06:30<13:09,  2.69s/it] 42%|████▏     | 208/500 [06:31<11:21,  2.33s/it] 42%|████▏     | 209/500 [06:33<10:06,  2.08s/it] 42%|████▏     | 210/500 [06:34<09:15,  1.92s/it]                                                  42%|████▏     | 210/500 [06:34<09:15,  1.92s/it] 42%|████▏     | 211/500 [06:36<08:38,  1.80s/it] 42%|████▏     | 212/500 [06:37<08:12,  1.71s/it] 43%|████▎     | 213/500 [06:39<07:52,  1.64s/it] 43%|████▎     | 214/500 [06:40<07:39,  1.61s/it] 43%|████▎     | 215/500 [06:42<07:30,  1.58s/it] 43%|████▎     | 216/500 [06:43<07:20,  1.55s/it] 43%|████▎     | 217/500 [06:45<07:13,  1.53s/it] 44%|████▎     | 218/500 [06:46<07:08,  1.52s/it] 44%|████▍     | 219/500 [06:48<07:07,  1.52s/it] 44%|████▍     | 220/500 [06:49<07:03,  1.51s/it]                                                  44%|████▍     | 220/500 [06:49<07:03,  1.51s/it] 44%|████▍     | 221/500 [06:51<06:58,  1.50s/it] 44%|████▍     | 222/500 [06:52<06:58,  1.50s/it] 45%|████▍     | 223/500 [06:54<06:56,  1.50s/it] 45%|████▍     | 224/500 [06:55<06:54,  1.50s/it]2026-04-14 20:50:18 [INFO] [lambda_0.010] step=225  PR(last)=6.23  S(last)=-0.1277
+ 45%|████▌     | 225/500 [06:58<08:33,  1.87s/it]/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.pin_memory() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:46.)
+  return data.pin_memory(device)
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.is_pinned() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:31.)
+  return data.pin_memory(device)
+ 45%|████▌     | 226/500 [07:00<08:05,  1.77s/it] 45%|████▌     | 227/500 [07:01<07:42,  1.69s/it] 46%|████▌     | 228/500 [07:03<07:28,  1.65s/it] 46%|████▌     | 229/500 [07:04<07:19,  1.62s/it] 46%|████▌     | 230/500 [07:06<07:09,  1.59s/it]                                                  46%|████▌     | 230/500 [07:06<07:09,  1.59s/it] 46%|████▌     | 231/500 [07:07<07:04,  1.58s/it] 46%|████▋     | 232/500 [07:09<07:00,  1.57s/it] 47%|████▋     | 233/500 [07:10<06:55,  1.56s/it] 47%|████▋     | 234/500 [07:12<06:51,  1.55s/it] 47%|████▋     | 235/500 [07:13<06:48,  1.54s/it] 47%|████▋     | 236/500 [07:15<06:43,  1.53s/it] 47%|████▋     | 237/500 [07:16<06:39,  1.52s/it] 48%|████▊     | 238/500 [07:18<06:37,  1.52s/it] 48%|████▊     | 239/500 [07:19<06:33,  1.51s/it] 48%|████▊     | 240/500 [07:21<06:30,  1.50s/it]                                                  48%|████▊     | 240/500 [07:21<06:30,  1.50s/it] 48%|████▊     | 241/500 [07:22<06:29,  1.50s/it] 48%|████▊     | 242/500 [07:24<06:26,  1.50s/it] 49%|████▊     | 243/500 [07:25<06:25,  1.50s/it] 49%|████▉     | 244/500 [07:27<06:23,  1.50s/it] 49%|████▉     | 245/500 [07:28<06:21,  1.50s/it] 49%|████▉     | 246/500 [07:30<06:19,  1.49s/it] 49%|████▉     | 247/500 [07:31<06:18,  1.49s/it] 50%|████▉     | 248/500 [07:33<06:16,  1.50s/it] 50%|████▉     | 249/500 [07:34<06:17,  1.50s/it]2026-04-14 20:50:57 [INFO] [lambda_0.010] step=250  PR(last)=9.48  S(last)=-0.1105
+ 50%|█████     | 250/500 [07:37<07:49,  1.88s/it]                                                  50%|█████     | 250/500 [07:37<07:49,  1.88s/it]/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.pin_memory() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:46.)
+  return data.pin_memory(device)
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.is_pinned() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:31.)
+  return data.pin_memory(device)
+ 50%|█████     | 251/500 [07:39<07:22,  1.78s/it] 50%|█████     | 252/500 [07:40<07:00,  1.70s/it] 51%|█████     | 253/500 [07:42<06:49,  1.66s/it] 51%|█████     | 254/500 [07:43<06:36,  1.61s/it] 51%|█████     | 255/500 [07:45<06:26,  1.58s/it] 51%|█████     | 256/500 [07:46<06:20,  1.56s/it] 51%|█████▏    | 257/500 [07:48<06:12,  1.53s/it] 52%|█████▏    | 258/500 [07:49<06:07,  1.52s/it] 52%|█████▏    | 259/500 [07:51<06:03,  1.51s/it] 52%|█████▏    | 260/500 [07:52<06:00,  1.50s/it]                                                  52%|█████▏    | 260/500 [07:52<06:00,  1.50s/it] 52%|█████▏    | 261/500 [07:54<05:59,  1.51s/it] 52%|█████▏    | 262/500 [07:55<05:58,  1.51s/it] 53%|█████▎    | 263/500 [07:57<05:59,  1.52s/it] 53%|█████▎    | 264/500 [07:58<06:00,  1.53s/it] 53%|█████▎    | 265/500 [08:00<05:59,  1.53s/it] 53%|█████▎    | 266/500 [08:01<05:57,  1.53s/it] 53%|█████▎    | 267/500 [08:03<05:54,  1.52s/it] 54%|█████▎    | 268/500 [08:04<05:53,  1.53s/it] 54%|█████▍    | 269/500 [08:06<05:53,  1.53s/it] 54%|█████▍    | 270/500 [08:07<05:52,  1.53s/it]                                                  54%|█████▍    | 270/500 [08:07<05:52,  1.53s/it] 54%|█████▍    | 271/500 [08:09<05:50,  1.53s/it] 54%|█████▍    | 272/500 [08:10<05:49,  1.53s/it] 55%|█████▍    | 273/500 [08:12<05:46,  1.53s/it] 55%|█████▍    | 274/500 [08:14<05:45,  1.53s/it]2026-04-14 20:51:36 [INFO] [lambda_0.010] step=275  PR(last)=13.86  S(last)=-0.1086
+ 55%|█████▌    | 275/500 [08:16<07:09,  1.91s/it]/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.pin_memory() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:46.)
+  return data.pin_memory(device)
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.is_pinned() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:31.)
+  return data.pin_memory(device)
+ 55%|█████▌    | 276/500 [08:18<06:41,  1.79s/it] 55%|█████▌    | 277/500 [08:19<06:19,  1.70s/it] 56%|█████▌    | 278/500 [08:21<06:05,  1.65s/it] 56%|█████▌    | 279/500 [08:22<05:58,  1.62s/it] 56%|█████▌    | 280/500 [08:24<05:50,  1.60s/it]                                                  56%|█████▌    | 280/500 [08:24<05:50,  1.60s/it] 56%|█████▌    | 281/500 [08:25<05:45,  1.58s/it] 56%|█████▋    | 282/500 [08:27<05:42,  1.57s/it] 57%|█████▋    | 283/500 [08:29<05:38,  1.56s/it] 57%|█████▋    | 284/500 [08:30<05:37,  1.56s/it] 57%|█████▋    | 285/500 [08:32<05:34,  1.56s/it] 57%|█████▋    | 286/500 [08:33<05:31,  1.55s/it] 57%|█████▋    | 287/500 [08:35<05:28,  1.54s/it] 58%|█████▊    | 288/500 [08:36<05:27,  1.54s/it] 58%|█████▊    | 289/500 [08:38<05:26,  1.55s/it] 58%|█████▊    | 290/500 [08:39<05:24,  1.54s/it]                                                  58%|█████▊    | 290/500 [08:39<05:24,  1.54s/it] 58%|█████▊    | 291/500 [08:41<05:20,  1.53s/it] 58%|█████▊    | 292/500 [08:42<05:18,  1.53s/it] 59%|█████▊    | 293/500 [08:44<05:18,  1.54s/it] 59%|█████▉    | 294/500 [08:46<05:16,  1.54s/it] 59%|█████▉    | 295/500 [08:47<05:14,  1.53s/it] 59%|█████▉    | 296/500 [08:49<05:13,  1.54s/it] 59%|█████▉    | 297/500 [08:50<05:10,  1.53s/it] 60%|█████▉    | 298/500 [08:52<05:08,  1.53s/it] 60%|█████▉    | 299/500 [08:53<05:07,  1.53s/it]2026-04-14 20:52:16 [INFO] [lambda_0.010] step=300  PR(last)=4.47  S(last)=-0.1434
+ 60%|██████    | 300/500 [08:56<06:22,  1.91s/it]                                                  60%|██████    | 300/500 [08:56<06:22,  1.91s/it]/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.pin_memory() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:46.)
+  return data.pin_memory(device)
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.is_pinned() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:31.)
+  return data.pin_memory(device)
+{'eval_loss': '0.7269', 'eval_runtime': '32.97', 'eval_samples_per_second': '15.16', 'eval_steps_per_second': '1.911', 'eval_entropy': '0.4164', 'eval_num_tokens': '9.452e+05', 'eval_logits/chosen': '-4.169', 'eval_logits/rejected': '-3.779', 'eval_mean_token_accuracy': '0.656', 'eval_rewards/chosen': '0.09676', 'eval_rewards/rejected': '0.07654', 'eval_rewards/accuracies': '0.504', 'eval_rewards/margins': '0.02022', 'eval_logps/chosen': '-387.8', 'eval_logps/rejected': '-344.9', 'epoch': '0.32'}
+{'loss': '0.7025', 'grad_norm': '1.852', 'learning_rate': '2.91e-07', 'entropy': 'nan', 'num_tokens': '9.939e+05', 'logits/chosen': '-3.663', 'logits/rejected': '-3.361', 'mean_token_accuracy': '0.5972', 'rewards/chosen': '0.02456', 'rewards/rejected': '0.02998', 'rewards/accuracies': '0.4875', 'rewards/margins': '-0.005417', 'logps/chosen': '-419.4', 'logps/rejected': '-388.2', 'epoch': '0.336'}
+{'loss': '0.6808', 'grad_norm': '1.888', 'learning_rate': '2.81e-07', 'entropy': 'nan', 'num_tokens': '1.043e+06', 'logits/chosen': '-3.518', 'logits/rejected': '-3.167', 'mean_token_accuracy': '0.5874', 'rewards/chosen': '0.05555', 'rewards/rejected': '0.01782', 'rewards/accuracies': '0.4875', 'rewards/margins': '0.03773', 'logps/chosen': '-432.7', 'logps/rejected': '-365.4', 'epoch': '0.352'}
+{'loss': '0.6749', 'grad_norm': '1.363', 'learning_rate': '2.71e-07', 'entropy': 'nan', 'num_tokens': '1.093e+06', 'logits/chosen': '-2.97', 'logits/rejected': '-3.047', 'mean_token_accuracy': '0.535', 'rewards/chosen': '0.04964', 'rewards/rejected': '0.002016', 'rewards/accuracies': '0.475', 'rewards/margins': '0.04762', 'logps/chosen': '-365.7', 'logps/rejected': '-374', 'epoch': '0.368'}
+{'loss': '0.6996', 'grad_norm': '1.719', 'learning_rate': '2.61e-07', 'entropy': 'nan', 'num_tokens': '1.14e+06', 'logits/chosen': '-3.546', 'logits/rejected': '-3.249', 'mean_token_accuracy': '0.5809', 'rewards/chosen': '0.01416', 'rewards/rejected': '0.02003', 'rewards/accuracies': '0.4', 'rewards/margins': '-0.005872', 'logps/chosen': '-320', 'logps/rejected': '-336.7', 'epoch': '0.384'}
+{'loss': '0.6915', 'grad_norm': '1.565', 'learning_rate': '2.51e-07', 'entropy': 'nan', 'num_tokens': '1.188e+06', 'logits/chosen': '-3.636', 'logits/rejected': '-3.43', 'mean_token_accuracy': '0.6034', 'rewards/chosen': '0.02191', 'rewards/rejected': '0.007948', 'rewards/accuracies': '0.45', 'rewards/margins': '0.01397', 'logps/chosen': '-402.1', 'logps/rejected': '-359.3', 'epoch': '0.4'}
+{'loss': '0.6921', 'grad_norm': '1.408', 'learning_rate': '2.41e-07', 'entropy': 'nan', 'num_tokens': '1.235e+06', 'logits/chosen': '-3.78', 'logits/rejected': '-3.172', 'mean_token_accuracy': '0.585', 'rewards/chosen': '0.0351', 'rewards/rejected': '0.01985', 'rewards/accuracies': '0.3875', 'rewards/margins': '0.01525', 'logps/chosen': '-410.8', 'logps/rejected': '-359.4', 'epoch': '0.416'}
+{'loss': '0.6826', 'grad_norm': '1.782', 'learning_rate': '2.31e-07', 'entropy': 'nan', 'num_tokens': '1.285e+06', 'logits/chosen': '-3.645', 'logits/rejected': '-3.329', 'mean_token_accuracy': '0.5782', 'rewards/chosen': '0.02465', 'rewards/rejected': '-0.002994', 'rewards/accuracies': '0.4875', 'rewards/margins': '0.02765', 'logps/chosen': '-371.1', 'logps/rejected': '-319.1', 'epoch': '0.432'}
+{'loss': '0.7062', 'grad_norm': '1.395', 'learning_rate': '2.21e-07', 'entropy': 'nan', 'num_tokens': '1.334e+06', 'logits/chosen': '-3.369', 'logits/rejected': '-3.14', 'mean_token_accuracy': '0.5749', 'rewards/chosen': '0.02837', 'rewards/rejected': '0.04428', 'rewards/accuracies': '0.4125', 'rewards/margins': '-0.0159', 'logps/chosen': '-366.8', 'logps/rejected': '-334.1', 'epoch': '0.448'}
+{'loss': '0.6936', 'grad_norm': '1.58', 'learning_rate': '2.11e-07', 'entropy': 'nan', 'num_tokens': '1.381e+06', 'logits/chosen': '-3.487', 'logits/rejected': '-3.066', 'mean_token_accuracy': '0.5568', 'rewards/chosen': '0.03413', 'rewards/rejected': '0.02665', 'rewards/accuracies': '0.4625', 'rewards/margins': '0.007474', 'logps/chosen': '-353.4', 'logps/rejected': '-338.7', 'epoch': '0.464'}
+{'loss': '0.7005', 'grad_norm': '1.565', 'learning_rate': '2.01e-07', 'entropy': 'nan', 'num_tokens': '1.43e+06', 'logits/chosen': '-3.811', 'logits/rejected': '-3.243', 'mean_token_accuracy': '0.5523', 'rewards/chosen': '0.04913', 'rewards/rejected': '0.05332', 'rewards/accuracies': '0.475', 'rewards/margins': '-0.004188', 'logps/chosen': '-426.4', 'logps/rejected': '-353.5', 'epoch': '0.48'}
+
+  0%|          | 0/63 [00:00<?, ?it/s][A
+  3%|▎         | 2/63 [00:00<00:16,  3.81it/s][A
+  5%|▍         | 3/63 [00:01<00:22,  2.69it/s][A
+  6%|▋         | 4/63 [00:01<00:25,  2.33it/s][A
+  8%|▊         | 5/63 [00:02<00:26,  2.17it/s][A
+ 10%|▉         | 6/63 [00:02<00:27,  2.07it/s][A
+ 11%|█         | 7/63 [00:03<00:27,  2.02it/s][A
+ 13%|█▎        | 8/63 [00:03<00:27,  1.98it/s][A
+ 14%|█▍        | 9/63 [00:04<00:27,  1.95it/s][A
+ 16%|█▌        | 10/63 [00:04<00:27,  1.94it/s][A
+ 17%|█▋        | 11/63 [00:05<00:26,  1.93it/s][A
+ 19%|█▉        | 12/63 [00:05<00:26,  1.92it/s][A
+ 21%|██        | 13/63 [00:06<00:26,  1.92it/s][A
+ 22%|██▏       | 14/63 [00:06<00:25,  1.91it/s][A
+ 24%|██▍       | 15/63 [00:07<00:25,  1.91it/s][A
+ 25%|██▌       | 16/63 [00:07<00:24,  1.90it/s][A
+ 27%|██▋       | 17/63 [00:08<00:24,  1.90it/s][A
+ 29%|██▊       | 18/63 [00:08<00:23,  1.90it/s][A
+ 30%|███       | 19/63 [00:09<00:23,  1.90it/s][A
+ 32%|███▏      | 20/63 [00:09<00:22,  1.90it/s][A
+ 33%|███▎      | 21/63 [00:10<00:22,  1.90it/s][A
+ 35%|███▍      | 22/63 [00:11<00:21,  1.89it/s][A
+ 37%|███▋      | 23/63 [00:11<00:21,  1.89it/s][A
+ 38%|███▊      | 24/63 [00:12<00:20,  1.90it/s][A
+ 40%|███▉      | 25/63 [00:12<00:20,  1.90it/s][A
+ 41%|████▏     | 26/63 [00:13<00:19,  1.90it/s][A
+ 43%|████▎     | 27/63 [00:13<00:18,  1.90it/s][A
+ 44%|████▍     | 28/63 [00:14<00:18,  1.90it/s][A
+ 46%|████▌     | 29/63 [00:14<00:17,  1.90it/s][A
+ 48%|████▊     | 30/63 [00:15<00:17,  1.90it/s][A
+ 49%|████▉     | 31/63 [00:15<00:16,  1.89it/s][A
+ 51%|█████     | 32/63 [00:16<00:16,  1.89it/s][A
+ 52%|█████▏    | 33/63 [00:16<00:15,  1.89it/s][A
+ 54%|█████▍    | 34/63 [00:17<00:15,  1.89it/s][A
+ 56%|█████▌    | 35/63 [00:17<00:14,  1.89it/s][A
+ 57%|█████▋    | 36/63 [00:18<00:14,  1.89it/s][A
+ 59%|█████▊    | 37/63 [00:18<00:13,  1.89it/s][A
+ 60%|██████    | 38/63 [00:19<00:13,  1.89it/s][A
+ 62%|██████▏   | 39/63 [00:20<00:12,  1.89it/s][A
+ 63%|██████▎   | 40/63 [00:20<00:12,  1.89it/s][A
+ 65%|██████▌   | 41/63 [00:21<00:11,  1.89it/s][A
+ 67%|██████▋   | 42/63 [00:21<00:11,  1.89it/s][A
+ 68%|██████▊   | 43/63 [00:22<00:10,  1.89it/s][A
+ 70%|██████▉   | 44/63 [00:22<00:10,  1.89it/s][A
+ 71%|███████▏  | 45/63 [00:23<00:09,  1.89it/s][A
+ 73%|███████▎  | 46/63 [00:23<00:09,  1.89it/s][A
+ 75%|███████▍  | 47/63 [00:24<00:08,  1.89it/s][A
+ 76%|███████▌  | 48/63 [00:24<00:07,  1.89it/s][A
+ 78%|███████▊  | 49/63 [00:25<00:07,  1.89it/s][A
+ 79%|███████▉  | 50/63 [00:25<00:06,  1.89it/s][A
+ 81%|████████  | 51/63 [00:26<00:06,  1.89it/s][A
+ 83%|████████▎ | 52/63 [00:26<00:05,  1.89it/s][A
+ 84%|████████▍ | 53/63 [00:27<00:05,  1.88it/s][A
+ 86%|████████▌ | 54/63 [00:27<00:04,  1.88it/s][A
+ 87%|████████▋ | 55/63 [00:28<00:04,  1.89it/s][A
+ 89%|████████▉ | 56/63 [00:29<00:03,  1.89it/s][A
+ 90%|█████████ | 57/63 [00:29<00:03,  1.89it/s][A
+ 92%|█████████▏| 58/63 [00:30<00:02,  1.88it/s][A
+ 94%|█████████▎| 59/63 [00:30<00:02,  1.88it/s][A
+ 95%|█████████▌| 60/63 [00:31<00:01,  1.88it/s][A
+ 97%|█████████▋| 61/63 [00:31<00:01,  1.88it/s][A
+ 98%|█████████▊| 62/63 [00:32<00:00,  1.88it/s][A
+100%|██████████| 63/63 [00:32<00:00,  2.23it/s][A                                                 
+                                               [A 60%|██████    | 300/500 [09:29<06:22,  1.91s/it]
+100%|██████████| 63/63 [00:32<00:00,  2.23it/s][A
+                                               [A 60%|██████    | 301/500 [09:31<38:50, 11.71s/it] 60%|██████    | 302/500 [09:32<28:32,  8.65s/it] 61%|██████    | 303/500 [09:34<21:21,  6.51s/it] 61%|██████    | 304/500 [09:35<16:21,  5.01s/it] 61%|██████    | 305/500 [09:37<12:52,  3.96s/it] 61%|██████    | 306/500 [09:38<10:24,  3.22s/it] 61%|██████▏   | 307/500 [09:40<08:41,  2.70s/it] 62%|██████▏   | 308/500 [09:41<07:28,  2.34s/it] 62%|██████▏   | 309/500 [09:43<06:38,  2.09s/it] 62%|██████▏   | 310/500 [09:44<06:03,  1.91s/it]                                                  62%|██████▏   | 310/500 [09:44<06:03,  1.91s/it] 62%|██████▏   | 311/500 [09:46<05:36,  1.78s/it] 62%|██████▏   | 312/500 [09:47<05:17,  1.69s/it] 63%|██████▎   | 313/500 [09:48<05:04,  1.63s/it] 63%|██████▎   | 314/500 [09:50<04:55,  1.59s/it] 63%|██████▎   | 315/500 [09:51<04:47,  1.56s/it] 63%|██████▎   | 316/500 [09:53<04:43,  1.54s/it] 63%|██████▎   | 317/500 [09:54<04:39,  1.53s/it] 64%|██████▎   | 318/500 [09:56<04:36,  1.52s/it] 64%|██████▍   | 319/500 [09:57<04:33,  1.51s/it] 64%|██████▍   | 320/500 [09:59<04:32,  1.51s/it]                                                  64%|██████▍   | 320/500 [09:59<04:32,  1.51s/it] 64%|██████▍   | 321/500 [10:00<04:29,  1.51s/it] 64%|██████▍   | 322/500 [10:02<04:26,  1.50s/it] 65%|██████▍   | 323/500 [10:03<04:24,  1.50s/it] 65%|██████▍   | 324/500 [10:05<04:24,  1.50s/it]2026-04-14 20:53:27 [INFO] [lambda_0.010] step=325  PR(last)=7.40  S(last)=-0.1059
+ 65%|██████▌   | 325/500 [10:08<05:30,  1.89s/it]/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.pin_memory() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:46.)
+  return data.pin_memory(device)
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.is_pinned() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:31.)
+  return data.pin_memory(device)
+ 65%|██████▌   | 326/500 [10:09<05:11,  1.79s/it] 65%|██████▌   | 327/500 [10:11<04:57,  1.72s/it] 66%|██████▌   | 328/500 [10:12<04:47,  1.67s/it] 66%|██████▌   | 329/500 [10:14<04:37,  1.62s/it] 66%|██████▌   | 330/500 [10:15<04:32,  1.60s/it]                                                  66%|██████▌   | 330/500 [10:15<04:32,  1.60s/it] 66%|██████▌   | 331/500 [10:17<04:27,  1.58s/it] 66%|██████▋   | 332/500 [10:19<04:22,  1.56s/it] 67%|██████▋   | 333/500 [10:20<04:20,  1.56s/it] 67%|██████▋   | 334/500 [10:22<04:20,  1.57s/it] 67%|██████▋   | 335/500 [10:23<04:20,  1.58s/it] 67%|██████▋   | 336/500 [10:25<04:16,  1.56s/it] 67%|██████▋   | 337/500 [10:26<04:11,  1.55s/it] 68%|██████▊   | 338/500 [10:28<04:08,  1.53s/it] 68%|██████▊   | 339/500 [10:29<04:05,  1.53s/it] 68%|██████▊   | 340/500 [10:31<04:03,  1.52s/it]                                                  68%|██████▊   | 340/500 [10:31<04:03,  1.52s/it] 68%|██████▊   | 341/500 [10:32<04:01,  1.52s/it] 68%|██████▊   | 342/500 [10:34<03:59,  1.52s/it] 69%|██████▊   | 343/500 [10:35<03:57,  1.52s/it] 69%|██████▉   | 344/500 [10:37<03:54,  1.51s/it] 69%|██████▉   | 345/500 [10:38<03:56,  1.52s/it] 69%|██████▉   | 346/500 [10:40<03:53,  1.52s/it] 69%|██████▉   | 347/500 [10:41<03:53,  1.52s/it] 70%|██████▉   | 348/500 [10:43<03:51,  1.53s/it] 70%|██████▉   | 349/500 [10:45<03:50,  1.53s/it]2026-04-14 20:54:07 [INFO] [lambda_0.010] step=350  PR(last)=7.89  S(last)=-0.1274
+ 70%|███████   | 350/500 [10:47<04:44,  1.90s/it]                                                  70%|███████   | 350/500 [10:47<04:44,  1.90s/it]/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.pin_memory() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:46.)
+  return data.pin_memory(device)
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.is_pinned() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:31.)
+  return data.pin_memory(device)
+ 70%|███████   | 351/500 [10:49<04:25,  1.78s/it] 70%|███████   | 352/500 [10:50<04:11,  1.70s/it] 71%|███████   | 353/500 [10:52<04:01,  1.65s/it] 71%|███████   | 354/500 [10:53<03:54,  1.60s/it] 71%|███████   | 355/500 [10:55<03:47,  1.57s/it] 71%|███████   | 356/500 [10:56<03:43,  1.55s/it] 71%|███████▏  | 357/500 [10:58<03:40,  1.54s/it] 72%|███████▏  | 358/500 [10:59<03:36,  1.53s/it] 72%|███████▏  | 359/500 [11:01<03:36,  1.54s/it] 72%|███████▏  | 360/500 [11:02<03:34,  1.53s/it]                                                  72%|███████▏  | 360/500 [11:02<03:34,  1.53s/it] 72%|███████▏  | 361/500 [11:04<03:30,  1.52s/it] 72%|███████▏  | 362/500 [11:05<03:28,  1.51s/it] 73%|███████▎  | 363/500 [11:07<03:26,  1.50s/it] 73%|███████▎  | 364/500 [11:08<03:24,  1.50s/it] 73%|███████▎  | 365/500 [11:10<03:22,  1.50s/it] 73%|███████▎  | 366/500 [11:11<03:21,  1.50s/it] 73%|███████▎  | 367/500 [11:13<03:20,  1.51s/it] 74%|███████▎  | 368/500 [11:14<03:17,  1.50s/it] 74%|███████▍  | 369/500 [11:16<03:16,  1.50s/it] 74%|███████▍  | 370/500 [11:17<03:16,  1.51s/it]                                                  74%|███████▍  | 370/500 [11:17<03:16,  1.51s/it] 74%|███████▍  | 371/500 [11:19<03:16,  1.52s/it] 74%|███████▍  | 372/500 [11:21<03:15,  1.53s/it] 75%|███████▍  | 373/500 [11:22<03:13,  1.52s/it] 75%|███████▍  | 374/500 [11:24<03:12,  1.53s/it]2026-04-14 20:54:46 [INFO] [lambda_0.010] step=375  PR(last)=5.43  S(last)=-0.1368
+ 75%|███████▌  | 375/500 [11:26<03:59,  1.92s/it]/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.pin_memory() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:46.)
+  return data.pin_memory(device)
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.is_pinned() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:31.)
+  return data.pin_memory(device)
+ 75%|███████▌  | 376/500 [11:28<03:44,  1.81s/it] 75%|███████▌  | 377/500 [11:29<03:32,  1.73s/it] 76%|███████▌  | 378/500 [11:31<03:25,  1.68s/it] 76%|███████▌  | 379/500 [11:33<03:18,  1.64s/it] 76%|███████▌  | 380/500 [11:34<03:12,  1.60s/it]                                                  76%|███████▌  | 380/500 [11:34<03:12,  1.60s/it] 76%|███████▌  | 381/500 [11:36<03:09,  1.59s/it] 76%|███████▋  | 382/500 [11:37<03:05,  1.57s/it] 77%|███████▋  | 383/500 [11:39<03:02,  1.56s/it] 77%|███████▋  | 384/500 [11:40<03:00,  1.55s/it] 77%|███████▋  | 385/500 [11:42<02:58,  1.55s/it] 77%|███████▋  | 386/500 [11:43<02:55,  1.54s/it] 77%|███████▋  | 387/500 [11:45<02:53,  1.54s/it] 78%|███████▊  | 388/500 [11:46<02:52,  1.54s/it] 78%|███████▊  | 389/500 [11:48<02:50,  1.53s/it] 78%|███████▊  | 390/500 [11:49<02:48,  1.54s/it]                                                  78%|███████▊  | 390/500 [11:49<02:48,  1.54s/it] 78%|███████▊  | 391/500 [11:51<02:47,  1.53s/it] 78%|███████▊  | 392/500 [11:53<02:45,  1.53s/it] 79%|███████▊  | 393/500 [11:54<02:44,  1.53s/it] 79%|███████▉  | 394/500 [11:56<02:41,  1.52s/it] 79%|███████▉  | 395/500 [11:57<02:38,  1.51s/it] 79%|███████▉  | 396/500 [11:59<02:35,  1.50s/it] 79%|███████▉  | 397/500 [12:00<02:34,  1.50s/it] 80%|███████▉  | 398/500 [12:02<02:32,  1.50s/it] 80%|███████▉  | 399/500 [12:03<02:31,  1.50s/it]2026-04-14 20:55:25 [INFO] [lambda_0.010] step=400  PR(last)=11.44  S(last)=-0.1109
+ 80%|████████  | 400/500 [12:06<03:07,  1.87s/it]                                                  80%|████████  | 400/500 [12:06<03:07,  1.87s/it]/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.pin_memory() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:46.)
+  return data.pin_memory(device)
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.is_pinned() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:31.)
+  return data.pin_memory(device)
+{'eval_loss': '0.7262', 'eval_runtime': '33.02', 'eval_samples_per_second': '15.14', 'eval_steps_per_second': '1.908', 'eval_entropy': '0.4165', 'eval_num_tokens': '1.43e+06', 'eval_logits/chosen': '-4.169', 'eval_logits/rejected': '-3.78', 'eval_mean_token_accuracy': '0.6564', 'eval_rewards/chosen': '0.09875', 'eval_rewards/rejected': '0.07578', 'eval_rewards/accuracies': '0.4861', 'eval_rewards/margins': '0.02297', 'eval_logps/chosen': '-387.7', 'eval_logps/rejected': '-345', 'epoch': '0.48'}
+{'loss': '0.6967', 'grad_norm': '1.362', 'learning_rate': '1.91e-07', 'entropy': 'nan', 'num_tokens': '1.48e+06', 'logits/chosen': '-3.843', 'logits/rejected': '-3.083', 'mean_token_accuracy': '0.6113', 'rewards/chosen': '0.05147', 'rewards/rejected': '0.04885', 'rewards/accuracies': '0.4625', 'rewards/margins': '0.00262', 'logps/chosen': '-423.2', 'logps/rejected': '-396', 'epoch': '0.496'}
+{'loss': '0.6963', 'grad_norm': '1.782', 'learning_rate': '1.81e-07', 'entropy': 'nan', 'num_tokens': '1.528e+06', 'logits/chosen': '-3.332', 'logits/rejected': '-3.023', 'mean_token_accuracy': '0.5588', 'rewards/chosen': '0.0425', 'rewards/rejected': '0.04041', 'rewards/accuracies': '0.4', 'rewards/margins': '0.002092', 'logps/chosen': '-377.4', 'logps/rejected': '-324.1', 'epoch': '0.512'}
+{'loss': '0.6857', 'grad_norm': '1.494', 'learning_rate': '1.71e-07', 'entropy': 'nan', 'num_tokens': '1.578e+06', 'logits/chosen': '-3.702', 'logits/rejected': '-2.982', 'mean_token_accuracy': '0.6239', 'rewards/chosen': '0.06686', 'rewards/rejected': '0.04', 'rewards/accuracies': '0.45', 'rewards/margins': '0.02686', 'logps/chosen': '-387.1', 'logps/rejected': '-364', 'epoch': '0.528'}
+{'loss': '0.7069', 'grad_norm': '2.698', 'learning_rate': '1.61e-07', 'entropy': 'nan', 'num_tokens': '1.623e+06', 'logits/chosen': '-3.905', 'logits/rejected': '-3.268', 'mean_token_accuracy': '0.6333', 'rewards/chosen': '0.01395', 'rewards/rejected': '0.03351', 'rewards/accuracies': '0.3625', 'rewards/margins': '-0.01956', 'logps/chosen': '-409.2', 'logps/rejected': '-361.8', 'epoch': '0.544'}
+{'loss': '0.6865', 'grad_norm': '1.212', 'learning_rate': '1.51e-07', 'entropy': 'nan', 'num_tokens': '1.671e+06', 'logits/chosen': '-3.3', 'logits/rejected': '-2.983', 'mean_token_accuracy': '0.5637', 'rewards/chosen': '0.03772', 'rewards/rejected': '0.01501', 'rewards/accuracies': '0.45', 'rewards/margins': '0.02271', 'logps/chosen': '-331.6', 'logps/rejected': '-329.1', 'epoch': '0.56'}
+{'loss': '0.7135', 'grad_norm': '1.878', 'learning_rate': '1.41e-07', 'entropy': 'nan', 'num_tokens': '1.72e+06', 'logits/chosen': '-3.397', 'logits/rejected': '-3.199', 'mean_token_accuracy': '0.5684', 'rewards/chosen': '0.02868', 'rewards/rejected': '0.06022', 'rewards/accuracies': '0.4125', 'rewards/margins': '-0.03154', 'logps/chosen': '-397.7', 'logps/rejected': '-380.7', 'epoch': '0.576'}
+{'loss': '0.6915', 'grad_norm': '1.163', 'learning_rate': '1.31e-07', 'entropy': 'nan', 'num_tokens': '1.768e+06', 'logits/chosen': '-2.972', 'logits/rejected': '-2.627', 'mean_token_accuracy': '0.5557', 'rewards/chosen': '0.0377', 'rewards/rejected': '0.02725', 'rewards/accuracies': '0.4375', 'rewards/margins': '0.01045', 'logps/chosen': '-373', 'logps/rejected': '-358.8', 'epoch': '0.592'}
+{'loss': '0.7067', 'grad_norm': '1.353', 'learning_rate': '1.21e-07', 'entropy': 'nan', 'num_tokens': '1.813e+06', 'logits/chosen': '-3.696', 'logits/rejected': '-3.217', 'mean_token_accuracy': '0.5958', 'rewards/chosen': '0.03923', 'rewards/rejected': '0.05636', 'rewards/accuracies': '0.475', 'rewards/margins': '-0.01714', 'logps/chosen': '-432', 'logps/rejected': '-368.5', 'epoch': '0.608'}
+{'loss': '0.7085', 'grad_norm': '1.44', 'learning_rate': '1.11e-07', 'entropy': 'nan', 'num_tokens': '1.861e+06', 'logits/chosen': '-3.632', 'logits/rejected': '-3.033', 'mean_token_accuracy': '0.5839', 'rewards/chosen': '0.07736', 'rewards/rejected': '0.09488', 'rewards/accuracies': '0.3875', 'rewards/margins': '-0.01751', 'logps/chosen': '-394.4', 'logps/rejected': '-365.2', 'epoch': '0.624'}
+{'loss': '0.714', 'grad_norm': '1.624', 'learning_rate': '1.01e-07', 'entropy': 'nan', 'num_tokens': '1.912e+06', 'logits/chosen': '-3.173', 'logits/rejected': '-2.646', 'mean_token_accuracy': '0.5024', 'rewards/chosen': '0.03467', 'rewards/rejected': '0.06937', 'rewards/accuracies': '0.325', 'rewards/margins': '-0.03471', 'logps/chosen': '-364.5', 'logps/rejected': '-321.1', 'epoch': '0.64'}
+
+  0%|          | 0/63 [00:00<?, ?it/s][A
+  3%|▎         | 2/63 [00:00<00:16,  3.81it/s][A
+  5%|▍         | 3/63 [00:01<00:22,  2.69it/s][A
+  6%|▋         | 4/63 [00:01<00:25,  2.33it/s][A
+  8%|▊         | 5/63 [00:02<00:26,  2.17it/s][A
+ 10%|▉         | 6/63 [00:02<00:27,  2.08it/s][A
+ 11%|█         | 7/63 [00:03<00:27,  2.02it/s][A
+ 13%|█▎        | 8/63 [00:03<00:27,  1.98it/s][A
+ 14%|█▍        | 9/63 [00:04<00:27,  1.95it/s][A
+ 16%|█▌        | 10/63 [00:04<00:27,  1.94it/s][A
+ 17%|█▋        | 11/63 [00:05<00:26,  1.93it/s][A
+ 19%|█▉        | 12/63 [00:05<00:26,  1.92it/s][A
+ 21%|██        | 13/63 [00:06<00:26,  1.92it/s][A
+ 22%|██▏       | 14/63 [00:06<00:25,  1.91it/s][A
+ 24%|██▍       | 15/63 [00:07<00:25,  1.91it/s][A
+ 25%|██▌       | 16/63 [00:07<00:24,  1.90it/s][A
+ 27%|██▋       | 17/63 [00:08<00:24,  1.90it/s][A
+ 29%|██▊       | 18/63 [00:08<00:23,  1.90it/s][A
+ 30%|███       | 19/63 [00:09<00:23,  1.90it/s][A
+ 32%|███▏      | 20/63 [00:09<00:22,  1.90it/s][A
+ 33%|███▎      | 21/63 [00:10<00:22,  1.90it/s][A
+ 35%|███▍      | 22/63 [00:11<00:21,  1.89it/s][A
+ 37%|███▋      | 23/63 [00:11<00:21,  1.89it/s][A
+ 38%|███▊      | 24/63 [00:12<00:20,  1.89it/s][A
+ 40%|███▉      | 25/63 [00:12<00:20,  1.90it/s][A
+ 41%|████▏     | 26/63 [00:13<00:19,  1.90it/s][A
+ 43%|████▎     | 27/63 [00:13<00:18,  1.90it/s][A
+ 44%|████▍     | 28/63 [00:14<00:18,  1.90it/s][A
+ 46%|████▌     | 29/63 [00:14<00:17,  1.89it/s][A
+ 48%|████▊     | 30/63 [00:15<00:17,  1.90it/s][A
+ 49%|████▉     | 31/63 [00:15<00:16,  1.89it/s][A
+ 51%|█████     | 32/63 [00:16<00:16,  1.89it/s][A
+ 52%|█████▏    | 33/63 [00:16<00:15,  1.89it/s][A
+ 54%|█████▍    | 34/63 [00:17<00:15,  1.89it/s][A
+ 56%|█████▌    | 35/63 [00:17<00:14,  1.89it/s][A
+ 57%|█████▋    | 36/63 [00:18<00:14,  1.89it/s][A
+ 59%|█████▊    | 37/63 [00:18<00:13,  1.89it/s][A
+ 60%|██████    | 38/63 [00:19<00:13,  1.89it/s][A
+ 62%|██████▏   | 39/63 [00:20<00:12,  1.89it/s][A
+ 63%|██████▎   | 40/63 [00:20<00:12,  1.89it/s][A
+ 65%|██████▌   | 41/63 [00:21<00:11,  1.89it/s][A
+ 67%|██████▋   | 42/63 [00:21<00:11,  1.89it/s][A
+ 68%|██████▊   | 43/63 [00:22<00:10,  1.89it/s][A
+ 70%|██████▉   | 44/63 [00:22<00:10,  1.89it/s][A
+ 71%|███████▏  | 45/63 [00:23<00:09,  1.89it/s][A
+ 73%|███████▎  | 46/63 [00:23<00:08,  1.89it/s][A
+ 75%|███████▍  | 47/63 [00:24<00:08,  1.89it/s][A
+ 76%|███████▌  | 48/63 [00:24<00:07,  1.89it/s][A
+ 78%|███████▊  | 49/63 [00:25<00:07,  1.89it/s][A
+ 79%|███████▉  | 50/63 [00:25<00:06,  1.89it/s][A
+ 81%|████████  | 51/63 [00:26<00:06,  1.89it/s][A
+ 83%|████████▎ | 52/63 [00:26<00:05,  1.89it/s][A
+ 84%|████████▍ | 53/63 [00:27<00:05,  1.89it/s][A
+ 86%|████████▌ | 54/63 [00:27<00:04,  1.89it/s][A
+ 87%|████████▋ | 55/63 [00:28<00:04,  1.89it/s][A
+ 89%|████████▉ | 56/63 [00:29<00:03,  1.89it/s][A
+ 90%|█████████ | 57/63 [00:29<00:03,  1.89it/s][A
+ 92%|█████████▏| 58/63 [00:30<00:02,  1.89it/s][A
+ 94%|█████████▎| 59/63 [00:30<00:02,  1.89it/s][A
+ 95%|█████████▌| 60/63 [00:31<00:01,  1.89it/s][A
+ 97%|█████████▋| 61/63 [00:31<00:01,  1.89it/s][A
+ 98%|█████████▊| 62/63 [00:32<00:00,  1.89it/s][A
+100%|██████████| 63/63 [00:32<00:00,  2.24it/s][A                                                 
+                                               [A 80%|████████  | 400/500 [12:39<03:07,  1.87s/it]
+100%|██████████| 63/63 [00:32<00:00,  2.24it/s][A
+                                               [A 80%|████████  | 401/500 [12:40<19:15, 11.67s/it] 80%|████████  | 402/500 [12:42<14:06,  8.64s/it] 81%|████████  | 403/500 [12:43<10:31,  6.51s/it] 81%|████████  | 404/500 [12:45<08:01,  5.01s/it] 81%|████████  | 405/500 [12:46<06:17,  3.98s/it] 81%|████████  | 406/500 [12:48<05:04,  3.24s/it] 81%|████████▏ | 407/500 [12:50<04:14,  2.73s/it] 82%|████████▏ | 408/500 [12:51<03:38,  2.37s/it] 82%|████████▏ | 409/500 [12:53<03:12,  2.12s/it] 82%|████████▏ | 410/500 [12:54<02:54,  1.94s/it]                                                  82%|████████▏ | 410/500 [12:54<02:54,  1.94s/it] 82%|████████▏ | 411/500 [12:56<02:42,  1.82s/it] 82%|████████▏ | 412/500 [12:57<02:32,  1.73s/it] 83%|████████▎ | 413/500 [12:59<02:25,  1.67s/it] 83%|████████▎ | 414/500 [13:00<02:19,  1.63s/it] 83%|████████▎ | 415/500 [13:02<02:16,  1.61s/it] 83%|████████▎ | 416/500 [13:03<02:13,  1.59s/it] 83%|████████▎ | 417/500 [13:05<02:11,  1.58s/it] 84%|████████▎ | 418/500 [13:06<02:09,  1.58s/it] 84%|████████▍ | 419/500 [13:08<02:06,  1.56s/it] 84%|████████▍ | 420/500 [13:10<02:04,  1.56s/it]                                                  84%|████████▍ | 420/500 [13:10<02:04,  1.56s/it] 84%|████████▍ | 421/500 [13:11<02:01,  1.54s/it] 84%|████████▍ | 422/500 [13:13<02:00,  1.54s/it] 85%|████████▍ | 423/500 [13:14<01:59,  1.56s/it] 85%|████████▍ | 424/500 [13:16<01:57,  1.55s/it]2026-04-14 20:56:38 [INFO] [lambda_0.010] step=425  PR(last)=12.17  S(last)=-0.1110
+ 85%|████████▌ | 425/500 [13:18<02:23,  1.91s/it]/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.pin_memory() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:46.)
+  return data.pin_memory(device)
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.is_pinned() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:31.)
+  return data.pin_memory(device)
+ 85%|████████▌ | 426/500 [13:20<02:13,  1.80s/it] 85%|████████▌ | 427/500 [13:22<02:05,  1.72s/it] 86%|████████▌ | 428/500 [13:23<02:00,  1.67s/it] 86%|████████▌ | 429/500 [13:25<01:55,  1.62s/it] 86%|████████▌ | 430/500 [13:26<01:52,  1.60s/it]                                                  86%|████████▌ | 430/500 [13:26<01:52,  1.60s/it] 86%|████████▌ | 431/500 [13:28<01:49,  1.59s/it] 86%|████████▋ | 432/500 [13:29<01:46,  1.57s/it] 87%|████████▋ | 433/500 [13:31<01:43,  1.55s/it] 87%|████████▋ | 434/500 [13:32<01:41,  1.53s/it] 87%|████████▋ | 435/500 [13:34<01:38,  1.52s/it] 87%|████████▋ | 436/500 [13:35<01:37,  1.52s/it] 87%|████████▋ | 437/500 [13:37<01:36,  1.53s/it] 88%|████████▊ | 438/500 [13:38<01:34,  1.53s/it] 88%|████████▊ | 439/500 [13:40<01:33,  1.54s/it] 88%|████████▊ | 440/500 [13:41<01:32,  1.54s/it]                                                  88%|████████▊ | 440/500 [13:41<01:32,  1.54s/it] 88%|████████▊ | 441/500 [13:43<01:30,  1.54s/it] 88%|████████▊ | 442/500 [13:44<01:28,  1.53s/it] 89%|████████▊ | 443/500 [13:46<01:27,  1.53s/it] 89%|████████▉ | 444/500 [13:48<01:25,  1.53s/it] 89%|████████▉ | 445/500 [13:49<01:24,  1.53s/it] 89%|████████▉ | 446/500 [13:51<01:23,  1.54s/it] 89%|████████▉ | 447/500 [13:52<01:21,  1.54s/it] 90%|████████▉ | 448/500 [13:54<01:19,  1.53s/it] 90%|████████▉ | 449/500 [13:55<01:18,  1.54s/it]2026-04-14 20:57:18 [INFO] [lambda_0.010] step=450  PR(last)=5.06  S(last)=-0.1065
+ 90%|█████████ | 450/500 [13:58<01:35,  1.91s/it]                                                  90%|█████████ | 450/500 [13:58<01:35,  1.91s/it]/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.pin_memory() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:46.)
+  return data.pin_memory(device)
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.is_pinned() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:31.)
+  return data.pin_memory(device)
+ 90%|█████████ | 451/500 [14:00<01:28,  1.80s/it] 90%|█████████ | 452/500 [14:01<01:22,  1.72s/it] 91%|█████████ | 453/500 [14:03<01:18,  1.66s/it] 91%|█████████ | 454/500 [14:04<01:14,  1.62s/it] 91%|█████████ | 455/500 [14:06<01:11,  1.59s/it] 91%|█████████ | 456/500 [14:07<01:09,  1.57s/it] 91%|█████████▏| 457/500 [14:09<01:07,  1.57s/it] 92%|█████████▏| 458/500 [14:10<01:05,  1.56s/it] 92%|█████████▏| 459/500 [14:12<01:04,  1.57s/it] 92%|█████████▏| 460/500 [14:13<01:02,  1.56s/it]                                                  92%|█████████▏| 460/500 [14:13<01:02,  1.56s/it] 92%|█████████▏| 461/500 [14:15<01:00,  1.55s/it] 92%|█████████▏| 462/500 [14:16<00:58,  1.54s/it] 93%|█████████▎| 463/500 [14:18<00:57,  1.55s/it] 93%|█████████▎| 464/500 [14:20<00:55,  1.54s/it] 93%|█████████▎| 465/500 [14:21<00:53,  1.54s/it] 93%|█████████▎| 466/500 [14:23<00:52,  1.54s/it] 93%|█████████▎| 467/500 [14:24<00:50,  1.54s/it] 94%|█████████▎| 468/500 [14:26<00:49,  1.54s/it] 94%|█████████▍| 469/500 [14:27<00:47,  1.54s/it] 94%|█████████▍| 470/500 [14:29<00:46,  1.54s/it]                                                  94%|█████████▍| 470/500 [14:29<00:46,  1.54s/it] 94%|█████████▍| 471/500 [14:30<00:44,  1.54s/it] 94%|█████████▍| 472/500 [14:32<00:43,  1.54s/it] 95%|█████████▍| 473/500 [14:33<00:41,  1.55s/it] 95%|█████████▍| 474/500 [14:35<00:40,  1.55s/it]2026-04-14 20:57:57 [INFO] [lambda_0.010] step=475  PR(last)=6.02  S(last)=-0.1109
+ 95%|█████████▌| 475/500 [14:38<00:47,  1.92s/it]/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.pin_memory() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:46.)
+  return data.pin_memory(device)
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.is_pinned() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:31.)
+  return data.pin_memory(device)
+ 95%|█████████▌| 476/500 [14:39<00:43,  1.81s/it] 95%|█████████▌| 477/500 [14:41<00:39,  1.72s/it] 96%|█████████▌| 478/500 [14:42<00:36,  1.66s/it] 96%|█████████▌| 479/500 [14:44<00:33,  1.61s/it] 96%|█████████▌| 480/500 [14:45<00:31,  1.59s/it]                                                  96%|█████████▌| 480/500 [14:45<00:31,  1.59s/it] 96%|█████████▌| 481/500 [14:47<00:29,  1.56s/it] 96%|█████████▋| 482/500 [14:48<00:27,  1.55s/it] 97%|█████████▋| 483/500 [14:50<00:26,  1.53s/it] 97%|█████████▋| 484/500 [14:51<00:24,  1.53s/it] 97%|█████████▋| 485/500 [14:53<00:22,  1.52s/it] 97%|█████████▋| 486/500 [14:54<00:21,  1.52s/it] 97%|█████████▋| 487/500 [14:56<00:19,  1.52s/it] 98%|█████████▊| 488/500 [14:57<00:18,  1.52s/it] 98%|█████████▊| 489/500 [14:59<00:16,  1.51s/it] 98%|█████████▊| 490/500 [15:00<00:15,  1.51s/it]                                                  98%|█████████▊| 490/500 [15:00<00:15,  1.51s/it] 98%|█████████▊| 491/500 [15:02<00:13,  1.50s/it] 98%|█████████▊| 492/500 [15:03<00:11,  1.50s/it] 99%|█████████▊| 493/500 [15:05<00:10,  1.49s/it] 99%|█████████▉| 494/500 [15:06<00:08,  1.49s/it] 99%|█████████▉| 495/500 [15:08<00:07,  1.49s/it] 99%|█████████▉| 496/500 [15:09<00:06,  1.50s/it] 99%|█████████▉| 497/500 [15:11<00:04,  1.52s/it]100%|█████████▉| 498/500 [15:13<00:03,  1.53s/it]100%|█████████▉| 499/500 [15:14<00:01,  1.53s/it]2026-04-14 20:58:37 [INFO] [lambda_0.010] step=500  PR(last)=6.15  S(last)=-0.1163
+100%|██████████| 500/500 [15:17<00:00,  1.91s/it]                                                 100%|██████████| 500/500 [15:17<00:00,  1.91s/it]/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.pin_memory() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:46.)
+  return data.pin_memory(device)
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.is_pinned() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:31.)
+  return data.pin_memory(device)
+{'eval_loss': '0.7226', 'eval_runtime': '32.99', 'eval_samples_per_second': '15.16', 'eval_steps_per_second': '1.91', 'eval_entropy': '0.4165', 'eval_num_tokens': '1.912e+06', 'eval_logits/chosen': '-4.164', 'eval_logits/rejected': '-3.777', 'eval_mean_token_accuracy': '0.6563', 'eval_rewards/chosen': '0.09608', 'eval_rewards/rejected': '0.06867', 'eval_rewards/accuracies': '0.5', 'eval_rewards/margins': '0.02741', 'eval_logps/chosen': '-387.8', 'eval_logps/rejected': '-345', 'epoch': '0.64'}
+{'loss': '0.7014', 'grad_norm': '1.465', 'learning_rate': '9.1e-08', 'entropy': 'nan', 'num_tokens': '1.957e+06', 'logits/chosen': '-3.259', 'logits/rejected': '-3.137', 'mean_token_accuracy': '0.5767', 'rewards/chosen': '0.05005', 'rewards/rejected': '0.05973', 'rewards/accuracies': '0.4125', 'rewards/margins': '-0.009674', 'logps/chosen': '-329.4', 'logps/rejected': '-320.1', 'epoch': '0.656'}
+{'loss': '0.6697', 'grad_norm': '1.598', 'learning_rate': '8.1e-08', 'entropy': 'nan', 'num_tokens': '2.006e+06', 'logits/chosen': '-3.43', 'logits/rejected': '-2.954', 'mean_token_accuracy': '0.5623', 'rewards/chosen': '0.105', 'rewards/rejected': '0.04788', 'rewards/accuracies': '0.5625', 'rewards/margins': '0.05711', 'logps/chosen': '-383', 'logps/rejected': '-330.2', 'epoch': '0.672'}
+{'loss': '0.6701', 'grad_norm': '2.089', 'learning_rate': '7.1e-08', 'entropy': 'nan', 'num_tokens': '2.053e+06', 'logits/chosen': '-3.567', 'logits/rejected': '-3.009', 'mean_token_accuracy': '0.5664', 'rewards/chosen': '0.03387', 'rewards/rejected': '-0.02173', 'rewards/accuracies': '0.5625', 'rewards/margins': '0.0556', 'logps/chosen': '-396.3', 'logps/rejected': '-342.2', 'epoch': '0.688'}
+{'loss': '0.6901', 'grad_norm': '1.609', 'learning_rate': '6.1e-08', 'entropy': 'nan', 'num_tokens': '2.098e+06', 'logits/chosen': '-3.739', 'logits/rejected': '-3.138', 'mean_token_accuracy': '0.5792', 'rewards/chosen': '0.03418', 'rewards/rejected': '0.0202', 'rewards/accuracies': '0.475', 'rewards/margins': '0.01397', 'logps/chosen': '-379.2', 'logps/rejected': '-340.8', 'epoch': '0.704'}
+{'loss': '0.7096', 'grad_norm': '1.05', 'learning_rate': '5.1e-08', 'entropy': 'nan', 'num_tokens': '2.144e+06', 'logits/chosen': '-3.695', 'logits/rejected': '-3.108', 'mean_token_accuracy': '0.5952', 'rewards/chosen': '0.01232', 'rewards/rejected': '0.03917', 'rewards/accuracies': '0.3625', 'rewards/margins': '-0.02685', 'logps/chosen': '-350.4', 'logps/rejected': '-307.4', 'epoch': '0.72'}
+{'loss': '0.674', 'grad_norm': '1.533', 'learning_rate': '4.1e-08', 'entropy': 'nan', 'num_tokens': '2.19e+06', 'logits/chosen': '-3.637', 'logits/rejected': '-3.248', 'mean_token_accuracy': '0.5649', 'rewards/chosen': '0.08218', 'rewards/rejected': '0.02939', 'rewards/accuracies': '0.55', 'rewards/margins': '0.05278', 'logps/chosen': '-403', 'logps/rejected': '-364.3', 'epoch': '0.736'}
+{'loss': '0.6967', 'grad_norm': '2.068', 'learning_rate': '3.1e-08', 'entropy': 'nan', 'num_tokens': '2.239e+06', 'logits/chosen': '-3.68', 'logits/rejected': '-3.406', 'mean_token_accuracy': '0.5797', 'rewards/chosen': '0.04054', 'rewards/rejected': '0.03758', 'rewards/accuracies': '0.4625', 'rewards/margins': '0.002954', 'logps/chosen': '-416.4', 'logps/rejected': '-360.7', 'epoch': '0.752'}
+{'loss': '0.6931', 'grad_norm': '1.395', 'learning_rate': '2.1e-08', 'entropy': 'nan', 'num_tokens': '2.286e+06', 'logits/chosen': '-3.666', 'logits/rejected': '-3.155', 'mean_token_accuracy': '0.6155', 'rewards/chosen': '0.04392', 'rewards/rejected': '0.03336', 'rewards/accuracies': '0.5', 'rewards/margins': '0.01056', 'logps/chosen': '-331.6', 'logps/rejected': '-367.1', 'epoch': '0.768'}
+{'loss': '0.699', 'grad_norm': '1.556', 'learning_rate': '1.1e-08', 'entropy': 'nan', 'num_tokens': '2.336e+06', 'logits/chosen': '-3.785', 'logits/rejected': '-3.421', 'mean_token_accuracy': '0.5949', 'rewards/chosen': '0.04385', 'rewards/rejected': '0.04603', 'rewards/accuracies': '0.45', 'rewards/margins': '-0.00218', 'logps/chosen': '-459.5', 'logps/rejected': '-420.3', 'epoch': '0.784'}
+{'loss': '0.7028', 'grad_norm': '1.874', 'learning_rate': '1e-09', 'entropy': 'nan', 'num_tokens': '2.383e+06', 'logits/chosen': '-3.249', 'logits/rejected': '-2.871', 'mean_token_accuracy': '0.5677', 'rewards/chosen': '0.01789', 'rewards/rejected': '0.03014', 'rewards/accuracies': '0.4', 'rewards/margins': '-0.01226', 'logps/chosen': '-331.2', 'logps/rejected': '-338.6', 'epoch': '0.8'}
+
+  0%|          | 0/63 [00:00<?, ?it/s][A
+  3%|▎         | 2/63 [00:00<00:16,  3.81it/s][A
+  5%|▍         | 3/63 [00:01<00:22,  2.70it/s][A
+  6%|▋         | 4/63 [00:01<00:25,  2.34it/s][A
+  8%|▊         | 5/63 [00:02<00:26,  2.17it/s][A
+ 10%|▉         | 6/63 [00:02<00:27,  2.08it/s][A
+ 11%|█         | 7/63 [00:03<00:27,  2.02it/s][A
+ 13%|█▎        | 8/63 [00:03<00:27,  1.98it/s][A
+ 14%|█▍        | 9/63 [00:04<00:27,  1.95it/s][A
+ 16%|█▌        | 10/63 [00:04<00:27,  1.94it/s][A
+ 17%|█▋        | 11/63 [00:05<00:26,  1.93it/s][A
+ 19%|█▉        | 12/63 [00:05<00:26,  1.92it/s][A
+ 21%|██        | 13/63 [00:06<00:26,  1.91it/s][A
+ 22%|██▏       | 14/63 [00:06<00:25,  1.91it/s][A
+ 24%|██▍       | 15/63 [00:07<00:25,  1.91it/s][A
+ 25%|██▌       | 16/63 [00:07<00:24,  1.90it/s][A
+ 27%|██▋       | 17/63 [00:08<00:24,  1.90it/s][A
+ 29%|██▊       | 18/63 [00:08<00:23,  1.90it/s][A
+ 30%|███       | 19/63 [00:09<00:23,  1.90it/s][A
+ 32%|███▏      | 20/63 [00:09<00:22,  1.90it/s][A
+ 33%|███▎      | 21/63 [00:10<00:22,  1.90it/s][A
+ 35%|███▍      | 22/63 [00:11<00:21,  1.90it/s][A
+ 37%|███▋      | 23/63 [00:11<00:21,  1.89it/s][A
+ 38%|███▊      | 24/63 [00:12<00:20,  1.90it/s][A
+ 40%|███▉      | 25/63 [00:12<00:20,  1.90it/s][A
+ 41%|████▏     | 26/63 [00:13<00:19,  1.90it/s][A
+ 43%|████▎     | 27/63 [00:13<00:18,  1.90it/s][A
+ 44%|████▍     | 28/63 [00:14<00:18,  1.90it/s][A
+ 46%|████▌     | 29/63 [00:14<00:17,  1.90it/s][A
+ 48%|████▊     | 30/63 [00:15<00:17,  1.90it/s][A
+ 49%|████▉     | 31/63 [00:15<00:16,  1.90it/s][A
+ 51%|█████     | 32/63 [00:16<00:16,  1.90it/s][A
+ 52%|█████▏    | 33/63 [00:16<00:15,  1.89it/s][A
+ 54%|█████▍    | 34/63 [00:17<00:15,  1.89it/s][A
+ 56%|█████▌    | 35/63 [00:17<00:14,  1.89it/s][A
+ 57%|█████▋    | 36/63 [00:18<00:14,  1.89it/s][A
+ 59%|█████▊    | 37/63 [00:18<00:13,  1.89it/s][A
+ 60%|██████    | 38/63 [00:19<00:13,  1.89it/s][A
+ 62%|██████▏   | 39/63 [00:20<00:12,  1.89it/s][A
+ 63%|██████▎   | 40/63 [00:20<00:12,  1.89it/s][A
+ 65%|██████▌   | 41/63 [00:21<00:11,  1.89it/s][A
+ 67%|██████▋   | 42/63 [00:21<00:11,  1.89it/s][A
+ 68%|██████▊   | 43/63 [00:22<00:10,  1.89it/s][A
+ 70%|██████▉   | 44/63 [00:22<00:10,  1.89it/s][A
+ 71%|███████▏  | 45/63 [00:23<00:09,  1.89it/s][A
+ 73%|███████▎  | 46/63 [00:23<00:09,  1.89it/s][A
+ 75%|███████▍  | 47/63 [00:24<00:08,  1.89it/s][A
+ 76%|███████▌  | 48/63 [00:24<00:07,  1.89it/s][A
+ 78%|███████▊  | 49/63 [00:25<00:07,  1.89it/s][A
+ 79%|███████▉  | 50/63 [00:25<00:06,  1.89it/s][A
+ 81%|████████  | 51/63 [00:26<00:06,  1.89it/s][A
+ 83%|████████▎ | 52/63 [00:26<00:05,  1.89it/s][A
+ 84%|████████▍ | 53/63 [00:27<00:05,  1.88it/s][A
+ 86%|████████▌ | 54/63 [00:27<00:04,  1.89it/s][A
+ 87%|████████▋ | 55/63 [00:28<00:04,  1.89it/s][A
+ 89%|████████▉ | 56/63 [00:29<00:03,  1.89it/s][A
+ 90%|█████████ | 57/63 [00:29<00:03,  1.89it/s][A
+ 92%|█████████▏| 58/63 [00:30<00:02,  1.89it/s][A
+ 94%|█████████▎| 59/63 [00:30<00:02,  1.89it/s][A
+ 95%|█████████▌| 60/63 [00:31<00:01,  1.89it/s][A
+ 97%|█████████▋| 61/63 [00:31<00:01,  1.89it/s][A
+ 98%|█████████▊| 62/63 [00:32<00:00,  1.89it/s][A
+100%|██████████| 63/63 [00:32<00:00,  2.24it/s][A                                                 
+                                               [A100%|██████████| 500/500 [15:50<00:00,  1.91s/it]
+100%|██████████| 63/63 [00:32<00:00,  2.24it/s][A
+                                               [A                                                 100%|██████████| 500/500 [15:50<00:00,  1.91s/it]100%|██████████| 500/500 [15:50<00:00,  1.90s/it]
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.pin_memory() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:46.)
+  return data.pin_memory(device)
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.is_pinned() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:31.)
+  return data.pin_memory(device)
+{'eval_loss': '0.727', 'eval_runtime': '32.99', 'eval_samples_per_second': '15.15', 'eval_steps_per_second': '1.909', 'eval_entropy': '0.4162', 'eval_num_tokens': '2.383e+06', 'eval_logits/chosen': '-4.17', 'eval_logits/rejected': '-3.783', 'eval_mean_token_accuracy': '0.6563', 'eval_rewards/chosen': '0.07499', 'eval_rewards/rejected': '0.05511', 'eval_rewards/accuracies': '0.4722', 'eval_rewards/margins': '0.01989', 'eval_logps/chosen': '-388', 'eval_logps/rejected': '-345.2', 'epoch': '0.8'}
+{'train_runtime': '950.6', 'train_samples_per_second': '4.208', 'train_steps_per_second': '0.526', 'train_loss': '0.6974', 'epoch': '0.8'}
+  0%|          | 0/63 [00:00<?, ?it/s]  3%|▎         | 2/63 [00:00<00:16,  3.77it/s]  5%|▍         | 3/63 [00:01<00:22,  2.66it/s]  6%|▋         | 4/63 [00:01<00:25,  2.31it/s]  8%|▊         | 5/63 [00:02<00:27,  2.14it/s] 10%|▉         | 6/63 [00:02<00:27,  2.05it/s] 11%|█         | 7/63 [00:03<00:28,  1.99it/s] 13%|█▎        | 8/63 [00:03<00:28,  1.96it/s] 14%|█▍        | 9/63 [00:04<00:27,  1.93it/s] 16%|█▌        | 10/63 [00:04<00:27,  1.92it/s] 17%|█▋        | 11/63 [00:05<00:27,  1.91it/s] 19%|█▉        | 12/63 [00:05<00:26,  1.90it/s] 21%|██        | 13/63 [00:06<00:26,  1.90it/s] 22%|██▏       | 14/63 [00:06<00:25,  1.89it/s] 24%|██▍       | 15/63 [00:07<00:25,  1.89it/s] 25%|██▌       | 16/63 [00:07<00:24,  1.89it/s] 27%|██▋       | 17/63 [00:08<00:24,  1.89it/s] 29%|██▊       | 18/63 [00:09<00:23,  1.89it/s] 30%|███       | 19/63 [00:09<00:23,  1.89it/s] 32%|███▏      | 20/63 [00:10<00:22,  1.89it/s] 33%|███▎      | 21/63 [00:10<00:22,  1.89it/s] 35%|███▍      | 22/63 [00:11<00:21,  1.88it/s] 37%|███▋      | 23/63 [00:11<00:21,  1.88it/s] 38%|███▊      | 24/63 [00:12<00:20,  1.89it/s] 40%|███▉      | 25/63 [00:12<00:20,  1.89it/s] 41%|████▏     | 26/63 [00:13<00:19,  1.89it/s] 43%|████▎     | 27/63 [00:13<00:19,  1.89it/s] 44%|████▍     | 28/63 [00:14<00:18,  1.88it/s] 46%|████▌     | 29/63 [00:14<00:18,  1.88it/s] 48%|████▊     | 30/63 [00:15<00:17,  1.89it/s] 49%|████▉     | 31/63 [00:15<00:16,  1.89it/s] 51%|█████     | 32/63 [00:16<00:16,  1.88it/s] 52%|█████▏    | 33/63 [00:16<00:15,  1.88it/s] 54%|█████▍    | 34/63 [00:17<00:15,  1.88it/s] 56%|█████▌    | 35/63 [00:18<00:14,  1.88it/s] 57%|█████▋    | 36/63 [00:18<00:14,  1.88it/s] 59%|█████▊    | 37/63 [00:19<00:13,  1.88it/s] 60%|██████    | 38/63 [00:19<00:13,  1.88it/s] 62%|██████▏   | 39/63 [00:20<00:12,  1.88it/s] 63%|██████▎   | 40/63 [00:20<00:12,  1.88it/s] 65%|██████▌   | 41/63 [00:21<00:11,  1.88it/s] 67%|██████▋   | 42/63 [00:21<00:11,  1.89it/s] 68%|██████▊   | 43/63 [00:22<00:10,  1.89it/s] 70%|██████▉   | 44/63 [00:22<00:10,  1.89it/s] 71%|███████▏  | 45/63 [00:23<00:09,  1.89it/s] 73%|███████▎  | 46/63 [00:23<00:09,  1.89it/s] 75%|███████▍  | 47/63 [00:24<00:08,  1.89it/s] 76%|███████▌  | 48/63 [00:24<00:07,  1.89it/s] 78%|███████▊  | 49/63 [00:25<00:07,  1.89it/s] 79%|███████▉  | 50/63 [00:25<00:06,  1.89it/s] 81%|████████  | 51/63 [00:26<00:06,  1.89it/s] 83%|████████▎ | 52/63 [00:27<00:05,  1.89it/s] 84%|████████▍ | 53/63 [00:27<00:05,  1.88it/s] 86%|████████▌ | 54/63 [00:28<00:04,  1.89it/s] 87%|████████▋ | 55/63 [00:28<00:04,  1.89it/s] 89%|████████▉ | 56/63 [00:29<00:03,  1.89it/s] 90%|█████████ | 57/63 [00:29<00:03,  1.89it/s] 92%|█████████▏| 58/63 [00:30<00:02,  1.89it/s] 94%|█████████▎| 59/63 [00:30<00:02,  1.89it/s] 95%|█████████▌| 60/63 [00:31<00:01,  1.89it/s] 97%|█████████▋| 61/63 [00:31<00:01,  1.89it/s] 98%|█████████▊| 62/63 [00:32<00:00,  1.89it/s]100%|██████████| 63/63 [00:32<00:00,  2.25it/s]100%|██████████| 63/63 [00:32<00:00,  1.93it/s]
+2026-04-14 20:59:43 [INFO] Saved: /cache/zhangjing/spectral-flow-probe/experiments/results/exp4_regularizer/lambda_0.010_result.json
+2026-04-14 20:59:43 [INFO] [lambda_0.010] Done in 18.3 min
+sys:1: DeprecationWarning: builtin type swigvarlink has no __module__ attribute

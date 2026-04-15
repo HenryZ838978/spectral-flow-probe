@@ -1,0 +1,7 @@
+{
+  "model": "Qwen3-4B",
+  "method": "KTO",
+  "status": "FAILED",
+  "error": "Actual (not effective) batch size must be > 1. KTO will not work properly because the KL term will be equivalent to the implied reward.",
+  "elapsed_min": 1.9534257729848226
+}

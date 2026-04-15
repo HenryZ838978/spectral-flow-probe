@@ -1,0 +1,77 @@
+Skipping import of cpp extensions due to incompatible torch version 2.9.1+cu128 for torchao version 0.16.0             Please see https://github.com/pytorch/ao/issues/2919 for more info
+2026-04-14 20:59:56 [INFO] === KTO: Qwen3-4B on GPU 7 ===
+2026-04-14 20:59:56 [INFO] Loading model: /cache/zhangjing/models/Qwen3-4B on GPU 0
+`torch_dtype` is deprecated! Use `dtype` instead!
+2026-04-14 20:59:57 [WARNING] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   0%|          | 1/398 [00:00<00:44,  8.96it/s]Loading weights:   7%|▋         | 27/398 [00:00<00:02, 144.11it/s]Loading weights:  15%|█▍        | 59/398 [00:00<00:01, 213.45it/s]Loading weights:  23%|██▎       | 91/398 [00:00<00:01, 245.25it/s]Loading weights:  30%|██▉       | 119/398 [00:00<00:01, 254.40it/s]Loading weights:  37%|███▋      | 147/398 [00:00<00:00, 255.78it/s]Loading weights:  45%|████▍     | 179/398 [00:00<00:00, 260.21it/s]Loading weights:  54%|█████▎    | 213/398 [00:00<00:00, 280.28it/s]Loading weights:  62%|██████▏   | 246/398 [00:00<00:00, 294.40it/s]Loading weights:  70%|███████   | 280/398 [00:01<00:00, 304.15it/s]Loading weights:  80%|███████▉  | 317/398 [00:01<00:00, 322.77it/s]Loading weights:  89%|████████▊ | 353/398 [00:01<00:00, 333.58it/s]Loading weights:  97%|█████████▋| 388/398 [00:01<00:00, 332.88it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 283.36it/s]
+2026-04-14 20:59:59 [INFO] Found 36 decoder layers at model.model.layers (hidden=2560)
+2026-04-14 21:00:00 [INFO] [baseline] step=1  PR(last)=10.80  S(last)=-0.1126
+2026-04-14 21:00:00 [INFO] Baseline PR: 10.80
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/awq/__init__.py:21: DeprecationWarning: 
+I have left this message as the final dev message to help you transition.
+
+Important Notice:
+- AutoAWQ is officially deprecated and will no longer be maintained.
+- The last tested configuration used Torch 2.6.0 and Transformers 4.51.3.
+- If future versions of Transformers break AutoAWQ compatibility, please report the issue to the Transformers project.
+
+Alternative:
+- AutoAWQ has been adopted by the vLLM Project: https://github.com/vllm-project/llm-compressor
+
+For further inquiries, feel free to reach out:
+- X: https://x.com/casper_hansen_
+- LinkedIn: https://www.linkedin.com/in/casper-hansen-804005170/
+
+  warnings.warn(_FINAL_DEV_MESSAGE, category=DeprecationWarning, stacklevel=1)
+
+WARN  Python GIL is enabled: Multi-gpu quant acceleration for MoE models is sub-optimal and multi-core accelerated cpu packing is also disabled. We recommend Python >= 3.13.3t with Pytorch > 2.8 for mult-gpu quantization and multi-cpu packing with env `PYTHON_GIL=0`.
+WARN  Feature `utils/Perplexity` requires Python < 3.14 and Python GIL enabled and Python >= 3.13.3T (T for Threading-Free edition of Python) plus Torch 2.8. Feature is currently skipped/disabled.
+INFO  ENV: Auto setting PYTORCH_ALLOC_CONF='expandable_segments:True,max_split_size_mb:256,garbage_collection_threshold:0.7' for memory saving.
+INFO  ENV: Auto setting CUDA_DEVICE_ORDER=PCI_BUS_ID for correctness.          
+[W414 21:00:02.039793500 Context.cpp:456] Warning: torch.backends.cuda.preferred_linalg_library is an experimental feature. If you see any error or unexpected behavior when this flag is set please file an issue on GitHub. (function operator())
+INFO  
+
+┌─────────────┐    ┌────────────────────────┐    ┌────────────┐    ┌─────────┐
+│ GPT-QModel  │ -> │ ▓▓▓▓▓▓▓▓▓▓▓▓ 16bit     │ -> │ ▒▒▒▒ 8bit  │ -> │ ░░ 4bit │
+└─────────────┘    └────────────────────────┘    └────────────┘    └─────────┘
+GPT-QModel   : 5.8.0
+Transformers : 5.5.3
+Torch        : 2.9.1+cu128
+Triton       : 3.5.1
+2026-04-14 21:00:02 [INFO] Loading KTO dataset: argilla/ultrafeedback-binarized-preferences-cleaned (via https://hf-mirror.com)
+'[Errno 101] Network is unreachable' thrown while requesting HEAD https://huggingface.co/datasets/argilla/ultrafeedback-binarized-preferences-cleaned/resolve/770076f077c4c5e298498fa32f804857f46d5134/ultrafeedback-binarized-preferences-cleaned.py
+2026-04-14 21:01:22 [WARNING] '[Errno 101] Network is unreachable' thrown while requesting HEAD https://huggingface.co/datasets/argilla/ultrafeedback-binarized-preferences-cleaned/resolve/770076f077c4c5e298498fa32f804857f46d5134/ultrafeedback-binarized-preferences-cleaned.py
+Retrying in 1s [Retry 1/5].
+2026-04-14 21:01:22 [WARNING] Retrying in 1s [Retry 1/5].
+Using the latest cached version of the dataset since argilla/ultrafeedback-binarized-preferences-cleaned couldn't be found on the Hugging Face Hub
+2026-04-14 21:01:23 [WARNING] Using the latest cached version of the dataset since argilla/ultrafeedback-binarized-preferences-cleaned couldn't be found on the Hugging Face Hub
+Found the latest cached dataset configuration 'default' at /cache/zhangjing/.cache/huggingface/datasets/argilla___ultrafeedback-binarized-preferences-cleaned/default/0.0.0/770076f077c4c5e298498fa32f804857f46d5134 (last modified on Tue Apr 14 20:43:20 2026).
+2026-04-14 21:01:23 [WARNING] Found the latest cached dataset configuration 'default' at /cache/zhangjing/.cache/huggingface/datasets/argilla___ultrafeedback-binarized-preferences-cleaned/default/0.0.0/770076f077c4c5e298498fa32f804857f46d5134 (last modified on Tue Apr 14 20:43:20 2026).
+2026-04-14 21:01:31 [INFO] KTO Train: 6000, Eval: 600
+/cache/zhangjing/spectral-flow-probe/experiments/_exp2_worker.py:92: FutureWarning: The `KTOConfig` is now located in `trl.experimental`. Please update your imports to `from trl.experimental.kto import KTOConfig`. For more information, see https://github.com/huggingface/trl/issues/4223. Promoting KTO to the stable API is a high-priority task. Until then, this current path (`from trl import KTOConfig`) will remain, but API changes may occur.
+  kto_config = KTOConfig(
+/cache/zhangjing/spectral-flow-probe/experiments/_exp2_worker.py:111: FutureWarning: The `KTOTrainer` is now located in `trl.experimental`. Please update your imports to `from trl.experimental.kto import KTOTrainer`. For more information, see https://github.com/huggingface/trl/issues/4223. Promoting KTO to the stable API is a high-priority task. Until then, this current path (`from trl import KTOTrainer`) will remain, but API changes may occur.
+  trainer = KTOTrainer(
+trainable params: 5,898,240 || all params: 4,028,366,336 || trainable%: 0.1464
+Extracting prompt from train dataset:   0%|          | 0/6000 [00:00<?, ? examples/s]Extracting prompt from train dataset:  30%|███       | 1814/6000 [00:00<00:00, 17989.90 examples/s]Extracting prompt from train dataset:  73%|███████▎  | 4377/6000 [00:00<00:00, 17368.83 examples/s]Extracting prompt from train dataset: 100%|██████████| 6000/6000 [00:00<00:00, 17171.38 examples/s]
+Applying chat template to train dataset:   0%|          | 0/6000 [00:00<?, ? examples/s]Applying chat template to train dataset:   4%|▎         | 216/6000 [00:00<00:02, 2128.05 examples/s]Applying chat template to train dataset:   8%|▊         | 484/6000 [00:00<00:02, 2448.21 examples/s]Applying chat template to train dataset:  13%|█▎        | 755/6000 [00:00<00:02, 2562.96 examples/s]Applying chat template to train dataset:  19%|█▉        | 1151/6000 [00:00<00:01, 2597.48 examples/s]Applying chat template to train dataset:  24%|██▎       | 1416/6000 [00:00<00:01, 2611.98 examples/s]Applying chat template to train dataset:  28%|██▊       | 1697/6000 [00:00<00:01, 2668.07 examples/s]Applying chat template to train dataset:  33%|███▎      | 1974/6000 [00:00<00:01, 2697.22 examples/s]Applying chat template to train dataset:  37%|███▋      | 2245/6000 [00:00<00:01, 2697.84 examples/s]Applying chat template to train dataset:  42%|████▏     | 2516/6000 [00:00<00:01, 2700.19 examples/s]Applying chat template to train dataset:  46%|████▋     | 2789/6000 [00:01<00:01, 2705.21 examples/s]Applying chat template to train dataset:  53%|█████▎    | 3194/6000 [00:01<00:01, 2698.67 examples/s]Applying chat template to train dataset:  60%|█████▉    | 3593/6000 [00:01<00:00, 2682.06 examples/s]Applying chat template to train dataset:  65%|██████▍   | 3871/6000 [00:01<00:00, 2704.47 examples/s]Applying chat template to train dataset:  71%|███████▏  | 4279/6000 [00:01<00:00, 2706.59 examples/s]Applying chat template to train dataset:  76%|███████▌  | 4563/6000 [00:01<00:00, 2739.13 examples/s]Applying chat template to train dataset:  81%|████████  | 4843/6000 [00:01<00:00, 2752.18 examples/s]Applying chat template to train dataset:  87%|████████▋ | 5236/6000 [00:01<00:00, 2702.39 examples/s]Applying chat template to train dataset:  92%|█████████▏| 5517/6000 [00:02<00:00, 2726.88 examples/s]Applying chat template to train dataset:  99%|█████████▊| 5922/6000 [00:02<00:00, 2712.99 examples/s]Applying chat template to train dataset: 100%|██████████| 6000/6000 [00:02<00:00, 2675.11 examples/s]
+Extracting prompt from eval dataset:   0%|          | 0/600 [00:00<?, ? examples/s]Extracting prompt from eval dataset: 100%|██████████| 600/600 [00:00<00:00, 16831.75 examples/s]
+Applying chat template to eval dataset:   0%|          | 0/600 [00:00<?, ? examples/s]Applying chat template to eval dataset:  45%|████▍     | 268/600 [00:00<00:00, 2655.61 examples/s]Applying chat template to eval dataset:  90%|████████▉ | 538/600 [00:00<00:00, 2667.42 examples/s]Applying chat template to eval dataset: 100%|██████████| 600/600 [00:00<00:00, 2625.67 examples/s]
+Tokenizing train dataset:   0%|          | 0/6000 [00:00<?, ? examples/s]Tokenizing train dataset:  17%|█▋        | 1000/6000 [00:00<00:02, 1934.33 examples/s]Tokenizing train dataset:  33%|███▎      | 2000/6000 [00:00<00:01, 2230.24 examples/s]Tokenizing train dataset:  50%|█████     | 3000/6000 [00:01<00:01, 2416.51 examples/s]Tokenizing train dataset:  67%|██████▋   | 4000/6000 [00:01<00:00, 2445.54 examples/s]Tokenizing train dataset:  83%|████████▎ | 5000/6000 [00:02<00:00, 2512.01 examples/s]Tokenizing train dataset: 100%|██████████| 6000/6000 [00:02<00:00, 2535.75 examples/s]Tokenizing train dataset: 100%|██████████| 6000/6000 [00:02<00:00, 2436.51 examples/s]
+Processing tokenized train dataset:   0%|          | 0/6000 [00:00<?, ? examples/s]Processing tokenized train dataset:   4%|▍         | 243/6000 [00:00<00:02, 2388.60 examples/s]Processing tokenized train dataset:   8%|▊         | 493/6000 [00:00<00:02, 2449.91 examples/s]Processing tokenized train dataset:  14%|█▍        | 843/6000 [00:00<00:02, 2372.36 examples/s]Processing tokenized train dataset:  19%|█▉        | 1128/6000 [00:00<00:03, 1232.12 examples/s]Processing tokenized train dataset:  23%|██▎       | 1365/6000 [00:00<00:03, 1449.33 examples/s]Processing tokenized train dataset:  27%|██▋       | 1618/6000 [00:00<00:02, 1658.24 examples/s]Processing tokenized train dataset:  31%|███▏      | 1877/6000 [00:01<00:02, 1873.86 examples/s]Processing tokenized train dataset:  36%|███▌      | 2134/6000 [00:01<00:02, 1489.22 examples/s]Processing tokenized train dataset:  40%|███▉      | 2379/6000 [00:01<00:02, 1686.45 examples/s]Processing tokenized train dataset:  44%|████▍     | 2645/6000 [00:01<00:01, 1904.90 examples/s]Processing tokenized train dataset:  48%|████▊     | 2878/6000 [00:01<00:01, 2008.08 examples/s]Processing tokenized train dataset:  52%|█████▏    | 3137/6000 [00:01<00:01, 1650.12 examples/s]Processing tokenized train dataset:  56%|█████▋    | 3390/6000 [00:01<00:01, 1843.60 examples/s]Processing tokenized train dataset:  61%|██████    | 3644/6000 [00:02<00:01, 2006.18 examples/s]Processing tokenized train dataset:  65%|██████▍   | 3879/6000 [00:02<00:01, 2089.43 examples/s]Processing tokenized train dataset:  69%|██████▉   | 4127/6000 [00:02<00:01, 1548.24 examples/s]Processing tokenized train dataset:  73%|███████▎  | 4384/6000 [00:02<00:00, 1762.28 examples/s]Processing tokenized train dataset:  78%|███████▊  | 4654/6000 [00:02<00:00, 1976.35 examples/s]Processing tokenized train dataset:  81%|████████▏ | 4884/6000 [00:02<00:00, 2054.56 examples/s]Processing tokenized train dataset:  85%|████████▌ | 5128/6000 [00:02<00:00, 1633.97 examples/s]Processing tokenized train dataset:  90%|████████▉ | 5388/6000 [00:03<00:00, 1846.01 examples/s]Processing tokenized train dataset:  94%|█████████▍| 5653/6000 [00:03<00:00, 2036.61 examples/s]Processing tokenized train dataset:  99%|█████████▊| 5913/6000 [00:03<00:00, 2178.74 examples/s]Processing tokenized train dataset: 100%|██████████| 6000/6000 [00:03<00:00, 1764.50 examples/s]
+Tokenizing eval dataset:   0%|          | 0/600 [00:00<?, ? examples/s]Tokenizing eval dataset: 100%|██████████| 600/600 [00:00<00:00, 2374.17 examples/s]Tokenizing eval dataset: 100%|██████████| 600/600 [00:00<00:00, 2343.55 examples/s]
+Processing tokenized eval dataset:   0%|          | 0/600 [00:00<?, ? examples/s]Processing tokenized eval dataset:  44%|████▍     | 266/600 [00:00<00:00, 2631.33 examples/s]Processing tokenized eval dataset: 100%|██████████| 600/600 [00:00<00:00, 1366.07 examples/s]Processing tokenized eval dataset: 100%|██████████| 600/600 [00:00<00:00, 1449.99 examples/s]
+2026-04-14 21:01:53 [ERROR] FAILED: Actual (not effective) batch size must be > 1. KTO will not work properly because the KL term will be equivalent to the implied reward.
+Traceback (most recent call last):
+  File "/cache/zhangjing/spectral-flow-probe/experiments/_exp2_worker.py", line 217, in main
+    result = run_kto(args.model_path, args.model_name, args.gpu_id,
+  File "/cache/zhangjing/spectral-flow-probe/experiments/_exp2_worker.py", line 111, in run_kto
+    trainer = KTOTrainer(
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/trl/trainer/kto_trainer.py", line 36, in __init__
+    super().__init__(*args, **kwargs)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/trl/experimental/kto/kto_trainer.py", line 589, in __init__
+    raise ValueError(
+ValueError: Actual (not effective) batch size must be > 1. KTO will not work properly because the KL term will be equivalent to the implied reward.
+2026-04-14 21:01:53 [INFO] Saved: /cache/zhangjing/spectral-flow-probe/experiments/results/exp2_universality/Qwen3-4B_KTO_result.json
+2026-04-14 21:01:53 [INFO] [Qwen3-4B_KTO] Done in 2.0 min — FAILED
+sys:1: DeprecationWarning: builtin type swigvarlink has no __module__ attribute

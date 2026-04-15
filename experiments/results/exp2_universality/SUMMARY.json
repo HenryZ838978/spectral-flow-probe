@@ -1,0 +1,240 @@
+{
+  "Mistral-7B_DPO": {
+    "model": "Mistral-7B",
+    "method": "DPO",
+    "status": "FAILED",
+    "error": "Cannot use chat template functions because tokenizer.chat_template is not set and no template argument was passed! For information about writing templates and setting the tokenizer.chat_template attribute, please see the documentation at https://huggingface.co/docs/transformers/main/en/chat_templating",
+    "elapsed_min": 1.4792689522107443
+  },
+  "Mistral-7B_KTO": {
+    "model": "Mistral-7B",
+    "method": "KTO",
+    "status": "FAILED",
+    "error": "Cannot use chat template functions because tokenizer.chat_template is not set and no template argument was passed! For information about writing templates and setting the tokenizer.chat_template attribute, please see the documentation at https://huggingface.co/docs/transformers/main/en/chat_templating",
+    "elapsed_min": 1.6132505019505818
+  },
+  "Qwen3-0.6B_DPO": {
+    "model": "Qwen3-0.6B",
+    "method": "DPO",
+    "baseline_pr": 16.57259313636518,
+    "pr_history": [
+      {
+        "pr_last": 16.655579819816925,
+        "s_last": -0.08822944002319494,
+        "r2": 0.8731593929046066,
+        "step": 25,
+        "epoch": 0.06666666666666667
+      },
+      {
+        "pr_last": 17.452276580624222,
+        "s_last": -0.09178877956827104,
+        "r2": 0.945704999306246,
+        "step": 50,
+        "epoch": 0.13333333333333333
+      },
+      {
+        "pr_last": 17.547806315366657,
+        "s_last": -0.08856442292023457,
+        "r2": 0.908001559258987,
+        "step": 75,
+        "epoch": 0.2
+      },
+      {
+        "pr_last": 13.79274800501813,
+        "s_last": -0.10392058219455423,
+        "r2": 0.8939865153225153,
+        "step": 100,
+        "epoch": 0.26666666666666666
+      },
+      {
+        "pr_last": 16.668869020475974,
+        "s_last": -0.0994021963490364,
+        "r2": 0.9518150826787752,
+        "step": 125,
+        "epoch": 0.3333333333333333
+      },
+      {
+        "pr_last": 18.768607201870477,
+        "s_last": -0.08429745421138211,
+        "r2": 0.9385673508514603,
+        "step": 150,
+        "epoch": 0.4
+      },
+      {
+        "pr_last": 13.442780181635106,
+        "s_last": -0.1060345269879157,
+        "r2": 0.8816160523269768,
+        "step": 175,
+        "epoch": 0.4666666666666667
+      },
+      {
+        "pr_last": 14.169036370522093,
+        "s_last": -0.10202291430264579,
+        "r2": 0.880486032532994,
+        "step": 200,
+        "epoch": 0.5333333333333333
+      }
+    ],
+    "eval": {
+      "eval_loss": 0.6922580599784851,
+      "eval_runtime": 11.6155,
+      "eval_samples_per_second": 25.828,
+      "eval_steps_per_second": 3.271
+    },
+    "final_step": 200,
+    "elapsed_min": 7.611876038710276,
+    "status": "OK"
+  },
+  "Qwen3-0.6B_GRPO": {
+    "model": "Qwen3-0.6B",
+    "method": "GRPO",
+    "baseline_pr": 17.130037570567513,
+    "pr_history": [
+      {
+        "pr_last": 17.244977728850515,
+        "s_last": -0.08849807346487296,
+        "r2": 0.9182768207946067,
+        "step": 25,
+        "epoch": 0.016666666666666666
+      },
+      {
+        "pr_last": 15.784626455268906,
+        "s_last": -0.09828400918359768,
+        "r2": 0.9024189792641268,
+        "step": 50,
+        "epoch": 0.03333333333333333
+      },
+      {
+        "pr_last": 17.396038032313744,
+        "s_last": -0.09023609369375779,
+        "r2": 0.932374469438126,
+        "step": 75,
+        "epoch": 0.05
+      },
+      {
+        "pr_last": 9.720393158452724,
+        "s_last": -0.11866200956529774,
+        "r2": 0.8422286705826505,
+        "step": 100,
+        "epoch": 0.06666666666666667
+      },
+      {
+        "pr_last": 13.704894389791184,
+        "s_last": -0.09185212777989774,
+        "r2": 0.8352089663236938,
+        "step": 125,
+        "epoch": 0.08333333333333333
+      },
+      {
+        "pr_last": 18.270123937715834,
+        "s_last": -0.09074752883879215,
+        "r2": 0.9502716673989253,
+        "step": 150,
+        "epoch": 0.1
+      },
+      {
+        "pr_last": 17.690259452913494,
+        "s_last": -0.09334729874802676,
+        "r2": 0.9451021985633172,
+        "step": 175,
+        "epoch": 0.11666666666666667
+      },
+      {
+        "pr_last": 18.624753620806317,
+        "s_last": -0.089428088664744,
+        "r2": 0.9438088438120349,
+        "step": 200,
+        "epoch": 0.13333333333333333
+      }
+    ],
+    "final_step": 200,
+    "elapsed_min": 21.700803903738656,
+    "status": "OK"
+  },
+  "Qwen3-0.6B_KTO": {
+    "model": "Qwen3-0.6B",
+    "method": "KTO",
+    "status": "FAILED",
+    "error": "Actual (not effective) batch size must be > 1. KTO will not work properly because the KL term will be equivalent to the implied reward.",
+    "elapsed_min": 1.9176733016967773
+  },
+  "Qwen3-4B_DPO": {
+    "model": "Qwen3-4B",
+    "method": "DPO",
+    "baseline_pr": 10.165323659940885,
+    "pr_history": [
+      {
+        "pr_last": 8.146888266988535,
+        "s_last": -0.12106393606987852,
+        "r2": 0.8194700734294139,
+        "step": 25,
+        "epoch": 0.06666666666666667
+      },
+      {
+        "pr_last": 11.369580868057241,
+        "s_last": -0.11170426993098696,
+        "r2": 0.8886059950839694,
+        "step": 50,
+        "epoch": 0.13333333333333333
+      },
+      {
+        "pr_last": 10.961979526274853,
+        "s_last": -0.11863642456849058,
+        "r2": 0.8884890144334614,
+        "step": 75,
+        "epoch": 0.2
+      },
+      {
+        "pr_last": 8.246036724833061,
+        "s_last": -0.10985014866034101,
+        "r2": 0.783031874056396,
+        "step": 100,
+        "epoch": 0.26666666666666666
+      },
+      {
+        "pr_last": 9.484683294193411,
+        "s_last": -0.11369754015398065,
+        "r2": 0.8562163723329457,
+        "step": 125,
+        "epoch": 0.3333333333333333
+      },
+      {
+        "pr_last": 11.845528055658239,
+        "s_last": -0.10832663772687255,
+        "r2": 0.8785449678480315,
+        "step": 150,
+        "epoch": 0.4
+      },
+      {
+        "pr_last": 9.190460734365011,
+        "s_last": -0.12014251571496168,
+        "r2": 0.8322771765064236,
+        "step": 175,
+        "epoch": 0.4666666666666667
+      },
+      {
+        "pr_last": 10.02318654868279,
+        "s_last": -0.11525955480279408,
+        "r2": 0.839638544680315,
+        "step": 200,
+        "epoch": 0.5333333333333333
+      }
+    ],
+    "eval": {
+      "eval_loss": 0.6992680430412292,
+      "eval_runtime": 40.4008,
+      "eval_samples_per_second": 7.426,
+      "eval_steps_per_second": 0.941
+    },
+    "final_step": 200,
+    "elapsed_min": 10.477840403715769,
+    "status": "OK"
+  },
+  "Qwen3-4B_KTO": {
+    "model": "Qwen3-4B",
+    "method": "KTO",
+    "status": "FAILED",
+    "error": "Actual (not effective) batch size must be > 1. KTO will not work properly because the KL term will be equivalent to the implied reward.",
+    "elapsed_min": 1.9534257729848226
+  }
+}
