@@ -1,0 +1,106 @@
+{
+  "theorem": "For same probe Q and Σ conserved, ΔPR depends on rotation angle θ between U_base and U_instruct. Prediction: |ΔPR(L,band)| correlates with θ(L).",
+  "families_analysed": [
+    "Qwen2.5-7B",
+    "Mistral-7B",
+    "Yi-1.5-6B"
+  ],
+  "per_family": [
+    {
+      "name": "Qwen2.5-7B",
+      "theta_min": 1.2509797981807165,
+      "theta_max": 1.9156433514186315,
+      "n_layers": 28
+    },
+    {
+      "name": "Mistral-7B",
+      "theta_min": 6.162675040108817,
+      "theta_max": 9.05812134061541,
+      "n_layers": 32
+    },
+    {
+      "name": "Yi-1.5-6B",
+      "theta_min": 6.6573085103716165,
+      "theta_max": 10.681919370378766,
+      "n_layers": 32
+    }
+  ],
+  "n_data_points": 644,
+  "theta_range_deg": [
+    1.2509797981807165,
+    10.681919370378766
+  ],
+  "abs_delta_pr_range": [
+    1.284233411968927e-05,
+    3.727871103903163
+  ],
+  "aggregate_correlation_theta_per_layer": {
+    "pearson_r": 0.27773191446028733,
+    "pearson_p": 7.178015053180372e-13,
+    "spearman_r": 0.14247271014981888,
+    "spearman_p": 0.000286681713793465
+  },
+  "aggregate_correlation_theta_cumulative": {
+    "pearson_r": 0.24639810997772832,
+    "pearson_p": 2.3168401570524284e-10,
+    "spearman_r": -0.013176488667431617,
+    "spearman_p": 0.7385707278550648
+  },
+  "linear_regression_theta_per_layer": {
+    "slope": 0.06157929662655956,
+    "intercept": 0.3447512421124511,
+    "r_squared": 0.07713501630977651,
+    "p_value": 7.178015053179801e-13
+  },
+  "linear_regression_theta_cumulative": {
+    "slope": 0.055361863271103824,
+    "intercept": 0.37570546314645753,
+    "r_squared": 0.06071202860059677,
+    "p_value": 2.3168401570523774e-10
+  },
+  "per_band_correlations": {
+    "Factual": {
+      "pearson_r": 0.20721985474990365,
+      "pearson_p": 0.04748187362408704,
+      "spearman_r": 0.13552086062604995,
+      "spearman_p": 0.19772887753621762
+    },
+    "Instruction": {
+      "pearson_r": 0.4718543059163125,
+      "pearson_p": 2.0533495995614917e-06,
+      "spearman_r": 0.3215480172001911,
+      "spearman_p": 0.0017752915437484647
+    },
+    "Creative": {
+      "pearson_r": 0.3810736990515955,
+      "pearson_p": 0.00017853560644977862,
+      "spearman_r": 0.30927978052802735,
+      "spearman_p": 0.002701006894634384
+    },
+    "Code / Logic": {
+      "pearson_r": 0.45681906862214394,
+      "pearson_p": 4.712429483602431e-06,
+      "spearman_r": 0.2935283510318573,
+      "spearman_p": 0.004514627055902418
+    },
+    "Dialogue": {
+      "pearson_r": 0.16217036017012038,
+      "pearson_p": 0.12247726933001302,
+      "spearman_r": 0.2166360988240371,
+      "spearman_p": 0.03806163017112399
+    },
+    "Counterfactual": {
+      "pearson_r": 0.12646955025435871,
+      "pearson_p": 0.2296355965345112,
+      "spearman_r": -0.02051384800332907,
+      "spearman_p": 0.8461037950719101
+    },
+    "Safety": {
+      "pearson_r": 0.31974842616207066,
+      "pearson_p": 0.0018900756765802803,
+      "spearman_r": 0.20453739808578517,
+      "spearman_p": 0.050493509764059336
+    }
+  },
+  "verdict": "THEOREM SUPPORTED. θ and |ΔPR| are positively correlated (p < 0.001 expected). PR shifts are the measurement-angle signature of U rotation — not capacity collapse."
+}

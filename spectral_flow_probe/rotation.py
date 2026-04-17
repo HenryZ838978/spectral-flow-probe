@@ -1,14 +1,35 @@
 """RotationAnalyzer — diagnose RL as isovolumetric rotation.
 
-Core finding (Exp 9B, universal across Qwen2.5, Mistral, Yi):
+Core finding (Exp 9B + Exp 10, universal across Qwen2.5, Mistral, Yi):
 
     When a base model is aligned (SFT + RLHF), its weights change
-    substantially (Frobenius norm drift of 1-25%), BUT the singular
-    value spectrum of each weight matrix is preserved (< 0.1% PR shift).
+    substantially (Frobenius norm drift 1%-25%), BUT the singular value
+    spectrum of each weight matrix is preserved (< 0.5% PR shift).
 
-    RL rotates the singular vectors (U, V). It does not compress or
-    expand the singular values (Σ). This is an isovolumetric rotation —
-    total channel capacity is conserved, beam direction changes.
+    What changes is the orientation of the left-singular subspace.
+    Top-32 singular subspaces rotate by 0.9° (null DPO baseline) up to
+    9.3° (heavy Yi RLHF), scaling monotonically with training intensity
+    while Σ stays essentially unchanged.
+
+    RL rotates U, V. It does not compress or expand Σ. This is an
+    isovolumetric rotation — total channel capacity is conserved; the
+    direction in which the channel points shifts.
+
+The measurement-angle shift theorem (Exp 11):
+
+    For any weight matrix W = U Σ V^T and fixed probe input Q:
+        PR(W, Q) = PR(V Σ U^T Q)
+
+    When Σ is preserved and U rotates (U -> U'), the observed PR under
+    any fixed Q changes because U^T Q rotates to U'^T Q. The probe didn't
+    move; the capacity didn't change; only the coefficients of Q in the
+    singular basis did.
+
+    Empirically (Exp 11, n=644 points across 3 families × 7 bands × ~30
+    layers): per-layer rotation angle θ(L) is a significant predictor of
+    |ΔPR(L, band)|, with global Pearson r = +0.28, p = 7e-13. All 7
+    bands show positive correlation, strongest on instruction / code /
+    creative / safety (r = 0.32 to 0.47).
 
 Two modes:
 
@@ -16,7 +37,8 @@ Two modes:
        — useful when you only have the instruct version (no base pair).
 
     2. Pair mode: compare base vs instruct weights to measure rotation
-       magnitude and verify capacity conservation.
+       magnitude (Frobenius, Σ shift, principal angles) and verify that
+       capacity is conserved.
 """
 from __future__ import annotations
 

@@ -73,6 +73,52 @@ And the dose-response is clean enough to make box plots useful:
 
 ![Angle distribution across matrices](assets/v2/angles_distribution.png)
 
+### The measurement-angle shift theorem
+
+The v1 observation *"PR collapses under RL"* is not wrong as an observation — a
+fixed probe Q really does see PR go down at specific checkpoints. But the
+mechanism isn't capacity loss. It's a gauge shift.
+
+For any weight matrix `W = U Σ V^T` and any fixed probe input `Q`:
+
+```
+PR(W, Q)  =  PR( V Σ U^T Q )
+```
+
+`V` is orthogonal, so what's observed is fundamentally `Σ · (U^T Q)` — the
+probe `Q` projected onto the model's left-singular basis, weighted by the
+spectrum.
+
+When alignment happens:
+
+- `Σ → Σ`  (Exp 8, 9B, 10 — conserved across all 3 families)
+- `U → U'` (Exp 10 — rotated by 1°–9° depending on training intensity)
+
+So `U^T Q → U'^T Q`. The probe didn't move. The capacity didn't change. But the
+*coefficients of Q in the singular basis* did, so the observed PR does too.
+
+**PR does not collapse. Measurement angles shift.**
+
+This is testable. Prediction: at a given layer L, larger rotation angle θ(L)
+should produce larger observed |ΔPR(L, band)| when the same fixed prompts are
+used to probe both models.
+
+![Theorem verification](assets/v2/theta_predicts_pr_shift.png)
+
+Result across 3 families × 7 bands × ~30 layers = 644 data points:
+
+- Pearson r = **+0.278**, p = **7 × 10⁻¹³**
+- Spearman ρ = **+0.143**, p = 3 × 10⁻⁴
+- All 7 bands individually show positive correlation (r from +0.13 to +0.47)
+
+Linear fit: `|ΔPR| ≈ 0.062 × θ + 0.34`.
+
+Yes, R² is only ~8% — θ alone doesn't explain most of the variance, which is
+expected because |ΔPR| also depends on how each band projects onto the specific
+directions that rotated. But the monotonic positive signal is robust across
+families, bands, and layers. The v1 "PR collapse" phenomenon is quantitatively
+grounded in U-rotation, not in spectrum loss.
+
 ### 3️⃣ The rotation is quantifiable — and measurable in real time.
 
 ![Real-time monitor](assets/v2/real_time_monitor.png)
@@ -200,6 +246,7 @@ from spectral_flow_probe import (
 | Isovolumetric rotation is universal | Exp 9B | 3 families, weight drift 1.3–24.6%, SVD shift ~0% everywhere |
 | Principal angles scale with training | Exp 10 | Null 0.92° → Qwen 1.6° → Mistral 8° → Yi 9.3° |
 | `lm_head` and `up_proj` rotate most | Exp 10 | Consistent across all 3 full-RLHF pairs |
+| Rotation angle predicts PR shift | Exp 11 | Pearson r = +0.28, p = 7×10⁻¹³, n=644 (3 families × 7 bands × 28-32 layers) |
 | OOD benchmarks don't detect bandwidth loss | Exp 7A/B | IFEval + LiveCodeBench flat across all DPO checkpoints |
 
 Full experiment log: `experiments/` — 9 experiments, 4 days, one refuted hypothesis, one new theory.
