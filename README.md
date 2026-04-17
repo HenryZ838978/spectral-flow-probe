@@ -130,6 +130,18 @@ The same training run, seen two ways:
 
 The monitor uses fixed-prompt probes. Zero variance. 100% reproducible. Hooks into any HuggingFace Trainer callback chain.
 
+**And the rotation quantitatively predicts the observed PR shift.** The identity `PR(W, Q) = PR(Σ · V^T Q)` says that with Σ conserved, the scalar PR change between two checkpoints under a fixed probe is driven entirely by the rotation of `V^T Q`. Regressing observed `|ΔPR|` against measured rotation angle `θ` across `n=644` (layer, band, family) triples:
+
+![Rotation predicts PR shift](assets/v2/theta_predicts_pr_shift.png)
+
+| Statistic | Value |
+|---|---|
+| **Pearson r (θ, \|ΔPR\|)** | **+0.278, p = 7×10⁻¹³** |
+| All 7 bands | **positive correlation** |
+| Linear fit | \|ΔPR\| ≈ 0.062·θ + 0.34 |
+
+What v1 measured as "69% PR collapse" was a real measurement of the projected quantity, just interpreted as capacity loss. It was capacity being *re-aimed*. **PR does not collapse. Measurement angles shift.**
+
 ### 4️⃣ Your RL data mix is a diagnostic signal — use it.
 
 ![Data mix mirror](assets/v2/mirror_audit.png)
@@ -246,10 +258,10 @@ from spectral_flow_probe import (
 | Isovolumetric rotation is universal | Exp 9B | 3 families, weight drift 1.3–24.6%, SVD shift ~0% everywhere |
 | Principal angles scale with training | Exp 10 | Null 0.92° → Qwen 1.6° → Mistral 8° → Yi 9.3° |
 | `lm_head` and `up_proj` rotate most | Exp 10 | Consistent across all 3 full-RLHF pairs |
-| Rotation angle predicts PR shift | Exp 11 | Pearson r = +0.28, p = 7×10⁻¹³, n=644 (3 families × 7 bands × 28-32 layers) |
+| **Rotation quantitatively predicts PR shift** | **Exp 11** | **n=644, Pearson r=+0.28, p=7×10⁻¹³, all 7 bands positive** |
 | OOD benchmarks don't detect bandwidth loss | Exp 7A/B | IFEval + LiveCodeBench flat across all DPO checkpoints |
 
-Full experiment log: `experiments/` — 9 experiments, 4 days, one refuted hypothesis, one new theory.
+Full experiment log: `experiments/` — 11 experiments, 4 days, one refuted hypothesis, one theorem, one new theory.
 
 ---
 
@@ -268,29 +280,52 @@ If you depended on v1: `git checkout v0.1.0`. We don't recommend it.
 
 ## Theory
 
-This tool is the experimental face of a broader theoretical framework: **Representation Bandwidth Economics**. In short:
+This tool is the experimental face of a two-paper theoretical framework.
 
-- PR = f(model, query). Total channel capacity is an architectural invariant.
-- RL alignment = isovolumetric rotation of the weight singular vectors.
+**Paper 1 — the analysis:** [*The Representation Bandwidth: A Conservation Analysis under RL Alignment*](https://doi.org/10.5281/zenodo.19626829) (Zhang 2026a).
+Establishes weight-side bandwidth conservation under RL alignment, characterises activation-side PR as a bivariate function `PR(model, query)`, and proves the measurement-angle-shift theorem that links the two quantitatively (r=+0.28, p=7×10⁻¹³ on n=644 data points).
+
+**Paper 2 — the toolkit:** [*Spectral Flow Probe v2: A Measurement Toolkit for Transformer Representation Bandwidth*](https://doi.org/10.5281/zenodo.19587024) (Zhang 2026b).
+The companion tool paper for *this* repository.
+
+In short:
+
+- `PR(model, query)` is bivariate. Total channel capacity is an architectural invariant of the *weights*, not the activations.
+- RL alignment = isovolumetric rotation of the singular vectors `(U, V)`. Spectrum `Σ` is conserved.
+- Rotation magnitude `θ` quantitatively predicts observed PR shifts, via `PR(W, Q) = PR(Σ · V^T Q)`.
 - Alignment reallocates bandwidth across functional channels; it does not create or destroy it.
 - Therefore: every RL run is a *zero-sum bandwidth trade*. SFP shows you what's being traded.
 
-Full derivation and experimental record: `spectral_flow_exp/updates/EXPERIMENT_LOG.md` and the companion paper (in prep).
+Full experimental record: `experiments/` (11 experiments) and `spectral_flow_exp/updates/EXPERIMENT_LOG.md`.
 
 ---
 
 ## Citation
 
+If you use this toolkit or build on the analysis, please cite both papers:
+
 ```bibtex
-@article{zhang2026bandwidtheconomics,
-  title   = {Representation Bandwidth Economics: RL Alignment as Isovolumetric
-             Rotation of the Spectral Beam Pattern},
-  author  = {Zhang, Jing},
-  year    = {2026},
-  doi     = {10.5281/zenodo.19585083},
-  url     = {https://doi.org/10.5281/zenodo.19585083}
+@misc{zhang2026bandwidth,
+  title     = {The Representation Bandwidth: A Conservation Analysis under {RL} Alignment},
+  author    = {Zhang, Jing},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.19626829},
+  url       = {https://doi.org/10.5281/zenodo.19626829}
+}
+
+@misc{zhang2026sfp,
+  title     = {Spectral Flow Probe v2: A Measurement Toolkit for Transformer
+               Representation Bandwidth},
+  author    = {Zhang, Jing},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.19587024},
+  url       = {https://doi.org/10.5281/zenodo.19587024}
 }
 ```
+
+Both DOIs are Zenodo *concept DOIs*, resolving to the latest version of each record.
 
 ---
 
