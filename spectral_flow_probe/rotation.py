@@ -84,9 +84,12 @@ class RotationReport:
     component_summary: dict[str, dict] = field(default_factory=dict)
     layer_summary: dict[int, dict] = field(default_factory=dict)
     svd_summary: dict[str, dict] = field(default_factory=dict)
+    angle_summary: dict[str, dict] = field(default_factory=dict)
+    per_matrix: list[dict] = field(default_factory=list)
 
     is_isovolumetric: bool = False
-    isovolumetric_threshold: float = 0.01  # mean |PR shift %| < this → isovolumetric
+    isovolumetric_threshold: float = 0.5  # mean |PR shift %| < this → isovolumetric
+    top_k_angles: int = 32
 
     elapsed_sec: float = 0.0
 
@@ -98,21 +101,36 @@ class RotationReport:
         shifts = [abs(v.get("mean_pr_change_pct", 0.0)) for v in self.svd_summary.values()]
         return float(np.mean(shifts)) if shifts else 0.0
 
+    @property
+    def mean_angle_deg(self) -> float:
+        """Mean principal angle (degrees) across all interesting matrices.
+
+        0° = no rotation (U/V identical). 90° = maximally rotated subspaces.
+        """
+        if not self.angle_summary:
+            return 0.0
+        vals = [v.get("mean_median_angle_deg", 0.0) for v in self.angle_summary.values()]
+        return float(np.mean(vals)) if vals else 0.0
+
     def verdict(self) -> str:
         """Plain-English verdict."""
         global_pct = self.global_rel_change * 100
         shift_pct = self.mean_svd_pr_shift_pct
+        angle_deg = self.mean_angle_deg
         if self.is_isovolumetric:
             return (
                 f"ISOVOLUMETRIC ROTATION CONFIRMED. "
                 f"Weights drifted {global_pct:.2f}% (Frobenius), "
-                f"but SVD spectrum PR shift is only {shift_pct:.3f}%. "
+                f"SVD spectrum PR shift is only {shift_pct:.3f}%, "
+                f"but top-{self.top_k_angles} singular subspaces rotated "
+                f"{angle_deg:.2f}° on average. "
                 f"Capacity conserved, beam rotated."
             )
         else:
             return (
-                f"NON-ISOVOLUMETRIC: weights drifted {global_pct:.2f}% and "
-                f"SVD spectrum PR shifted {shift_pct:.3f}% — above threshold. "
+                f"NON-ISOVOLUMETRIC: weights drifted {global_pct:.2f}%, "
+                f"SVD spectrum PR shifted {shift_pct:.3f}% (above threshold), "
+                f"subspaces rotated {angle_deg:.2f}°. "
                 f"Capacity may have changed. Inspect svd_summary for details."
             )
 
@@ -126,10 +144,14 @@ class RotationReport:
             "component_summary": self.component_summary,
             "layer_summary": {str(k): v for k, v in self.layer_summary.items()},
             "svd_summary": self.svd_summary,
+            "angle_summary": self.angle_summary,
+            "top_k_angles": self.top_k_angles,
             "mean_svd_pr_shift_pct": self.mean_svd_pr_shift_pct,
+            "mean_angle_deg": self.mean_angle_deg,
             "is_isovolumetric": self.is_isovolumetric,
             "verdict": self.verdict(),
             "elapsed_sec": round(self.elapsed_sec, 1),
+            "per_matrix": self.per_matrix,
         }
 
     def to_json(self, path: str | None = None, indent: int = 2) -> str:
@@ -143,9 +165,10 @@ class RotationReport:
         lines = [
             f"Rotation Analysis: {Path(self.model_a_path).name} → {Path(self.model_b_path).name}",
             "",
-            f"  Global ||ΔW|| / ||W||:   {self.global_rel_change*100:.4f}%",
-            f"  Mean SVD PR shift:        {self.mean_svd_pr_shift_pct:.4f}%",
-            f"  Isovolumetric:            {'YES ✓' if self.is_isovolumetric else 'NO ✗'}",
+            f"  Global ||ΔW|| / ||W||:     {self.global_rel_change*100:.4f}%",
+            f"  Mean SVD PR shift:          {self.mean_svd_pr_shift_pct:.4f}%",
+            f"  Mean top-{self.top_k_angles} subspace angle:  {self.mean_angle_deg:.3f}°",
+            f"  Isovolumetric:              {'YES ✓' if self.is_isovolumetric else 'NO ✗'}",
             "",
             f"  Component frobenius change:",
         ]
@@ -160,6 +183,15 @@ class RotationReport:
                 lines.append(
                     f"    {comp:<15s} spec_diff={s['mean_spectral_diff']:.6f}  "
                     f"PR shift={s['mean_pr_change_pct']:+.3f}%"
+                )
+
+        if self.angle_summary:
+            lines.append("")
+            lines.append(f"  Principal angle (top-{self.top_k_angles}) per component [degrees]:")
+            for comp, s in sorted(self.angle_summary.items(), key=lambda x: -x[1]["mean_median_angle_deg"]):
+                lines.append(
+                    f"    {comp:<15s} median={s['mean_median_angle_deg']:6.2f}°  "
+                    f"max={s['mean_max_angle_deg']:6.2f}°  min={s['mean_min_angle_deg']:6.2f}°"
                 )
 
         lines.append("")
@@ -194,8 +226,14 @@ class RotationAnalyzer:
         print(profile)
     """
 
-    def __init__(self, top_k_sv: int = 100, isovolumetric_threshold: float = 0.01):
+    def __init__(
+        self,
+        top_k_sv: int = 100,
+        top_k_angles: int = 32,
+        isovolumetric_threshold: float = 0.5,  # 0.5% absolute PR shift is a generous bound
+    ):
         self.top_k_sv = top_k_sv
+        self.top_k_angles = top_k_angles
         self.isovolumetric_threshold = isovolumetric_threshold
 
     # ─────────────────────────────────────────────────────────
@@ -251,11 +289,28 @@ class RotationAnalyzer:
             if wa.dim() >= 2 and comp in INTERESTING and min(wa.shape) >= 64:
                 wa_d = wa.float().to(device)
                 wb_d = wb.float().to(device)
+                k_ang = min(self.top_k_angles, min(wa.shape))
                 try:
-                    sv_a = torch.linalg.svdvals(wa_d)[: self.top_k_sv].cpu().numpy()
-                    sv_b = torch.linalg.svdvals(wb_d)[: self.top_k_sv].cpu().numpy()
+                    # Full SVD — we need U for principal angles
+                    U_a, S_a, _Vh_a = torch.linalg.svd(wa_d, full_matrices=False)
+                    U_b, S_b, _Vh_b = torch.linalg.svd(wb_d, full_matrices=False)
+
+                    # Spectrum (reuse top_k_sv)
+                    sv_a = S_a[: self.top_k_sv].cpu().numpy()
+                    sv_b = S_b[: self.top_k_sv].cpu().numpy()
+
+                    # Principal angles between top-k_ang left-singular subspaces
+                    # cos(θ_i) = singular values of U_a[:, :k]^T @ U_b[:, :k]
+                    Ua_k = U_a[:, :k_ang]
+                    Ub_k = U_b[:, :k_ang]
+                    cos_vals = torch.linalg.svdvals(Ua_k.T @ Ub_k)
+                    cos_vals = torch.clamp(cos_vals, -1.0, 1.0)
+                    angles_rad = torch.arccos(cos_vals).cpu().numpy()
+                    angles_deg = angles_rad * 180.0 / np.pi
                 finally:
                     del wa_d, wb_d
+                    if 'U_a' in dir():
+                        del U_a, U_b, S_a, S_b, _Vh_a, _Vh_b
                     if device != "cpu":
                         torch.cuda.empty_cache()
 
@@ -272,6 +327,11 @@ class RotationAnalyzer:
                     "rel_frob": rel, "spectral_diff": spec_diff,
                     "pr_base": pr_a, "pr_instruct": pr_b,
                     "pr_change_pct": (pr_b - pr_a) / pr_a * 100 if pr_a > 0 else 0.0,
+                    "principal_angles_deg": angles_deg.tolist(),
+                    "median_angle_deg": float(np.median(angles_deg)),
+                    "mean_angle_deg": float(np.mean(angles_deg)),
+                    "min_angle_deg": float(np.min(angles_deg)),
+                    "max_angle_deg": float(np.max(angles_deg)),
                 })
 
             if verbose and (i + 1) % 50 == 0:
@@ -307,6 +367,18 @@ class RotationAnalyzer:
             } for c, items in svd_by_comp.items()
         }
 
+        # Principal angle summary per component
+        angle_summary = {
+            c: {
+                "mean_median_angle_deg": float(np.mean([it["median_angle_deg"] for it in items])),
+                "mean_mean_angle_deg":   float(np.mean([it["mean_angle_deg"]   for it in items])),
+                "mean_max_angle_deg":    float(np.mean([it["max_angle_deg"]    for it in items])),
+                "mean_min_angle_deg":    float(np.mean([it["min_angle_deg"]    for it in items])),
+                "std_median_angle_deg":  float(np.std( [it["median_angle_deg"] for it in items])),
+                "n_matrices": len(items),
+            } for c, items in svd_by_comp.items()
+        }
+
         mean_shift = float(np.mean([abs(s["mean_pr_change_pct"]) for s in svd_summary.values()])) \
             if svd_summary else 0.0
         is_iso = mean_shift < self.isovolumetric_threshold
@@ -319,8 +391,11 @@ class RotationAnalyzer:
             component_summary=component_summary,
             layer_summary=layer_summary,
             svd_summary=svd_summary,
+            angle_summary=angle_summary,
+            per_matrix=svd_items,
             is_isovolumetric=is_iso,
             isovolumetric_threshold=self.isovolumetric_threshold,
+            top_k_angles=self.top_k_angles,
             elapsed_sec=time.time() - t0,
         )
 

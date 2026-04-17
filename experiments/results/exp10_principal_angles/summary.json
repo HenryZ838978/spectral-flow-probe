@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Mistral_7B",
+    "desc": "Mistral-7B base vs Instruct (Mistral AI, full alignment)",
+    "global_rel_change_pct": 3.911921225974333,
+    "mean_svd_pr_shift_pct": 0.3036269046810539,
+    "mean_angle_deg": 7.987977824639529,
+    "elapsed_sec": 659.6774237155914
+  }
+]

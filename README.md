@@ -48,7 +48,30 @@ We compared base ↔ instruct weights across three unrelated model families — 
 
 **But the SVD spectrum moved by ≈0% in all three families.**
 
-This is *isovolumetric rotation*. The singular values (Σ, the channel capacity) are conserved. The singular vectors (U, V, the channel direction) rotate. RL doesn't make the pipe narrower — it aims the pipe somewhere new.
+That showed capacity is conserved. But it didn't *directly* measure how much the singular vectors (U, V) rotated. So we measured that too, directly, using principal angles between top-32 singular subspaces. The numbers tell a clean story:
+
+![Rotation scales with training, not spectrum](assets/v2/angles_scaling.png)
+
+| Pair | ΔW (%) | Σ PR shift (%) | **Mean subspace angle (°)** |
+|---|---|---|---|
+| Qwen3-1.7B DPO-800 (**null**) | 0.02 | 0.000 | **0.92** |
+| Qwen2.5-7B base → Instruct | 1.32 | 0.10 | **1.62** |
+| Mistral-7B base → Instruct | 3.91 | 0.30 | **7.99** |
+| Yi-1.5-6B base → Chat | 24.65 | 0.14 | **9.33** |
+
+- The null baseline (800-step DPO that barely moved any weights) sits at ≈ 1° — the measurement noise floor.
+- Full alignment pipelines rotate the subspaces by 1.6° → 8° → 9°, scaling monotonically with weight drift.
+- The Σ PR shift stays below half a percent across the entire 1000× range of training intensity.
+
+**Rotation scales with training. Spectrum shift does not.** This is isovolumetric rotation, measured directly.
+
+Per component, the rotation is not uniform. The output head (`lm_head`) and FFN expansion (`up_proj`) rotate most; the attention key projection (`k_proj`) stays most stable across all families:
+
+![Per-component rotation](assets/v2/angles_per_component.png)
+
+And the dose-response is clean enough to make box plots useful:
+
+![Angle distribution across matrices](assets/v2/angles_distribution.png)
 
 ### 3️⃣ The rotation is quantifiable — and measurable in real time.
 
@@ -175,6 +198,8 @@ from spectral_flow_probe import (
 | PR is query-dependent | Exp 7D | Same model, 10 query types, PR varies 2× |
 | Weak DPO doesn't move the model | Exp 8 | 800 steps → 0.02% weight change |
 | Isovolumetric rotation is universal | Exp 9B | 3 families, weight drift 1.3–24.6%, SVD shift ~0% everywhere |
+| Principal angles scale with training | Exp 10 | Null 0.92° → Qwen 1.6° → Mistral 8° → Yi 9.3° |
+| `lm_head` and `up_proj` rotate most | Exp 10 | Consistent across all 3 full-RLHF pairs |
 | OOD benchmarks don't detect bandwidth loss | Exp 7A/B | IFEval + LiveCodeBench flat across all DPO checkpoints |
 
 Full experiment log: `experiments/` — 9 experiments, 4 days, one refuted hypothesis, one new theory.
