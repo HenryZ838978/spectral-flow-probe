@@ -315,6 +315,21 @@ For the experimental log including failed hypotheses and the path that led here,
 
 ---
 
+## Citation
+
+```bibtex
+@article{zhang2026bandwidtheconomics,
+  title   = {Representation Bandwidth Economics: RL Alignment as Isovolumetric
+             Rotation of the Spectral Beam Pattern},
+  author  = {Zhang, Jing},
+  year    = {2026},
+  doi     = {10.5281/zenodo.19585083},
+  url     = {https://doi.org/10.5281/zenodo.19585083}
+}
+```
+
+---
+
 ## License
 
 MIT. Use it. Fork it. Tell us what you find.
