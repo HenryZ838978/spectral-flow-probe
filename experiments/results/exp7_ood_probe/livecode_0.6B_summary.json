@@ -1,0 +1,40 @@
+{
+  "experiment": "Exp 7B: LiveCodeBench Easy — Qwen3-0.6B",
+  "model_size": "0.6B",
+  "dataset": "livecodebench/code_generation_lite test6 (v6)",
+  "date_range": "2025-01-04 to 2025-04-06 (all post Qwen3 cutoff)",
+  "difficulty": "easy",
+  "n_problems": 43,
+  "checkpoints": [
+    {
+      "step": 0,
+      "pr": 16.36268091620706,
+      "n_all_pass": 12,
+      "pass_at_1": 0.27906976744186046,
+      "avg_pass_rate": 0.3527131782945736
+    },
+    {
+      "step": 200,
+      "pr": 14.380033969208583,
+      "n_all_pass": 12,
+      "pass_at_1": 0.27906976744186046,
+      "avg_pass_rate": 0.3527131782945736
+    },
+    {
+      "step": 400,
+      "pr": 15.278672595714387,
+      "n_all_pass": 12,
+      "pass_at_1": 0.27906976744186046,
+      "avg_pass_rate": 0.3527131782945736
+    },
+    {
+      "step": 800,
+      "pr": 17.706350128228117,
+      "n_all_pass": 12,
+      "pass_at_1": 0.27906976744186046,
+      "avg_pass_rate": 0.3527131782945736
+    }
+  ],
+  "correlations": {},
+  "elapsed_min": 25.247572998205822
+}

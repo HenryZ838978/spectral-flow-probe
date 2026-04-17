@@ -1,7 +1,72 @@
 {
   "model": "Mistral-7B",
   "method": "DPO",
-  "status": "FAILED",
-  "error": "Cannot use chat template functions because tokenizer.chat_template is not set and no template argument was passed! For information about writing templates and setting the tokenizer.chat_template attribute, please see the documentation at https://huggingface.co/docs/transformers/main/en/chat_templating",
-  "elapsed_min": 1.4792689522107443
+  "baseline_pr": 12.389680920671635,
+  "pr_history": [
+    {
+      "pr_last": 15.769995877807427,
+      "s_last": -0.09386288861587586,
+      "r2": 0.8773151337776991,
+      "step": 25,
+      "epoch": 0.06666666666666667
+    },
+    {
+      "pr_last": 12.579337245474917,
+      "s_last": -0.09664052614405874,
+      "r2": 0.8251888594102615,
+      "step": 50,
+      "epoch": 0.13333333333333333
+    },
+    {
+      "pr_last": 13.888130799195011,
+      "s_last": -0.10078063658213594,
+      "r2": 0.8540516856442519,
+      "step": 75,
+      "epoch": 0.2
+    },
+    {
+      "pr_last": 12.490026293924606,
+      "s_last": -0.10562471876538912,
+      "r2": 0.824072490141209,
+      "step": 100,
+      "epoch": 0.26666666666666666
+    },
+    {
+      "pr_last": 11.222926112504245,
+      "s_last": -0.10458186007700765,
+      "r2": 0.8098163635549986,
+      "step": 125,
+      "epoch": 0.3333333333333333
+    },
+    {
+      "pr_last": 12.503967530361273,
+      "s_last": -0.10041388431172174,
+      "r2": 0.7978915018233715,
+      "step": 150,
+      "epoch": 0.4
+    },
+    {
+      "pr_last": 11.06469535867514,
+      "s_last": -0.11088414749013142,
+      "r2": 0.8495596901853208,
+      "step": 175,
+      "epoch": 0.4666666666666667
+    },
+    {
+      "pr_last": 14.624880502691147,
+      "s_last": -0.09589930394081948,
+      "r2": 0.8373119053307657,
+      "step": 200,
+      "epoch": 0.5333333333333333
+    }
+  ],
+  "eval": {
+    "eval_loss": 0.6878581047058105,
+    "eval_runtime": 54.5781,
+    "eval_samples_per_second": 5.497,
+    "eval_steps_per_second": 0.696
+  },
+  "final_step": 200,
+  "elapsed_min": 11.692504811286927,
+  "status": "OK"
 }

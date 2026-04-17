@@ -1,4 +1,4 @@
-"""Diagnostic plotting — 4-panel figure and comparison."""
+"""Plotting — radar charts and comparison panels for BandwidthFingerprint."""
 from __future__ import annotations
 
 from pathlib import Path
@@ -10,82 +10,38 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 
-from .report import SpectralReport
+from .fingerprint import BandwidthFingerprint, BandwidthComparison
 
-__all__ = ["plot_diagnosis", "plot_compare"]
+__all__ = ["plot_radar", "plot_comparison", "plot_grid"]
 
 
-def plot_diagnosis(report: SpectralReport, save: str | Path | None = None,
-                   dpi: int = 150) -> Figure:
-    """4-panel diagnostic figure for a single model.
+def plot_radar(
+    fp: BandwidthFingerprint,
+    save: str | Path | None = None,
+    color: str = "#3498db",
+    title: str | None = None,
+    dpi: int = 150,
+) -> Figure:
+    """Single-model 7-band radar chart."""
+    fig, ax = plt.subplots(figsize=(8, 8), subplot_kw=dict(polar=True))
 
-    Panels:
-      [0,0] S(depth) curve
-      [0,1] PR(depth) curve
-      [1,0] Eigenvalue spectrum (first / mid / last layer)
-      [1,1] Diagnosis summary text
-    """
-    fig, axes = plt.subplots(2, 2, figsize=(12, 9))
-    fig.suptitle(f"SFP Diagnosis: {report.model_path}", fontsize=13, fontweight="bold")
+    n = len(fp.bands)
+    angles = np.linspace(0, 2 * np.pi, n, endpoint=False).tolist()
+    angles += angles[:1]
 
-    depths = list(range(report.n_layers))
-    slopes = report.spectral_slope
-    prs = report.pr_curve
+    vals = list(fp.pr_vector) + [fp.pr_vector[0]]
+    ax.plot(angles, vals, "o-", linewidth=2.5, color=color)
+    ax.fill(angles, vals, alpha=0.2, color=color)
 
-    # Panel 0: S(depth)
-    ax = axes[0, 0]
-    ax.plot(depths, slopes, "o-", markersize=3, linewidth=1.5, color="#2563eb")
-    ax.axhline(slopes[0], ls="--", alpha=0.3, color="gray")
-    ax.axhline(slopes[-1], ls="--", alpha=0.3, color="gray")
-    ax.set_xlabel("Layer")
-    ax.set_ylabel("S (spectral slope)")
-    ax.set_title("S(depth)")
-    ax.grid(True, alpha=0.3)
+    labels = [b.name.replace(" ", "\n") for b in fp.bands]
+    ax.set_xticks(angles[:-1])
+    ax.set_xticklabels(labels, fontsize=9)
 
-    # Panel 1: PR(depth)
-    ax = axes[0, 1]
-    ax.plot(depths, prs, "s-", markersize=3, linewidth=1.5, color="#dc2626")
-    ax.set_xlabel("Layer")
-    ax.set_ylabel("PR (participation ratio)")
-    ax.set_title("PR(depth)")
-    ax.grid(True, alpha=0.3)
-
-    # Panel 2: Eigenvalue spectrum at 3 depths
-    ax = axes[1, 0]
-    for idx, label, color in [
-        (0, "First", "#16a34a"),
-        (report.n_layers // 2, "Mid", "#ca8a04"),
-        (report.n_layers - 1, "Last", "#9333ea"),
-    ]:
-        ev = report.layers[idx].eigenvalues
-        if len(ev) > 0:
-            ax.semilogy(range(len(ev)), ev, "o-", markersize=2, label=f"L{idx} ({label})",
-                        color=color, linewidth=1.2)
-    ax.set_xlabel("Component rank")
-    ax.set_ylabel("Eigenvalue (log)")
-    ax.set_title("Eigenvalue Spectrum")
-    ax.legend(fontsize=8)
-    ax.grid(True, alpha=0.3)
-
-    # Panel 3: Text summary
-    ax = axes[1, 1]
-    ax.axis("off")
-    dx = report.diagnose()
-    lines = [
-        f"Params: {report.n_params:.2f}B",
-        f"Layers: {report.n_layers}",
-        f"ΔS = {report.delta_s:.4f}",
-        f"ΔS/layer = {report.delta_s_per_layer:.5f}",
-        f"PR(last) = {report.pr_last:.2f}",
-        f"RL intensity: {dx['rl_intensity']}",
-        f"PR health: {dx['pr_health']}",
-    ]
-    if report.moe:
-        lines.append(f"MoE ratio: {report.moe.ratio:.1f}x")
-    lines.append(f"Time: {report.elapsed_sec:.0f}s")
-    ax.text(0.1, 0.9, "\n".join(lines), transform=ax.transAxes,
-            fontsize=11, verticalalignment="top", fontfamily="monospace",
-            bbox=dict(boxstyle="round,pad=0.5", facecolor="#f0f9ff", alpha=0.8))
+    title_text = title or f"Bandwidth Fingerprint\n{Path(fp.model_path).name}"
+    ax.set_title(
+        f"{title_text}\nMean PR: {fp.mean_pr:.2f}  |  BW ratio: {fp.bandwidth_ratio:.2f}",
+        fontsize=11, fontweight="bold", pad=20,
+    )
 
     plt.tight_layout()
     if save:
@@ -93,39 +49,88 @@ def plot_diagnosis(report: SpectralReport, save: str | Path | None = None,
     return fig
 
 
-def plot_compare(
-    reports: Sequence[SpectralReport],
-    labels: Sequence[str] | None = None,
+def plot_comparison(
+    cmp: BandwidthComparison,
     save: str | Path | None = None,
+    color_a: str = "#3498db",
+    color_b: str = "#e74c3c",
     dpi: int = 150,
 ) -> Figure:
-    """Compare S(depth) and PR(depth) across multiple models."""
+    """Side-by-side radar overlay of two fingerprints."""
+    fig, ax = plt.subplots(figsize=(9, 9), subplot_kw=dict(polar=True))
+
+    n = len(cmp.fp_a.bands)
+    angles = np.linspace(0, 2 * np.pi, n, endpoint=False).tolist()
+    angles += angles[:1]
+
+    vals_a = list(cmp.fp_a.pr_vector) + [cmp.fp_a.pr_vector[0]]
+    vals_b = list(cmp.fp_b.pr_vector) + [cmp.fp_b.pr_vector[0]]
+
+    ax.plot(angles, vals_a, "o-", linewidth=2.5, color=color_a, label=cmp.label_a)
+    ax.fill(angles, vals_a, alpha=0.15, color=color_a)
+    ax.plot(angles, vals_b, "s-", linewidth=2.5, color=color_b, label=cmp.label_b)
+    ax.fill(angles, vals_b, alpha=0.15, color=color_b)
+
+    labels = [b.name.replace(" ", "\n") for b in cmp.fp_a.bands]
+    ax.set_xticks(angles[:-1])
+    ax.set_xticklabels(labels, fontsize=9)
+
+    ax.set_title(
+        f"{cmp.label_a}  vs  {cmp.label_b}\n"
+        f"Mean PR: {cmp.fp_a.mean_pr:.2f} → {cmp.fp_b.mean_pr:.2f}  |  "
+        f"BW ratio: {cmp.fp_a.bandwidth_ratio:.2f} → {cmp.fp_b.bandwidth_ratio:.2f}",
+        fontsize=11, fontweight="bold", pad=25,
+    )
+    ax.legend(loc="upper right", bbox_to_anchor=(1.3, 1.1), fontsize=10)
+
+    plt.tight_layout()
+    if save:
+        fig.savefig(str(save), dpi=dpi, bbox_inches="tight")
+    return fig
+
+
+def plot_grid(
+    fingerprints: Sequence[BandwidthFingerprint],
+    labels: Sequence[str] | None = None,
+    save: str | Path | None = None,
+    cols: int = 3,
+    dpi: int = 150,
+) -> Figure:
+    """Grid of radar charts for multiple models."""
+    n = len(fingerprints)
     if labels is None:
-        labels = [r.model_path.split("/")[-1] for r in reports]
+        labels = [Path(fp.model_path).name for fp in fingerprints]
 
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
-    fig.suptitle("SFP Model Comparison", fontsize=13, fontweight="bold")
+    rows = (n + cols - 1) // cols
+    fig, axes = plt.subplots(rows, cols, figsize=(7 * cols, 7 * rows),
+                              subplot_kw=dict(polar=True))
+    if rows * cols == 1:
+        axes = np.array([[axes]])
+    elif rows == 1:
+        axes = axes.reshape(1, -1)
+    elif cols == 1:
+        axes = axes.reshape(-1, 1)
 
-    colors = plt.cm.tab10(np.linspace(0, 1, len(reports)))
+    n_bands = len(fingerprints[0].bands)
+    angles = np.linspace(0, 2 * np.pi, n_bands, endpoint=False).tolist()
+    angles += angles[:1]
+    band_labels = [b.name.replace(" ", "\n") for b in fingerprints[0].bands]
 
-    for i, (rpt, lbl) in enumerate(zip(reports, labels)):
-        frac = np.linspace(0, 1, rpt.n_layers)
-        ax1.plot(frac, rpt.spectral_slope, "o-", markersize=2, label=lbl,
-                 color=colors[i], linewidth=1.2)
-        ax2.plot(frac, rpt.pr_curve, "s-", markersize=2, label=lbl,
-                 color=colors[i], linewidth=1.2)
+    colors = plt.cm.tab10(np.linspace(0, 1, n))
+    for i, (fp, lbl) in enumerate(zip(fingerprints, labels)):
+        r, c = divmod(i, cols)
+        ax = axes[r, c]
+        vals = list(fp.pr_vector) + [fp.pr_vector[0]]
+        ax.plot(angles, vals, "o-", linewidth=2, color=colors[i])
+        ax.fill(angles, vals, alpha=0.2, color=colors[i])
+        ax.set_xticks(angles[:-1])
+        ax.set_xticklabels(band_labels, fontsize=8)
+        ax.set_title(f"{lbl}\nBW ratio: {fp.bandwidth_ratio:.2f}",
+                     fontsize=10, fontweight="bold", pad=15)
 
-    ax1.set_xlabel("Relative Depth")
-    ax1.set_ylabel("S")
-    ax1.set_title("S(depth)")
-    ax1.legend(fontsize=7, loc="best")
-    ax1.grid(True, alpha=0.3)
-
-    ax2.set_xlabel("Relative Depth")
-    ax2.set_ylabel("PR")
-    ax2.set_title("PR(depth)")
-    ax2.legend(fontsize=7, loc="best")
-    ax2.grid(True, alpha=0.3)
+    for i in range(n, rows * cols):
+        r, c = divmod(i, cols)
+        axes[r, c].axis("off")
 
     plt.tight_layout()
     if save:

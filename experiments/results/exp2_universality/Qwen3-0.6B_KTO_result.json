@@ -1,7 +1,81 @@
 {
   "model": "Qwen3-0.6B",
   "method": "KTO",
-  "status": "FAILED",
-  "error": "Actual (not effective) batch size must be > 1. KTO will not work properly because the KL term will be equivalent to the implied reward.",
-  "elapsed_min": 1.9176733016967773
+  "baseline_pr": 16.411550878105867,
+  "pr_history": [
+    {
+      "pr_last": 16.717073192898855,
+      "s_last": -0.08808328694363547,
+      "r2": 0.8744406600627264,
+      "step": 25,
+      "epoch": 0.03333333333333333
+    },
+    {
+      "pr_last": 17.475754997828368,
+      "s_last": -0.09179484823660264,
+      "r2": 0.9469644446601253,
+      "step": 50,
+      "epoch": 0.06666666666666667
+    },
+    {
+      "pr_last": 17.551783118984766,
+      "s_last": -0.0888235800223324,
+      "r2": 0.9089380962791808,
+      "step": 75,
+      "epoch": 0.1
+    },
+    {
+      "pr_last": 13.73207813650171,
+      "s_last": -0.10396947624500484,
+      "r2": 0.8929947689802356,
+      "step": 100,
+      "epoch": 0.13333333333333333
+    },
+    {
+      "pr_last": 16.72597192519343,
+      "s_last": -0.0992695188866754,
+      "r2": 0.9534387167145323,
+      "step": 125,
+      "epoch": 0.16666666666666666
+    },
+    {
+      "pr_last": 18.741474311501975,
+      "s_last": -0.08431109067401454,
+      "r2": 0.9382303433223192,
+      "step": 150,
+      "epoch": 0.2
+    },
+    {
+      "pr_last": 13.461754913451104,
+      "s_last": -0.10605991788377295,
+      "r2": 0.8824801433233146,
+      "step": 175,
+      "epoch": 0.23333333333333334
+    },
+    {
+      "pr_last": 14.111568376731405,
+      "s_last": -0.10208453849126195,
+      "r2": 0.8789494336717606,
+      "step": 200,
+      "epoch": 0.26666666666666666
+    }
+  ],
+  "eval": {
+    "eval_loss": 0.4992385804653168,
+    "eval_runtime": 38.8995,
+    "eval_samples_per_second": 15.424,
+    "eval_steps_per_second": 1.928,
+    "eval_rewards/chosen": -0.0018928349982573376,
+    "eval_logps/chosen": -312.43658980582524,
+    "eval_logits/chosen": -149194771.88349515,
+    "eval_rewards/rejected": -0.008090795110591088,
+    "eval_logps/rejected": -292.4191365979381,
+    "eval_logits/rejected": -133558835.02405499,
+    "eval_rewards/margins": 0.0061979601123337506,
+    "eval_kl": 0.07442636787891388,
+    "epoch": 0.26666666666666666
+  },
+  "final_step": 200,
+  "elapsed_min": 8.059775976339976,
+  "status": "OK"
 }

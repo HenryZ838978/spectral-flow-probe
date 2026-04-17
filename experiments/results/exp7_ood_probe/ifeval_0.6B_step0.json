@@ -1,0 +1,13 @@
+{
+  "step": 0,
+  "model_size": "0.6B",
+  "pr": 12.84361913843815,
+  "ifeval": {
+    "ifeval/prompt_level_strict_acc,none": 0.1534195933456562,
+    "ifeval/prompt_level_strict_acc_stderr,none": 0.015508780172875462,
+    "ifeval/inst_level_strict_acc,none": 0.29136690647482016,
+    "ifeval/prompt_level_loose_acc,none": 0.17375231053604437,
+    "ifeval/prompt_level_loose_acc_stderr,none": 0.016305102877651502,
+    "ifeval/inst_level_loose_acc,none": 0.30815347721822545
+  }
+}

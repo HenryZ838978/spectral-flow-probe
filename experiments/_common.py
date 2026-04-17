@@ -201,11 +201,24 @@ class SpectralDPOTrainer(DPOTrainer):
 
 # ── Model / Data / Config helpers ───────────────────────────────
 
+FALLBACK_CHAT_TEMPLATE = (
+    "{% for message in messages %}"
+    "{% if message['role'] == 'user' %}{{ '<|user|>\n' + message['content'] + '\n' }}"
+    "{% elif message['role'] == 'assistant' %}{{ '<|assistant|>\n' + message['content'] + eos_token + '\n' }}"
+    "{% endif %}"
+    "{% endfor %}"
+    "{% if add_generation_prompt %}{{ '<|assistant|>\n' }}{% endif %}"
+)
+
+
 def load_base_model(model_path: str, gpu_id: int = 0):
     log.info("Loading model: %s on GPU %d", model_path, gpu_id)
     tok = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
     if tok.pad_token is None:
         tok.pad_token = tok.eos_token
+    if tok.chat_template is None:
+        log.info("No chat_template found — setting fallback template")
+        tok.chat_template = FALLBACK_CHAT_TEMPLATE
     model = AutoModelForCausalLM.from_pretrained(
         model_path,
         trust_remote_code=True,

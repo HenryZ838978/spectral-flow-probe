@@ -1,0 +1,16 @@
+{
+  "base": {
+    "label": "Qwen2.5-7B-base",
+    "band0_raw_completion": 7.818062513523283,
+    "band_instruction": 6.987039719591282,
+    "ratio_raw_over_instr": 1.1189377515061003,
+    "elapsed_s": 0.8
+  },
+  "instruct": {
+    "label": "Qwen2.5-7B-Instruct",
+    "band0_raw_completion": 8.019791276694043,
+    "band_instruction": 6.723406561689333,
+    "ratio_raw_over_instr": 1.1928166477975086,
+    "elapsed_s": 0.5
+  }
+}

@@ -1,0 +1,1266 @@
+{
+  "step": 800,
+  "model_size": "1.7B",
+  "pr": 17.6123300442819,
+  "n_problems": 43,
+  "n_all_pass": 18,
+  "pass_at_1": 0.4186046511627907,
+  "avg_pass_rate": 0.45348837209302323,
+  "problems": [
+    {
+      "title": "9x9 Sum",
+      "difficulty": "easy",
+      "date": "2025-01-04T00:00:00",
+      "code_generated": "# Read input\nX = int(input())\n\n# Calculate total sum of all 9x9 multiplication table\ntotal_sum = 0\nfor i in range(1, 10):\n    for j in range(1, 10):\n        total_sum += i * j\n\n# Subtract the count of X (each occurrence is counted once)\ncount_X = 1  # Only one cell has X = 1*1 = 1\nresult = total_sum - X * count_X\n\n# Print the result\nprint(result)",
+      "response_length": 789,
+      "test_total": 3,
+      "test_passed": 1,
+      "pass_rate": 0.3333333333333333,
+      "all_pass": false,
+      "details": [
+        {
+          "input": "1",
+          "expected": "2024",
+          "actual": "2024",
+          "pass": true
+        },
+        {
+          "input": "11",
+          "expected": "2025",
+          "actual": "2014",
+          "pass": false
+        },
+        {
+          "input": "24",
+          "expected": "1929",
+          "actual": "2001",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "title": "Happy New Year 2025",
+      "difficulty": "easy",
+      "date": "2025-01-04T00:00:00",
+      "code_generated": "# Read input from standard input\nA, B = map(int, input().split())\n\n# Calculate the square of (A + B)\nresult = (A + B) ** 2\n\n# Print the result\nprint(result)",
+      "response_length": 170,
+      "test_total": 4,
+      "test_passed": 4,
+      "pass_rate": 1.0,
+      "all_pass": true,
+      "details": [
+        {
+          "input": "20 25",
+          "expected": "2025",
+          "actual": "2025",
+          "pass": true
+        },
+        {
+          "input": "30 25",
+          "expected": "3025",
+          "actual": "3025",
+          "pass": true
+        },
+        {
+          "input": "45 11",
+          "expected": "3136",
+          "actual": "3136",
+          "pass": true
+        },
+        {
+          "input": "2025 1111",
+          "expected": "9834496",
+          "actual": "9834496",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "title": "Heavy Snake",
+      "difficulty": "easy",
+      "date": "2025-01-11T00:00:00",
+      "code_generated": "# Read input\nimport sys\n\ndef main():\n    input = sys.stdin.read\n    data = input().split()\n    \n    N = int(data[0])\n    D = int(data[1])\n    \n    T = []\n    L = []\n    \n    index = 2\n    for _ in range(N):\n        t = int(data[index])\n        l = int(data[index + 1])\n        T.append(t)\n        L.append(l)\n        index += 2\n    \n    # Precompute the weights and sort them\n    weights = [t * l for t, l in zip(T, L)]\n    weights.sort(reverse=True)\n    \n    # For each k from 1 to D, compute the ne",
+      "response_length": 735,
+      "test_total": 2,
+      "test_passed": 2,
+      "pass_rate": 1.0,
+      "all_pass": true,
+      "details": [
+        {
+          "input": "4 3\n3 3\n5 1\n2 4\n1 10",
+          "expected": "12\n15\n20",
+          "actual": "12\n15\n20",
+          "pass": true
+        },
+        {
+          "input": "1 4\n100 100",
+          "expected": "10100\n10200\n10300\n10400",
+          "actual": "10100\n10200\n10300\n10400",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "title": "?UPC",
+      "difficulty": "easy",
+      "date": "2025-01-11T00:00:00",
+      "code_generated": "# Read input from standard input\nS = input().strip()\n\n# Extract the first character\nfirst_char = S[0]\n\n# Concatenate with \"UPC\"\nresult = first_char + \"UPC\"\n\n# Print the result\nprint(result)",
+      "response_length": 203,
+      "test_total": 2,
+      "test_passed": 2,
+      "pass_rate": 1.0,
+      "all_pass": true,
+      "details": [
+        {
+          "input": "Kyoto",
+          "expected": "KUPC",
+          "actual": "KUPC",
+          "pass": true
+        },
+        {
+          "input": "Tohoku",
+          "expected": "TUPC",
+          "actual": "TUPC",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "title": "tcaF",
+      "difficulty": "easy",
+      "date": "2025-01-18T00:00:00",
+      "code_generated": "import sys\nimport math\n\ndef main():\n    X = int(sys.stdin.readline())\n    N = math.isqrt(X)\n    while N * (N + 1) // 2 < X:\n        N += 1\n    print(N)\n\nif __name__ == \"__main__\":\n    main()",
+      "response_length": 751,
+      "test_total": 2,
+      "test_passed": 1,
+      "pass_rate": 0.5,
+      "all_pass": false,
+      "details": [
+        {
+          "input": "6",
+          "expected": "3",
+          "actual": "3",
+          "pass": true
+        },
+        {
+          "input": "2432902008176640000",
+          "expected": "20",
+          "actual": "timeout",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "title": "9x9",
+      "difficulty": "easy",
+      "date": "2025-01-18T00:00:00",
+      "code_generated": "# Read input from standard input\nS = input().strip()\n\n# Extract the two digits\nfirst_digit = int(S[0])\nsecond_digit = int(S[2])\n\n# Calculate the product\nproduct = first_digit * second_digit\n\n# Print the result as an integer\nprint(product)",
+      "response_length": 252,
+      "test_total": 2,
+      "test_passed": 2,
+      "pass_rate": 1.0,
+      "all_pass": true,
+      "details": [
+        {
+          "input": "3x8",
+          "expected": "24",
+          "actual": "24",
+          "pass": true
+        },
+        {
+          "input": "9x9",
+          "expected": "81",
+          "actual": "81",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "title": "12435",
+      "difficulty": "easy",
+      "date": "2025-01-25T00:00:00",
+      "code_generated": "# Read input\nA = list(map(int, input().split()))\n\n# Check if the list is already sorted\nis_sorted = A == sorted(A)\n\n# If it is already sorted, we must perform exactly one swap\nif is_sorted:\n    print(\"No\")\nelse:\n    # Try all possible adjacent swaps\n    found = False\n    for i in range(4):\n        # Swap i and i+1\n        A[i], A[i+1] = A[i+1], A[i]\n        if A == sorted(A):\n            found = True\n            break\n        A[i], A[i+1] = A[i+1], A[i]  # Undo the swap\n\n    print(\"Yes\" if found",
+      "response_length": 1117,
+      "test_total": 4,
+      "test_passed": 4,
+      "pass_rate": 1.0,
+      "all_pass": true,
+      "details": [
+        {
+          "input": "1 2 4 3 5",
+          "expected": "Yes",
+          "actual": "Yes",
+          "pass": true
+        },
+        {
+          "input": "5 3 2 4 1",
+          "expected": "No",
+          "actual": "No",
+          "pass": true
+        },
+        {
+          "input": "1 2 3 4 5",
+          "expected": "No",
+          "actual": "No",
+          "pass": true
+        },
+        {
+          "input": "2 1 3 4 5",
+          "expected": "Yes",
+          "actual": "Yes",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "title": "Geometric Sequence",
+      "difficulty": "easy",
+      "date": "2025-01-25T00:00:00",
+      "code_generated": "# Read input\nn = int(input())\na = list(map(int, input().split()))\n\n# Check if it's a geometric progression\nis_geometric = True\nfor i in range(1, n):\n    if a[i] / a[i-1] != a[i-1] / a[i-2]:\n        is_geometric = False\n        break\n\nprint(\"Yes\" if is_geometric else \"No\")",
+      "response_length": 286,
+      "test_total": 3,
+      "test_passed": 1,
+      "pass_rate": 0.3333333333333333,
+      "all_pass": false,
+      "details": [
+        {
+          "input": "5\n3 6 12 24 48",
+          "expected": "Yes",
+          "actual": "No",
+          "pass": false
+        },
+        {
+          "input": "3\n1 2 3",
+          "expected": "No",
+          "actual": "No",
+          "pass": true
+        },
+        {
+          "input": "2\n10 8",
+          "expected": "Yes",
+          "actual": "No",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "title": "Lucky Direction",
+      "difficulty": "easy",
+      "date": "2025-02-01T00:00:00",
+      "code_generated": "# Read input from standard input\nD = input().strip()\n\n# Define the opposite directions\nopposite = {\n    'N': 'S',\n    'S': 'N',\n    'E': 'W',\n    'W': 'E',\n    'NE': 'SW',\n    'SW': 'NE',\n    'SE': 'NW',\n    'NW': 'SE'\n}\n\n# Print the opposite direction\nprint(opposite[D])",
+      "response_length": 285,
+      "test_total": 2,
+      "test_passed": 2,
+      "pass_rate": 1.0,
+      "all_pass": true,
+      "details": [
+        {
+          "input": "N",
+          "expected": "S",
+          "actual": "S",
+          "pass": true
+        },
+        {
+          "input": "SE",
+          "expected": "NW",
+          "actual": "NW",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "title": "Seek Grid",
+      "difficulty": "easy",
+      "date": "2025-02-01T00:00:00",
+      "code_generated": "# Read input\nimport sys\n\ndef main():\n    input = sys.stdin.read\n    data = input().splitlines()\n    \n    N, M = map(int, data[0].split())\n    S = data[1:N+1]\n    T = data[N+1:N+M+1]\n\n    # Find the top-left corner (a, b) of the subgrid in S that matches T\n    for a in range(N - M + 1):\n        for b in range(N - M + 1):\n            match = True\n            for i in range(M):\n                for j in range(M):\n                    if S[a + i][b + j] != T[i][j]:\n                        match = Fals",
+      "response_length": 721,
+      "test_total": 2,
+      "test_passed": 2,
+      "pass_rate": 1.0,
+      "all_pass": true,
+      "details": [
+        {
+          "input": "3 2\n#.#\n..#\n##.\n.#\n#.",
+          "expected": "2 2",
+          "actual": "2 2",
+          "pass": true
+        },
+        {
+          "input": "2 1\n#.\n##\n.",
+          "expected": "1 2",
+          "actual": "1 2",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "title": "Shuffled Equation",
+      "difficulty": "easy",
+      "date": "2025-02-08T00:00:00",
+      "code_generated": "# Read input\nA = list(map(int, input().split()))\n\n# Generate all permutations of A (since there are only 3 elements, it's manageable)\nfrom itertools import permutations\n\n# Check if any permutation satisfies B1 * B2 == B3\nfor perm in permutations(A):\n    if perm[0] * perm[1] == perm[2]:\n        print(\"Yes\")\n        exit()\n\nprint(\"No\")",
+      "response_length": 834,
+      "test_total": 2,
+      "test_passed": 2,
+      "pass_rate": 1.0,
+      "all_pass": true,
+      "details": [
+        {
+          "input": "3 15 5",
+          "expected": "Yes",
+          "actual": "Yes",
+          "pass": true
+        },
+        {
+          "input": "5 3 2",
+          "expected": "No",
+          "actual": "No",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "title": "Who is Missing?",
+      "difficulty": "easy",
+      "date": "2025-02-08T00:00:00",
+      "code_generated": "# Read input\nN, M = map(int, input().split())\nA = list(map(int, input().split()))\n\n# Create a set for O(1) lookups\nset_A = set(A)\n\n# Find missing numbers\nmissing = []\nfor i in range(1, N + 1):\n    if i not in set_A:\n        missing.append(i)\n\n# Output the result\nprint(len(missing))\nif missing:\n    print(' '.join(map(str, missing)))",
+      "response_length": 347,
+      "test_total": 3,
+      "test_passed": 3,
+      "pass_rate": 1.0,
+      "all_pass": true,
+      "details": [
+        {
+          "input": "10 3\n3 9 2",
+          "expected": "7\n1 4 5 6 7 8 10",
+          "actual": "7\n1 4 5 6 7 8 10",
+          "pass": true
+        },
+        {
+          "input": "6 6\n1 3 5 2 4 6",
+          "expected": "0",
+          "actual": "0",
+          "pass": true
+        },
+        {
+          "input": "9 1\n9",
+          "expected": "8\n1 2 3 4 5 6 7 8",
+          "actual": "8\n1 2 3 4 5 6 7 8",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "title": "Poisonous Oyster",
+      "difficulty": "easy",
+      "date": "2025-02-15T00:00:00",
+      "code_generated": "# Read input\nS1, S2 = input().split()\n\n# Determine which oyster is poisonous\npoisonous = None\n\n# Check for each oyster\nfor oyster in [1, 2, 3, 4]:\n    # Takahashi ate 1 and 2\n    t1 = (oyster == 1 or oyster == 2)\n    t2 = (oyster == 1 or oyster == 3)\n    \n    # Aoki ate 1 and 3\n    a1 = (oyster == 1 or oyster == 3)\n    a2 = (oyster == 1 or oyster == 2)\n    \n    # Check if the sickness matches\n    if (t1 and t2 and S1 == 'sick') or (t1 and not t2 and S1 == 'fine') or \\\n       (t2 and not t1 and S",
+      "response_length": 1031,
+      "test_total": 2,
+      "test_passed": 0,
+      "pass_rate": 0.0,
+      "all_pass": false,
+      "details": [
+        {
+          "input": "sick fine",
+          "expected": "2",
+          "actual": "1",
+          "pass": false
+        },
+        {
+          "input": "fine fine",
+          "expected": "4",
+          "actual": "1",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "title": "A..B..C",
+      "difficulty": "easy",
+      "date": "2025-02-15T00:00:00",
+      "code_generated": "# Read input from standard input\nS = input().strip()\n\ncount = 0\n\n# Iterate over all possible i, j, k with i < j < k and j - i = k - j\nfor i in range(len(S)):\n    for j in range(i + 1, len(S)):\n        for k in range(j + 1, len(S) + 1):\n            if (S[i] == 'A' and S[j] == 'B' and S[k] == 'C'):\n                count += 1\n\nprint(count)",
+      "response_length": 890,
+      "test_total": 3,
+      "test_passed": 1,
+      "pass_rate": 0.3333333333333333,
+      "all_pass": false,
+      "details": [
+        {
+          "input": "AABCC",
+          "expected": "2",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "ARC",
+          "expected": "0",
+          "actual": "0",
+          "pass": true
+        },
+        {
+          "input": "AABAAABBAEDCCCD",
+          "expected": "4",
+          "actual": "",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "title": "cat",
+      "difficulty": "easy",
+      "date": "2025-02-22T00:00:00",
+      "code_generated": "# Read input\nn = int(input())\nstrings = [input().strip() for _ in range(n)]\n\n# Sort the strings by length, then by their natural order (though length is unique)\nsorted_strings = sorted(strings, key=lambda x: len(x))\n\n# Concatenate the sorted strings\nresult = ''.join(sorted_strings)\n\n# Print the result\nprint(result)",
+      "response_length": 330,
+      "test_total": 2,
+      "test_passed": 2,
+      "pass_rate": 1.0,
+      "all_pass": true,
+      "details": [
+        {
+          "input": "3\ntc\noder\na",
+          "expected": "atcoder",
+          "actual": "atcoder",
+          "pass": true
+        },
+        {
+          "input": "4\ncat\nenate\non\nc",
+          "expected": "concatenate",
+          "actual": "concatenate",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "title": "22222",
+      "difficulty": "easy",
+      "date": "2025-02-22T00:00:00",
+      "code_generated": "# Read input from standard input\nS = input().strip()\n\n# Filter out all characters that are not '2'\nfiltered = [c for c in S if c == '2']\n\n# Concatenate the filtered characters\nresult = ''.join(filtered)\n\n# Print the result\nprint(result)",
+      "response_length": 250,
+      "test_total": 3,
+      "test_passed": 3,
+      "pass_rate": 1.0,
+      "all_pass": true,
+      "details": [
+        {
+          "input": "20250222",
+          "expected": "22222",
+          "actual": "22222",
+          "pass": true
+        },
+        {
+          "input": "2",
+          "expected": "2",
+          "actual": "2",
+          "pass": true
+        },
+        {
+          "input": "22222000111222222",
+          "expected": "22222222222",
+          "actual": "22222222222",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "title": "Make Target",
+      "difficulty": "easy",
+      "date": "2025-03-01T00:00:00",
+      "code_generated": "# Read input\nN = int(input())\n\n# Initialize a grid with N rows and N columns, filled with '.' (white)\ngrid = [['.' for _ in range(N)] for _ in range(N)]\n\n# For each row i from 1 to N\nfor i in range(1, N + 1):\n    j = N + 1 - i\n    # If i <= j, fill the square from (i, i) to (j, j)\n    if i <= j:\n        # Determine color based on whether i is odd or even\n        if i % 2 == 1:\n            grid[i-1][i-1 : j] = ['#' for _ in range(j - i + 1)]\n        else:\n            grid[i-1][i-1 : j] = ['.' for",
+      "response_length": 596,
+      "test_total": 4,
+      "test_passed": 0,
+      "pass_rate": 0.0,
+      "all_pass": false,
+      "details": [
+        {
+          "input": "11",
+          "expected": "###########\n#.........#\n#.#######.#\n#.#.....#.#\n#.#.###.#.#\n#.#.#.#.#.#\n#.#.###.#.#\n#.#.....#.#\n#.##",
+          "actual": "###########\n...........\n..#######..\n...........\n....###....\n...........\n...........\n...........\n....",
+          "pass": false
+        },
+        {
+          "input": "5",
+          "expected": "#####\n#...#\n#.#.#\n#...#\n#####",
+          "actual": "#####\n.....\n..#..\n.....\n.....",
+          "pass": false
+        },
+        {
+          "input": "8",
+          "expected": "########\n#......#\n#.####.#\n#.#..#.#\n#.#..#.#\n#.####.#\n#......#\n########",
+          "actual": "########\n........\n..####..\n........\n........\n........\n........\n........",
+          "pass": false
+        },
+        {
+          "input": "2",
+          "expected": "##\n##",
+          "actual": "##\n..",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "title": "Strictly Increasing?",
+      "difficulty": "easy",
+      "date": "2025-03-01T00:00:00",
+      "code_generated": "# Read input\nn = int(input())\na = list(map(int, input().split()))\n\n# Check if the list is strictly increasing\nis_increasing = True\nfor i in range(n - 1):\n    if a[i] >= a[i + 1]:\n        is_increasing = False\n        break\n\n# Output the result\nprint(\"Yes\" if is_increasing else \"No\")",
+      "response_length": 297,
+      "test_total": 3,
+      "test_passed": 3,
+      "pass_rate": 1.0,
+      "all_pass": true,
+      "details": [
+        {
+          "input": "3\n1 2 5",
+          "expected": "Yes",
+          "actual": "Yes",
+          "pass": true
+        },
+        {
+          "input": "3\n3 9 5",
+          "expected": "No",
+          "actual": "No",
+          "pass": true
+        },
+        {
+          "input": "10\n1 1 2 3 5 8 13 21 34 55",
+          "expected": "No",
+          "actual": "No",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "title": "Card Pile",
+      "difficulty": "easy",
+      "date": "2025-03-08T00:00:00",
+      "code_generated": "# Read input\nQ = int(input())\nstack = []\n\nfor _ in range(Q):\n    parts = input().split()\n    if parts[0] == '1':\n        x = int(parts[1])\n        stack.insert(0, x)  # Insert at the top\n    elif parts[0] == '2':\n        val = stack.pop(0)  # Remove and get the top\n        print(val)",
+      "response_length": 698,
+      "test_total": 2,
+      "test_passed": 0,
+      "pass_rate": 0.0,
+      "all_pass": false,
+      "details": [
+        {
+          "input": "6\n2\n1 4\n1 3\n2\n2\n2",
+          "expected": "0\n3\n4\n0",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "5\n2\n2\n2\n2\n2",
+          "expected": "0\n0\n0\n0\n0",
+          "actual": "",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "title": "Triple Four",
+      "difficulty": "easy",
+      "date": "2025-03-08T00:00:00",
+      "code_generated": "# Read input\nn = int(input())\na = list(map(int, input().split()))\n\n# Check if there's a triplet of the same number in a row\nfor i in range(n - 2):\n    if a[i] == a[i+1] == a[i+2]:\n        print(\"Yes\")\n        exit()\n\n# If no such triplet found\nprint(\"No\")",
+      "response_length": 269,
+      "test_total": 5,
+      "test_passed": 5,
+      "pass_rate": 1.0,
+      "all_pass": true,
+      "details": [
+        {
+          "input": "5\n1 4 4 4 2",
+          "expected": "Yes",
+          "actual": "Yes",
+          "pass": true
+        },
+        {
+          "input": "6\n2 4 4 2 2 4",
+          "expected": "No",
+          "actual": "No",
+          "pass": true
+        },
+        {
+          "input": "8\n1 4 2 5 7 7 7 2",
+          "expected": "Yes",
+          "actual": "Yes",
+          "pass": true
+        },
+        {
+          "input": "10\n1 2 3 4 5 6 7 8 9 10",
+          "expected": "No",
+          "actual": "No",
+          "pass": true
+        },
+        {
+          "input": "13\n1 1 1 1 1 1 1 1 1 1 1 1 1",
+          "expected": "Yes",
+          "actual": "Yes",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "title": "Thermometer",
+      "difficulty": "easy",
+      "date": "2025-03-15T00:00:00",
+      "code_generated": "# Read input from standard input\nX = float(input().strip())\n\n# Determine the classification\nif X >= 38.0:\n    print(1)\nelif 37.5 <= X < 38.0:\n    print(2)\nelse:\n    print(3)",
+      "response_length": 187,
+      "test_total": 3,
+      "test_passed": 3,
+      "pass_rate": 1.0,
+      "all_pass": true,
+      "details": [
+        {
+          "input": "40.0",
+          "expected": "1",
+          "actual": "1",
+          "pass": true
+        },
+        {
+          "input": "37.7",
+          "expected": "2",
+          "actual": "2",
+          "pass": true
+        },
+        {
+          "input": "36.6",
+          "expected": "3",
+          "actual": "3",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "title": "Doors in the Center",
+      "difficulty": "easy",
+      "date": "2025-03-22T00:00:00",
+      "code_generated": "n = int(input())\n\n# The unique solution for the problem\nif n == 4:\n    print(\"-==-\")\nelif n == 7:\n    print(\"---=---\")\nelse:\n    # For other values of N, construct the string\n    # The pattern is: (N-4) '-' followed by '==', then (N-4) '-'\n    # This ensures the string is a palindrome and has exactly two '='\n    # and they are adjacent\n    result = '-' * (n - 4) + '=='\n    result += '-' * (n - 4)\n    print(result)",
+      "response_length": 431,
+      "test_total": 2,
+      "test_passed": 2,
+      "pass_rate": 1.0,
+      "all_pass": true,
+      "details": [
+        {
+          "input": "4",
+          "expected": "-==-",
+          "actual": "-==-",
+          "pass": true
+        },
+        {
+          "input": "7",
+          "expected": "---=---",
+          "actual": "---=---",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "title": "Hamming Distance",
+      "difficulty": "easy",
+      "date": "2025-03-29T00:00:00",
+      "code_generated": "# Read input\nN = int(input())\nS = input().strip()\nT = input().strip()\n\n# Calculate Hamming distance\nhamming_distance = 0\nfor s, t in zip(S, T):\n    if s != t:\n        hamming_distance += 1\n\n# Print the result\nprint(hamming_distance)",
+      "response_length": 246,
+      "test_total": 4,
+      "test_passed": 4,
+      "pass_rate": 1.0,
+      "all_pass": true,
+      "details": [
+        {
+          "input": "6\nabcarc\nagcahc",
+          "expected": "2",
+          "actual": "2",
+          "pass": true
+        },
+        {
+          "input": "7\natcoder\ncontest",
+          "expected": "7",
+          "actual": "7",
+          "pass": true
+        },
+        {
+          "input": "8\nchokudai\nchokudai",
+          "expected": "0",
+          "actual": "0",
+          "pass": true
+        },
+        {
+          "input": "10\nvexknuampx\nvzxikuamlx",
+          "expected": "4",
+          "actual": "4",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "title": "Ranking with Ties",
+      "difficulty": "easy",
+      "date": "2025-03-29T00:00:00",
+      "code_generated": "def main():\n    import sys\n    input = sys.stdin.read\n    data = input().split()\n    \n    N = int(data[0])\n    P = list(map(int, data[1:N+1]))\n    \n    # Initialize rank list\n    rank = [0] * N\n    r = 1  # current rank value\n    \n    # List to keep track of people with undetermined rank\n    undetermined = list(range(N))\n    \n    while undetermined:\n        # Find max score among undetermined\n        max_p = max(P[undetermined])\n        # Find number of people with this max score\n        k = P[u",
+      "response_length": 862,
+      "test_total": 4,
+      "test_passed": 0,
+      "pass_rate": 0.0,
+      "all_pass": false,
+      "details": [
+        {
+          "input": "4\n3 12 9 9",
+          "expected": "4\n1\n2\n2",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "3\n3 9 6",
+          "expected": "3\n1\n2",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "4\n100 100 100 100",
+          "expected": "1\n1\n1\n1",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "8\n87 87 87 88 41 38 41 38",
+          "expected": "2\n2\n2\n1\n5\n7\n5\n7",
+          "actual": "",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "title": "ABC400 Party",
+      "difficulty": "easy",
+      "date": "2025-04-05T00:00:00",
+      "code_generated": "# Read input from standard input\nA = int(input())\n\n# To find B such that A * B = 400\n# B must be a positive integer\n# So, B = 400 / A, and it must be an integer\n\nB = 400 // A\n\n# Check if B is a positive integer\nif B > 0 and 400 % A == 0:\n    print(B)\nelse:\n    print(-1)",
+      "response_length": 726,
+      "test_total": 3,
+      "test_passed": 3,
+      "pass_rate": 1.0,
+      "all_pass": true,
+      "details": [
+        {
+          "input": "10",
+          "expected": "40",
+          "actual": "40",
+          "pass": true
+        },
+        {
+          "input": "11",
+          "expected": "-1",
+          "actual": "-1",
+          "pass": true
+        },
+        {
+          "input": "400",
+          "expected": "1",
+          "actual": "1",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "title": "Sum of Geometric Series",
+      "difficulty": "easy",
+      "date": "2025-04-05T00:00:00",
+      "code_generated": "# Read input\nN, M = map(int, input().split())\n\n# Initialize sum\ntotal = 0\ncurrent = 1  # Starting with N^0 = 1\n\n# Calculate the geometric series sum\nfor _ in range(M + 1):\n    total += current\n    current *= N\n\n# Check if the sum exceeds 1e9\nif total > 10**9:\n    print(\"inf\")\nelse:\n    print(total)",
+      "response_length": 988,
+      "test_total": 4,
+      "test_passed": 4,
+      "pass_rate": 1.0,
+      "all_pass": true,
+      "details": [
+        {
+          "input": "7 3",
+          "expected": "400",
+          "actual": "400",
+          "pass": true
+        },
+        {
+          "input": "1000000 2",
+          "expected": "inf",
+          "actual": "inf",
+          "pass": true
+        },
+        {
+          "input": "999999999 1",
+          "expected": "1000000000",
+          "actual": "1000000000",
+          "pass": true
+        },
+        {
+          "input": "998244353 99",
+          "expected": "inf",
+          "actual": "inf",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "title": "zigzag-grid-traversal-with-skip",
+      "difficulty": "easy",
+      "date": "2025-01-11T18:30:00",
+      "code_generated": "from typing import List\n\nclass Solution:\n    def zigzagTraversal(self, grid: List[List[int]]) -> List[int]:\n        result = []\n        rows, cols = len(grid), len(grid[0])\n        \n        for row in range(rows):\n            for col in range(cols):\n                # Skip every alternate cell\n                if (row % 2 == 0 and col % 2 == 1) or (row % 2 == 1 and col % 2 == 0):\n                    continue\n                result.append(grid[row][col])\n        \n        return result",
+      "response_length": 1698,
+      "test_total": 3,
+      "test_passed": 0,
+      "pass_rate": 0.0,
+      "all_pass": false,
+      "details": [
+        {
+          "input": "[[1, 2], [3, 4]]",
+          "expected": "[1, 4]",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "[[2, 1], [2, 1], [2, 1]]",
+          "expected": "[2, 1, 2]",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "[[1, 2, 3], [4, 5, 6], [7, 8, 9]]",
+          "expected": "[1, 3, 5, 7, 9]",
+          "actual": "",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "title": "sum-of-variable-length-subarrays",
+      "difficulty": "easy",
+      "date": "2025-01-18T18:30:00",
+      "code_generated": "from typing import List\n\nclass Solution:\n    def subarraySum(self, nums: List[int]) -> int:\n        total = 0\n        current_sum = 0\n        \n        for i in range(len(nums)):\n            current_sum += nums[i]\n            total += current_sum\n            \n        return total",
+      "response_length": 1053,
+      "test_total": 2,
+      "test_passed": 0,
+      "pass_rate": 0.0,
+      "all_pass": false,
+      "details": [
+        {
+          "input": "[2, 3, 1]",
+          "expected": "11",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "[3, 1, 1, 2]",
+          "expected": "13",
+          "actual": "",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "title": "count-partitions-with-even-sum-difference",
+      "difficulty": "easy",
+      "date": "2025-01-25T18:30:00",
+      "code_generated": "from typing import List\n\nclass Solution:\n    def countPartitions(self, nums: List[int]) -> int:\n        total_sum = sum(nums)\n        even_count = 0\n        odd_count = 0\n\n        # Track prefix sums\n        prefix_sum = 0\n        for i in range(len(nums)):\n            prefix_sum += nums[i]\n            if (prefix_sum % 2 == 0):\n                even_count += 1\n            else:\n                odd_count += 1\n\n        # The number of valid partitions is equal to the number of prefix sums that are ",
+      "response_length": 1406,
+      "test_total": 3,
+      "test_passed": 0,
+      "pass_rate": 0.0,
+      "all_pass": false,
+      "details": [
+        {
+          "input": "[10, 10, 3, 7, 6]",
+          "expected": "4",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "[1, 2, 2]",
+          "expected": "0",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "[2, 4, 6, 8]",
+          "expected": "3",
+          "actual": "",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "title": "maximum-difference-between-even-and-odd-frequency-i",
+      "difficulty": "easy",
+      "date": "2025-02-01T18:30:00",
+      "code_generated": "class Solution:\n    def maxDifference(self, s: str) -> int:\n        from collections import Counter\n\n        # Count the frequency of each character\n        freq = Counter(s)\n\n        # Find the maximum and minimum frequencies\n        max_freq = max(freq.values())\n        min_freq = min(freq.values())\n\n        # Check if there is at least one even and one odd frequency\n        # Since the problem says it's guaranteed, we don't need to handle that\n\n        # Calculate the maximum difference\n     ",
+      "response_length": 1094,
+      "test_total": 2,
+      "test_passed": 0,
+      "pass_rate": 0.0,
+      "all_pass": false,
+      "details": [
+        {
+          "input": "\"aaaaabbc\"",
+          "expected": "3",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "\"abcabcab\"",
+          "expected": "1",
+          "actual": "",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "title": "find-special-substring-of-length-k",
+      "difficulty": "easy",
+      "date": "2025-02-15T18:30:00",
+      "code_generated": "class Solution:\n    def hasSpecialSubstring(self, s: str, k: int) -> bool:\n        # Iterate through all possible substrings of length k\n        for i in range(len(s) - k + 1):\n            substring = s[i:i + k]\n            \n            # Check if all characters in the substring are the same\n            if substring[0] == substring[1] == substring[2] == ... == substring[-1]:\n                # Check the characters before and after the substring\n                if i > 0 and s[i - 1] == substring[0",
+      "response_length": 1500,
+      "test_total": 2,
+      "test_passed": 0,
+      "pass_rate": 0.0,
+      "all_pass": false,
+      "details": [
+        {
+          "input": "\"aaabaaa\"\n3",
+          "expected": "true",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "\"abc\"\n2",
+          "expected": "false",
+          "actual": "",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "title": "check-if-digits-are-equal-in-string-after-operations-i",
+      "difficulty": "easy",
+      "date": "2025-02-22T18:30:00",
+      "code_generated": "class Solution:\n    def hasSameDigits(self, s: str) -> bool:\n        while len(s) > 2:\n            new_digits = []\n            for i in range(len(s) - 1):\n                new_digit = (int(s[i]) + int(s[i + 1])) % 10\n                new_digits.append(str(new_digit))\n            s = ''.join(new_digits)\n        return s[0] == s[1]",
+      "response_length": 1080,
+      "test_total": 2,
+      "test_passed": 0,
+      "pass_rate": 0.0,
+      "all_pass": false,
+      "details": [
+        {
+          "input": "\"3902\"",
+          "expected": "true",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "\"34789\"",
+          "expected": "false",
+          "actual": "",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "title": "find-the-largest-almost-missing-integer",
+      "difficulty": "easy",
+      "date": "2025-03-01T18:30:00",
+      "code_generated": "from typing import List\n\nclass Solution:\n    def largestInteger(self, nums: List[int], k: int) -> int:\n        # Create a frequency dictionary to count occurrences of each number\n        freq = {}\n        for num in nums:\n            if num in freq:\n                freq[num] += 1\n            else:\n                freq[num] = 1\n\n        # Create a list to store the count of each number in subarrays of size k\n        count_in_subarrays = {}\n        n = len(nums)\n        for i in range(n - k + 1):\n",
+      "response_length": 1817,
+      "test_total": 3,
+      "test_passed": 0,
+      "pass_rate": 0.0,
+      "all_pass": false,
+      "details": [
+        {
+          "input": "[3, 9, 2, 1, 7]\n3",
+          "expected": "7",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "[3, 9, 7, 2, 1, 7]\n4",
+          "expected": "3",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "[0, 0]\n1",
+          "expected": "-1",
+          "actual": "",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "title": "maximum-unique-subarray-sum-after-deletion",
+      "difficulty": "easy",
+      "date": "2025-03-15T19:30:00",
+      "code_generated": "from typing import List\n\nclass Solution:\n    def maxSum(self, nums: List[int]) -> int:\n        n = len(nums)\n        max_sum = current_sum = nums[0]\n        start = 0\n\n        for i in range(1, n):\n            if nums[i] == nums[i - 1]:\n                # If current element is same as previous, reset the current sum and start\n                current_sum = nums[i]\n                start = i\n            else:\n                # Otherwise, add to current sum\n                current_sum += nums[i]\n\n   ",
+      "response_length": 1333,
+      "test_total": 3,
+      "test_passed": 0,
+      "pass_rate": 0.0,
+      "all_pass": false,
+      "details": [
+        {
+          "input": "[1, 2, 3, 4, 5]",
+          "expected": "15",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "[1, 1, 0, 1, 1]",
+          "expected": "1",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "[1, 2, -1, -2, 1, 0, -1]",
+          "expected": "3",
+          "actual": "",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "title": "maximum-containers-on-a-ship",
+      "difficulty": "easy",
+      "date": "2025-03-22T19:30:00",
+      "code_generated": "class Solution:\n    def maxContainers(self, n: int, w: int, maxWeight: int) -> int:\n        # Total number of cells on the deck\n        total_cells = n * n\n        \n        # Maximum number of containers we can load\n        max_possible = min(total_cells, maxWeight // w)\n        \n        # Binary search for the maximum number of containers\n        left, right = 0, max_possible\n        max_containers = 0\n        \n        while left <= right:\n            mid = (left + right) // 2\n            # Cal",
+      "response_length": 2064,
+      "test_total": 2,
+      "test_passed": 0,
+      "pass_rate": 0.0,
+      "all_pass": false,
+      "details": [
+        {
+          "input": "2\n3\n15",
+          "expected": "4",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "3\n5\n20",
+          "expected": "4",
+          "actual": "",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "title": "minimum-cost-to-reach-every-position",
+      "difficulty": "easy",
+      "date": "2025-03-29T19:30:00",
+      "code_generated": "from typing import List\n\nclass Solution:\n    def minCosts(self, cost: List[int]) -> List[int]:\n        n = len(cost)\n        answer = [0] * n\n\n        # Initialize the first position (position 0)\n        answer[0] = cost[0]\n\n        # Iterate from the second position to the end\n        for i in range(1, n):\n            # If the current person is in front of you, you pay the cost\n            if i == 0:\n                answer[i] = cost[i]\n            else:\n                # You can swap with the p",
+      "response_length": 1584,
+      "test_total": 2,
+      "test_passed": 0,
+      "pass_rate": 0.0,
+      "all_pass": false,
+      "details": [
+        {
+          "input": "[5, 3, 4, 1, 3, 2]",
+          "expected": "[5, 3, 3, 1, 1, 1]",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "[1, 2, 4, 6, 7]",
+          "expected": "[1, 1, 1, 1, 1]",
+          "actual": "",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "title": "minimum-pair-removal-to-sort-array-i",
+      "difficulty": "easy",
+      "date": "2025-04-05T19:30:00",
+      "code_generated": "from typing import List\n\nclass Solution:\n    def minimumPairRemoval(self, nums: List[int]) -> int:\n        # Sort the array\n        sorted_nums = sorted(nums)\n        \n        # The minimum number of operations is equal to the number of elements minus the length of the longest non-decreasing subsequence\n        # This is based on the fact that each operation reduces the array length by 1\n        # So, the number of operations is (length of array) - (length of longest non-decreasing subsequence)\n",
+      "response_length": 3341,
+      "test_total": 2,
+      "test_passed": 0,
+      "pass_rate": 0.0,
+      "all_pass": false,
+      "details": [
+        {
+          "input": "[5, 2, 3, 1]",
+          "expected": "2",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "[1, 2, 2]",
+          "expected": "0",
+          "actual": "",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "title": "maximum-difference-between-adjacent-elements-in-a-circular-array",
+      "difficulty": "easy",
+      "date": "2025-01-18T06:30:00",
+      "code_generated": "from typing import List\n\nclass Solution:\n    def maxAdjacentDistance(self, nums: List[int]) -> int:\n        n = len(nums)\n        max_diff = float('-inf')\n        \n        # Check all adjacent pairs in the normal array\n        for i in range(n):\n            current_diff = abs(nums[(i + 1) % n] - nums[i])\n            if current_diff > max_diff:\n                max_diff = current_diff\n        \n        return max_diff",
+      "response_length": 1001,
+      "test_total": 2,
+      "test_passed": 0,
+      "pass_rate": 0.0,
+      "all_pass": false,
+      "details": [
+        {
+          "input": "[1, 2, 4]",
+          "expected": "3",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "[-5, -10, -5]",
+          "expected": "5",
+          "actual": "",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "title": "find-valid-pair-of-adjacent-digits-in-string",
+      "difficulty": "easy",
+      "date": "2025-02-01T06:30:00",
+      "code_generated": "class Solution:\n    def findValidPair(self, s: str) -> str:\n        from collections import Counter\n\n        # Count the frequency of each digit\n        digit_counts = Counter(s)\n\n        # Iterate through the string to find a valid pair\n        for i in range(len(s) - 1):\n            first_digit = s[i]\n            second_digit = s[i + 1]\n\n            # Check if the digits are different\n            if first_digit == second_digit:\n                continue\n\n            # Check if both digits appea",
+      "response_length": 1615,
+      "test_total": 3,
+      "test_passed": 0,
+      "pass_rate": 0.0,
+      "all_pass": false,
+      "details": [
+        {
+          "input": "\"2523533\"",
+          "expected": "\"23\"",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "\"221\"",
+          "expected": "\"21\"",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "\"22\"",
+          "expected": "\"\"",
+          "actual": "",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "title": "sum-of-good-numbers",
+      "difficulty": "easy",
+      "date": "2025-02-15T06:30:00",
+      "code_generated": "from typing import List\n\nclass Solution:\n    def sumOfGoodNumbers(self, nums: List[int], k: int) -> int:\n        total = 0\n        n = len(nums)\n        \n        for i in range(n):\n            # Check if i - k and i + k are valid indices\n            left = i - k\n            right = i + k\n            \n            # Check if left is valid (>= 0)\n            if left >= 0:\n                left_val = nums[left]\n            else:\n                left_val = -float('inf')\n            \n            # Chec",
+      "response_length": 1589,
+      "test_total": 2,
+      "test_passed": 0,
+      "pass_rate": 0.0,
+      "all_pass": false,
+      "details": [
+        {
+          "input": "[1, 3, 2, 1, 5, 4]\n2",
+          "expected": "12",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "[2, 1]\n1",
+          "expected": "2",
+          "actual": "",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "title": "transform-array-by-parity",
+      "difficulty": "easy",
+      "date": "2025-03-01T06:30:00",
+      "code_generated": "from typing import List\n\nclass Solution:\n    def transformArray(self, nums: List[int]) -> List[int]:\n        # Create a copy of the list to avoid modifying the original\n        transformed = nums[:]\n        \n        # Replace even numbers with 0 and odd numbers with 1\n        for i in range(len(transformed)):\n            if transformed[i] % 2 == 0:\n                transformed[i] = 0\n            else:\n                transformed[i] = 1\n        \n        # Sort the transformed array in non-decreasi",
+      "response_length": 1170,
+      "test_total": 2,
+      "test_passed": 0,
+      "pass_rate": 0.0,
+      "all_pass": false,
+      "details": [
+        {
+          "input": "[4, 3, 2, 1]",
+          "expected": "[0, 0, 1, 1]",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "[1, 5, 1, 4, 2]",
+          "expected": "[0, 0, 1, 1, 1]",
+          "actual": "",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "title": "unique-3-digit-even-numbers",
+      "difficulty": "easy",
+      "date": "2025-03-15T07:30:00",
+      "code_generated": "from typing import List\n\nclass Solution:\n    def totalNumbers(self, digits: List[int]) -> int:\n        count = 0\n        n = len(digits)\n        \n        # Try all combinations of 3 distinct digits\n        for i in range(n):\n            for j in range(i + 1, n):\n                for k in range(j + 1, n):\n                    # Check if the digits are distinct\n                    if digits[i] != digits[j] and digits[i] != digits[k] and digits[j] != digits[k]:\n                        # Check if the ",
+      "response_length": 1799,
+      "test_total": 4,
+      "test_passed": 0,
+      "pass_rate": 0.0,
+      "all_pass": false,
+      "details": [
+        {
+          "input": "[1, 2, 3, 4]",
+          "expected": "12",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "[0, 2, 2]",
+          "expected": "2",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "[6, 6, 6]",
+          "expected": "1",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "[1, 3, 5]",
+          "expected": "0",
+          "actual": "",
+          "pass": false
+        }
+      ]
+    },
+    {
+      "title": "reverse-degree-of-a-string",
+      "difficulty": "easy",
+      "date": "2025-03-29T07:30:00",
+      "code_generated": "class Solution:\n    def reverseDegree(self, s: str) -> int:\n        # Define the reversed alphabet mapping\n        reversed_alphabet = {chr(ord('a') + i): i + 1 for i in range(26)}\n        \n        # Initialize the total product\n        total = 0\n        \n        # Iterate over each character in the string\n        for index, char in enumerate(s, 1):\n            # Get the position in the reversed alphabet\n            reversed_pos = reversed_alphabet[char]\n            # Calculate the product and a",
+      "response_length": 1366,
+      "test_total": 2,
+      "test_passed": 0,
+      "pass_rate": 0.0,
+      "all_pass": false,
+      "details": [
+        {
+          "input": "\"abc\"",
+          "expected": "148",
+          "actual": "",
+          "pass": false
+        },
+        {
+          "input": "\"zaza\"",
+          "expected": "160",
+          "actual": "",
+          "pass": false
+        }
+      ]
+    }
+  ]
+}

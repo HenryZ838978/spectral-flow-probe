@@ -1,0 +1,38 @@
+{
+  "family": "Mistral-7B",
+  "global_pct": 3.911921225974333,
+  "svd": {
+    "lm_head": {
+      "mean_spec_diff": 0.0023120322730392218,
+      "mean_pr_pct": -2.0211886576947524
+    },
+    "down_proj": {
+      "mean_spec_diff": 0.000408581263400265,
+      "mean_pr_pct": 0.05429106138998485
+    },
+    "gate_proj": {
+      "mean_spec_diff": 0.0008440561041425099,
+      "mean_pr_pct": -0.12058024131597728
+    },
+    "up_proj": {
+      "mean_spec_diff": 0.0003578291757548868,
+      "mean_pr_pct": 0.04968016497627124
+    },
+    "k_proj": {
+      "mean_spec_diff": 0.0008082520680545713,
+      "mean_pr_pct": -0.13955491768409473
+    },
+    "o_proj": {
+      "mean_spec_diff": 0.00041961715169236413,
+      "mean_pr_pct": 0.038134337064335624
+    },
+    "q_proj": {
+      "mean_spec_diff": 0.0004244118358656124,
+      "mean_pr_pct": -0.0008318125006290412
+    },
+    "v_proj": {
+      "mean_spec_diff": 0.0003173117188453034,
+      "mean_pr_pct": 0.004754044822386065
+    }
+  }
+}

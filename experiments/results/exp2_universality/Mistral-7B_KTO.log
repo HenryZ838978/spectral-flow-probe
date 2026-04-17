@@ -1,12 +1,13 @@
 Skipping import of cpp extensions due to incompatible torch version 2.9.1+cu128 for torchao version 0.16.0             Please see https://github.com/pytorch/ao/issues/2919 for more info
-2026-04-14 21:21:46 [INFO] === KTO: Mistral-7B on GPU 4 ===
-2026-04-14 21:21:46 [INFO] Loading model: /cache/zhangjing/models/Mistral-7B-v0.1 on GPU 0
+2026-04-15 12:51:21 [INFO] === KTO: Mistral-7B on GPU 5 ===
+2026-04-15 12:51:21 [INFO] Loading model: /cache/zhangjing/models/Mistral-7B-v0.1 on GPU 0
+2026-04-15 12:51:21 [INFO] No chat_template found — setting fallback template
 `torch_dtype` is deprecated! Use `dtype` instead!
-2026-04-14 21:21:46 [WARNING] `torch_dtype` is deprecated! Use `dtype` instead!
-Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   3%|▎         | 10/291 [00:00<00:02, 99.74it/s]Loading weights:   8%|▊         | 24/291 [00:00<00:02, 116.66it/s]Loading weights:  14%|█▍        | 41/291 [00:00<00:01, 135.80it/s]Loading weights:  20%|█▉        | 58/291 [00:00<00:01, 143.83it/s]Loading weights:  25%|██▌       | 73/291 [00:00<00:01, 142.54it/s]Loading weights:  30%|███       | 88/291 [00:00<00:01, 138.60it/s]Loading weights:  36%|███▌      | 104/291 [00:00<00:01, 141.77it/s]Loading weights:  42%|████▏     | 121/291 [00:00<00:01, 147.52it/s]Loading weights:  47%|████▋     | 136/291 [00:00<00:01, 146.39it/s]Loading weights:  52%|█████▏    | 151/291 [00:01<00:00, 141.51it/s]Loading weights:  57%|█████▋    | 167/291 [00:01<00:00, 144.57it/s]Loading weights:  63%|██████▎   | 184/291 [00:01<00:00, 149.23it/s]Loading weights:  68%|██████▊   | 199/291 [00:01<00:00, 147.09it/s]Loading weights:  74%|███████▎  | 214/291 [00:01<00:00, 142.40it/s]Loading weights:  79%|███████▉  | 230/291 [00:01<00:00, 145.54it/s]Loading weights:  85%|████████▍ | 247/291 [00:01<00:00, 150.93it/s]Loading weights:  90%|█████████ | 263/291 [00:01<00:00, 149.96it/s]Loading weights:  96%|█████████▌| 279/291 [00:01<00:00, 146.17it/s]Loading weights: 100%|██████████| 291/291 [00:02<00:00, 144.77it/s]
-2026-04-14 21:21:50 [INFO] Found 32 decoder layers at model.model.layers (hidden=4096)
-2026-04-14 21:21:51 [INFO] [baseline] step=1  PR(last)=10.98  S(last)=-0.1155
-2026-04-14 21:21:51 [INFO] Baseline PR: 10.98
+2026-04-15 12:51:21 [WARNING] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   3%|▎         | 10/291 [00:00<00:02, 97.43it/s]Loading weights:   8%|▊         | 24/291 [00:00<00:02, 115.29it/s]Loading weights:  14%|█▍        | 41/291 [00:00<00:01, 134.08it/s]Loading weights:  20%|█▉        | 58/291 [00:00<00:01, 142.79it/s]Loading weights:  25%|██▌       | 73/291 [00:00<00:01, 140.97it/s]Loading weights:  30%|███       | 88/291 [00:00<00:01, 136.13it/s]Loading weights:  36%|███▌      | 104/291 [00:00<00:01, 138.79it/s]Loading weights:  42%|████▏     | 121/291 [00:00<00:01, 142.25it/s]Loading weights:  47%|████▋     | 136/291 [00:00<00:01, 141.12it/s]Loading weights:  52%|█████▏    | 151/291 [00:01<00:01, 137.24it/s]Loading weights:  57%|█████▋    | 167/291 [00:01<00:00, 140.09it/s]Loading weights:  63%|██████▎   | 184/291 [00:01<00:00, 144.70it/s]Loading weights:  68%|██████▊   | 199/291 [00:01<00:00, 142.54it/s]Loading weights:  74%|███████▎  | 214/291 [00:01<00:00, 137.67it/s]Loading weights:  79%|███████▉  | 230/291 [00:01<00:00, 140.72it/s]Loading weights:  85%|████████▍ | 247/291 [00:01<00:00, 145.65it/s]Loading weights:  90%|█████████ | 262/291 [00:01<00:00, 142.99it/s]Loading weights:  95%|█████████▌| 277/291 [00:01<00:00, 138.94it/s]Loading weights: 100%|██████████| 291/291 [00:02<00:00, 140.74it/s]
+2026-04-15 12:51:24 [INFO] Found 32 decoder layers at model.model.layers (hidden=4096)
+2026-04-15 12:51:25 [INFO] [baseline] step=1  PR(last)=14.44  S(last)=-0.0949
+2026-04-15 12:51:25 [INFO] Baseline PR: 14.44
 /cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/awq/__init__.py:21: DeprecationWarning: 
 I have left this message as the final dev message to help you transition.
 
@@ -28,7 +29,7 @@ For further inquiries, feel free to reach out:
 WARN  Feature `utils/Perplexity` requires Python < 3.14 and Python GIL enabled and Python >= 3.13.3T (T for Threading-Free edition of Python) plus Torch 2.8. Feature is currently skipped/disabled.
 INFO  ENV: Auto setting PYTORCH_ALLOC_CONF='expandable_segments:True,max_split_size_mb:256,garbage_collection_threshold:0.7' for memory saving.
 INFO  ENV: Auto setting CUDA_DEVICE_ORDER=PCI_BUS_ID for correctness.          
-[W414 21:21:53.070046897 Context.cpp:456] Warning: torch.backends.cuda.preferred_linalg_library is an experimental feature. If you see any error or unexpected behavior when this flag is set please file an issue on GitHub. (function operator())
+[W415 12:51:27.785001839 Context.cpp:456] Warning: torch.backends.cuda.preferred_linalg_library is an experimental feature. If you see any error or unexpected behavior when this flag is set please file an issue on GitHub. (function operator())
 INFO  
 
 ┌─────────────┐    ┌────────────────────────┐    ┌────────────┐    ┌─────────┐
@@ -38,52 +39,108 @@ GPT-QModel   : 5.8.0
 Transformers : 5.5.3
 Torch        : 2.9.1+cu128
 Triton       : 3.5.1
-2026-04-14 21:21:53 [INFO] Loading KTO dataset: argilla/ultrafeedback-binarized-preferences-cleaned (via https://hf-mirror.com)
+2026-04-15 12:51:27 [INFO] Loading KTO dataset: argilla/ultrafeedback-binarized-preferences-cleaned (via https://hf-mirror.com)
 '[Errno 101] Network is unreachable' thrown while requesting HEAD https://huggingface.co/datasets/argilla/ultrafeedback-binarized-preferences-cleaned/resolve/770076f077c4c5e298498fa32f804857f46d5134/ultrafeedback-binarized-preferences-cleaned.py
-2026-04-14 21:23:14 [WARNING] '[Errno 101] Network is unreachable' thrown while requesting HEAD https://huggingface.co/datasets/argilla/ultrafeedback-binarized-preferences-cleaned/resolve/770076f077c4c5e298498fa32f804857f46d5134/ultrafeedback-binarized-preferences-cleaned.py
+2026-04-15 12:52:47 [WARNING] '[Errno 101] Network is unreachable' thrown while requesting HEAD https://huggingface.co/datasets/argilla/ultrafeedback-binarized-preferences-cleaned/resolve/770076f077c4c5e298498fa32f804857f46d5134/ultrafeedback-binarized-preferences-cleaned.py
 Retrying in 1s [Retry 1/5].
-2026-04-14 21:23:14 [WARNING] Retrying in 1s [Retry 1/5].
+2026-04-15 12:52:47 [WARNING] Retrying in 1s [Retry 1/5].
 Using the latest cached version of the dataset since argilla/ultrafeedback-binarized-preferences-cleaned couldn't be found on the Hugging Face Hub
-2026-04-14 21:23:15 [WARNING] Using the latest cached version of the dataset since argilla/ultrafeedback-binarized-preferences-cleaned couldn't be found on the Hugging Face Hub
-Found the latest cached dataset configuration 'default' at /cache/zhangjing/.cache/huggingface/datasets/argilla___ultrafeedback-binarized-preferences-cleaned/default/0.0.0/770076f077c4c5e298498fa32f804857f46d5134 (last modified on Tue Apr 14 21:01:39 2026).
-2026-04-14 21:23:15 [WARNING] Found the latest cached dataset configuration 'default' at /cache/zhangjing/.cache/huggingface/datasets/argilla___ultrafeedback-binarized-preferences-cleaned/default/0.0.0/770076f077c4c5e298498fa32f804857f46d5134 (last modified on Tue Apr 14 21:01:39 2026).
-2026-04-14 21:23:22 [INFO] KTO Train: 6000, Eval: 600
+2026-04-15 12:52:48 [WARNING] Using the latest cached version of the dataset since argilla/ultrafeedback-binarized-preferences-cleaned couldn't be found on the Hugging Face Hub
+Found the latest cached dataset configuration 'default' at /cache/zhangjing/.cache/huggingface/datasets/argilla___ultrafeedback-binarized-preferences-cleaned/default/0.0.0/770076f077c4c5e298498fa32f804857f46d5134 (last modified on Tue Apr 14 21:24:54 2026).
+2026-04-15 12:52:48 [WARNING] Found the latest cached dataset configuration 'default' at /cache/zhangjing/.cache/huggingface/datasets/argilla___ultrafeedback-binarized-preferences-cleaned/default/0.0.0/770076f077c4c5e298498fa32f804857f46d5134 (last modified on Tue Apr 14 21:24:54 2026).
+2026-04-15 12:52:56 [INFO] KTO Train: 6000, Eval: 600
 /cache/zhangjing/spectral-flow-probe/experiments/_exp2_worker.py:92: FutureWarning: The `KTOConfig` is now located in `trl.experimental`. Please update your imports to `from trl.experimental.kto import KTOConfig`. For more information, see https://github.com/huggingface/trl/issues/4223. Promoting KTO to the stable API is a high-priority task. Until then, this current path (`from trl import KTOConfig`) will remain, but API changes may occur.
   kto_config = KTOConfig(
 /cache/zhangjing/spectral-flow-probe/experiments/_exp2_worker.py:111: FutureWarning: The `KTOTrainer` is now located in `trl.experimental`. Please update your imports to `from trl.experimental.kto import KTOTrainer`. For more information, see https://github.com/huggingface/trl/issues/4223. Promoting KTO to the stable API is a high-priority task. Until then, this current path (`from trl import KTOTrainer`) will remain, but API changes may occur.
   trainer = KTOTrainer(
 trainable params: 6,815,744 || all params: 7,248,547,840 || trainable%: 0.0940
-Extracting prompt from train dataset:   0%|          | 0/6000 [00:00<?, ? examples/s]Extracting prompt from train dataset:  30%|███       | 1809/6000 [00:00<00:00, 17934.37 examples/s]Extracting prompt from train dataset:  69%|██████▉   | 4169/6000 [00:00<00:00, 16431.38 examples/s]Extracting prompt from train dataset: 100%|██████████| 6000/6000 [00:00<00:00, 16304.40 examples/s]Extracting prompt from train dataset: 100%|██████████| 6000/6000 [00:00<00:00, 16365.94 examples/s]
-Applying chat template to train dataset:   0%|          | 0/6000 [00:00<?, ? examples/s]Applying chat template to train dataset:   0%|          | 0/6000 [00:00<?, ? examples/s]
-2026-04-14 21:23:23 [ERROR] FAILED: Cannot use chat template functions because tokenizer.chat_template is not set and no template argument was passed! For information about writing templates and setting the tokenizer.chat_template attribute, please see the documentation at https://huggingface.co/docs/transformers/main/en/chat_templating
+Extracting prompt from train dataset:   0%|          | 0/6000 [00:00<?, ? examples/s]Extracting prompt from train dataset:  33%|███▎      | 2000/6000 [00:00<00:00, 16757.41 examples/s]Extracting prompt from train dataset:  67%|██████▋   | 4000/6000 [00:00<00:00, 17342.80 examples/s]Extracting prompt from train dataset: 100%|██████████| 6000/6000 [00:00<00:00, 17139.91 examples/s]Extracting prompt from train dataset: 100%|██████████| 6000/6000 [00:00<00:00, 17037.32 examples/s]
+Applying chat template to train dataset:   0%|          | 0/6000 [00:00<?, ? examples/s]Applying chat template to train dataset:   7%|▋         | 442/6000 [00:00<00:01, 4377.28 examples/s]Applying chat template to train dataset:  15%|█▍        | 880/6000 [00:00<00:01, 4357.00 examples/s]Applying chat template to train dataset:  22%|██▏       | 1325/6000 [00:00<00:01, 4395.99 examples/s]Applying chat template to train dataset:  30%|██▉       | 1773/6000 [00:00<00:00, 4425.32 examples/s]Applying chat template to train dataset:  37%|███▋      | 2248/6000 [00:00<00:00, 4441.13 examples/s]Applying chat template to train dataset:  45%|████▌     | 2712/6000 [00:00<00:00, 4506.16 examples/s]Applying chat template to train dataset:  56%|█████▋    | 3384/6000 [00:00<00:00, 4490.68 examples/s]Applying chat template to train dataset:  64%|██████▍   | 3834/6000 [00:00<00:00, 4491.10 examples/s]Applying chat template to train dataset:  72%|███████▏  | 4295/6000 [00:00<00:00, 4523.21 examples/s]Applying chat template to train dataset:  83%|████████▎ | 4966/6000 [00:01<00:00, 4495.94 examples/s]Applying chat template to train dataset:  94%|█████████▍| 5631/6000 [00:01<00:00, 4470.47 examples/s]Applying chat template to train dataset: 100%|██████████| 6000/6000 [00:01<00:00, 4465.04 examples/s]
+Extracting prompt from eval dataset:   0%|          | 0/600 [00:00<?, ? examples/s]Extracting prompt from eval dataset: 100%|██████████| 600/600 [00:00<00:00, 16748.41 examples/s]
+Applying chat template to eval dataset:   0%|          | 0/600 [00:00<?, ? examples/s]Applying chat template to eval dataset:  73%|███████▎  | 436/600 [00:00<00:00, 4327.22 examples/s]Applying chat template to eval dataset: 100%|██████████| 600/600 [00:00<00:00, 4171.62 examples/s]
+Tokenizing train dataset:   0%|          | 0/6000 [00:00<?, ? examples/s]Tokenizing train dataset:  17%|█▋        | 1000/6000 [00:00<00:02, 2243.49 examples/s]Tokenizing train dataset:  33%|███▎      | 2000/6000 [00:00<00:01, 2838.16 examples/s]Tokenizing train dataset:  50%|█████     | 3000/6000 [00:00<00:00, 3202.36 examples/s]Tokenizing train dataset:  67%|██████▋   | 4000/6000 [00:01<00:00, 3343.20 examples/s]Tokenizing train dataset:  83%|████████▎ | 5000/6000 [00:01<00:00, 3450.45 examples/s]Tokenizing train dataset: 100%|██████████| 6000/6000 [00:01<00:00, 3529.38 examples/s]Tokenizing train dataset: 100%|██████████| 6000/6000 [00:01<00:00, 3286.31 examples/s]
+Processing tokenized train dataset:   0%|          | 0/6000 [00:00<?, ? examples/s]Processing tokenized train dataset:   3%|▎         | 202/6000 [00:00<00:02, 1990.64 examples/s]Processing tokenized train dataset:   7%|▋         | 432/6000 [00:00<00:02, 2166.32 examples/s]Processing tokenized train dataset:  12%|█▏        | 741/6000 [00:00<00:02, 2103.75 examples/s]Processing tokenized train dataset:  16%|█▌        | 972/6000 [00:00<00:02, 2173.26 examples/s]Processing tokenized train dataset:  20%|██        | 1225/6000 [00:00<00:04, 1120.16 examples/s]Processing tokenized train dataset:  24%|██▍       | 1438/6000 [00:00<00:03, 1309.02 examples/s]Processing tokenized train dataset:  27%|██▋       | 1646/6000 [00:01<00:02, 1469.18 examples/s]Processing tokenized train dataset:  31%|███       | 1871/6000 [00:01<00:02, 1648.16 examples/s]Processing tokenized train dataset:  35%|███▌      | 2117/6000 [00:01<00:03, 1291.24 examples/s]Processing tokenized train dataset:  39%|███▉      | 2341/6000 [00:01<00:02, 1476.91 examples/s]Processing tokenized train dataset:  43%|████▎     | 2572/6000 [00:01<00:02, 1660.30 examples/s]Processing tokenized train dataset:  46%|████▋     | 2778/6000 [00:01<00:01, 1754.02 examples/s]Processing tokenized train dataset:  50%|█████     | 3000/6000 [00:01<00:02, 1410.17 examples/s]Processing tokenized train dataset:  54%|█████▍    | 3234/6000 [00:02<00:01, 1608.26 examples/s]Processing tokenized train dataset:  58%|█████▊    | 3455/6000 [00:02<00:01, 1746.79 examples/s]Processing tokenized train dataset:  61%|██████▏   | 3680/6000 [00:02<00:01, 1872.51 examples/s]Processing tokenized train dataset:  65%|██████▍   | 3889/6000 [00:02<00:01, 1929.79 examples/s]Processing tokenized train dataset:  68%|██████▊   | 4107/6000 [00:02<00:01, 1367.66 examples/s]Processing tokenized train dataset:  72%|███████▏  | 4338/6000 [00:02<00:01, 1565.65 examples/s]Processing tokenized train dataset:  76%|███████▌  | 4566/6000 [00:02<00:00, 1728.33 examples/s]Processing tokenized train dataset:  80%|███████▉  | 4792/6000 [00:02<00:00, 1825.71 examples/s]Processing tokenized train dataset:  83%|████████▎ | 5000/6000 [00:03<00:00, 1417.31 examples/s]Processing tokenized train dataset:  87%|████████▋ | 5217/6000 [00:03<00:00, 1579.71 examples/s]Processing tokenized train dataset:  91%|█████████ | 5458/6000 [00:03<00:00, 1774.59 examples/s]Processing tokenized train dataset:  95%|█████████▍| 5695/6000 [00:03<00:00, 1922.07 examples/s]Processing tokenized train dataset: 100%|██████████| 6000/6000 [00:03<00:00, 1483.98 examples/s]Processing tokenized train dataset: 100%|██████████| 6000/6000 [00:03<00:00, 1589.63 examples/s]
+Tokenizing eval dataset:   0%|          | 0/600 [00:00<?, ? examples/s]Tokenizing eval dataset: 100%|██████████| 600/600 [00:00<00:00, 2803.11 examples/s]Tokenizing eval dataset: 100%|██████████| 600/600 [00:00<00:00, 2759.17 examples/s]
+Processing tokenized eval dataset:   0%|          | 0/600 [00:00<?, ? examples/s]Processing tokenized eval dataset:  40%|███▉      | 238/600 [00:00<00:00, 2352.07 examples/s]Processing tokenized eval dataset:  96%|█████████▋| 578/600 [00:00<00:00, 2289.98 examples/s]Processing tokenized eval dataset: 100%|██████████| 600/600 [00:00<00:00, 1250.58 examples/s]
+Extracting KL train dataset:   0%|          | 0/6000 [00:00<?, ? examples/s]Extracting KL train dataset:   3%|▎         | 188/6000 [00:00<00:03, 1848.14 examples/s]Extracting KL train dataset:   6%|▋         | 382/6000 [00:00<00:02, 1875.99 examples/s]Extracting KL train dataset:  10%|█         | 630/6000 [00:00<00:03, 1738.43 examples/s]Extracting KL train dataset:  14%|█▍        | 832/6000 [00:00<00:02, 1796.74 examples/s]Extracting KL train dataset:  17%|█▋        | 1038/6000 [00:00<00:02, 1876.88 examples/s]Extracting KL train dataset:  21%|██▏       | 1286/6000 [00:00<00:02, 1773.12 examples/s]Extracting KL train dataset:  25%|██▍       | 1496/6000 [00:00<00:02, 1857.93 examples/s]Extracting KL train dataset:  30%|██▉       | 1784/6000 [00:00<00:02, 1810.60 examples/s]Extracting KL train dataset:  34%|███▍      | 2042/6000 [00:01<00:02, 1772.03 examples/s]Extracting KL train dataset:  37%|███▋      | 2232/6000 [00:01<00:02, 1801.82 examples/s]Extracting KL train dataset:  40%|████      | 2430/6000 [00:01<00:01, 1844.46 examples/s]Extracting KL train dataset:  45%|████▍     | 2692/6000 [00:01<00:01, 1797.63 examples/s]Extracting KL train dataset:  48%|████▊     | 2880/6000 [00:01<00:01, 1814.01 examples/s]Extracting KL train dataset:  52%|█████▏    | 3092/6000 [00:01<00:01, 1888.21 examples/s]Extracting KL train dataset:  55%|█████▍    | 3296/6000 [00:01<00:01, 1922.52 examples/s]Extracting KL train dataset:  59%|█████▉    | 3534/6000 [00:01<00:01, 1790.95 examples/s]Extracting KL train dataset:  62%|██████▏   | 3734/6000 [00:02<00:01, 1840.32 examples/s]Extracting KL train dataset:  66%|██████▌   | 3940/6000 [00:02<00:01, 1892.00 examples/s]Extracting KL train dataset:  70%|███████   | 4216/6000 [00:02<00:00, 1864.04 examples/s]Extracting KL train dataset:  74%|███████▎  | 4414/6000 [00:02<00:00, 1893.62 examples/s]Extracting KL train dataset:  77%|███████▋  | 4616/6000 [00:02<00:00, 1919.77 examples/s]Extracting KL train dataset:  81%|████████  | 4864/6000 [00:02<00:00, 1816.45 examples/s]Extracting KL train dataset:  84%|████████▍ | 5062/6000 [00:02<00:00, 1849.22 examples/s]Extracting KL train dataset:  88%|████████▊ | 5264/6000 [00:02<00:00, 1889.00 examples/s]Extracting KL train dataset:  92%|█████████▏| 5524/6000 [00:03<00:00, 1824.37 examples/s]Extracting KL train dataset:  95%|█████████▌| 5726/6000 [00:03<00:00, 1866.73 examples/s]Extracting KL train dataset: 100%|█████████▉| 5972/6000 [00:03<00:00, 1779.64 examples/s]Extracting KL train dataset: 100%|██████████| 6000/6000 [00:03<00:00, 1801.07 examples/s]
+Processing tokenized train KL dataset:   0%|          | 0/6000 [00:00<?, ? examples/s]Processing tokenized train KL dataset:   3%|▎         | 201/6000 [00:00<00:02, 1962.87 examples/s]Processing tokenized train KL dataset:   7%|▋         | 426/6000 [00:00<00:02, 2125.35 examples/s]Processing tokenized train KL dataset:  12%|█▏        | 725/6000 [00:00<00:02, 2045.20 examples/s]Processing tokenized train KL dataset:  17%|█▋        | 1000/6000 [00:00<00:04, 1017.50 examples/s]Processing tokenized train KL dataset:  20%|██        | 1228/6000 [00:00<00:03, 1243.31 examples/s]Processing tokenized train KL dataset:  24%|██▍       | 1442/6000 [00:01<00:03, 1423.46 examples/s]Processing tokenized train KL dataset:  28%|██▊       | 1663/6000 [00:01<00:02, 1598.36 examples/s]Processing tokenized train KL dataset:  32%|███▏      | 1890/6000 [00:01<00:02, 1760.15 examples/s]Processing tokenized train KL dataset:  35%|███▌      | 2118/6000 [00:01<00:02, 1456.73 examples/s]Processing tokenized train KL dataset:  39%|███▉      | 2338/6000 [00:01<00:02, 1618.84 examples/s]Processing tokenized train KL dataset:  43%|████▎     | 2564/6000 [00:01<00:01, 1768.26 examples/s]Processing tokenized train KL dataset:  46%|████▋     | 2778/6000 [00:01<00:01, 1860.46 examples/s]Processing tokenized train KL dataset:  50%|████▉     | 2994/6000 [00:01<00:01, 1937.93 examples/s]Processing tokenized train KL dataset:  54%|█████▍    | 3236/6000 [00:02<00:01, 1545.48 examples/s]Processing tokenized train KL dataset:  58%|█████▊    | 3457/6000 [00:02<00:01, 1693.76 examples/s]Processing tokenized train KL dataset:  61%|██████▏   | 3680/6000 [00:02<00:01, 1822.40 examples/s]Processing tokenized train KL dataset:  65%|██████▌   | 3911/6000 [00:02<00:01, 1945.01 examples/s]Processing tokenized train KL dataset:  70%|███████   | 4227/6000 [00:02<00:01, 1636.39 examples/s]Processing tokenized train KL dataset:  74%|███████▍  | 4452/6000 [00:02<00:00, 1768.66 examples/s]Processing tokenized train KL dataset:  78%|███████▊  | 4677/6000 [00:02<00:00, 1880.12 examples/s]Processing tokenized train KL dataset:  82%|████████▏ | 4904/6000 [00:02<00:00, 1975.41 examples/s]Processing tokenized train KL dataset:  87%|████████▋ | 5217/6000 [00:03<00:00, 1547.32 examples/s]Processing tokenized train KL dataset:  91%|█████████ | 5452/6000 [00:03<00:00, 1710.74 examples/s]Processing tokenized train KL dataset:  95%|█████████▍| 5673/6000 [00:03<00:00, 1822.07 examples/s]Processing tokenized train KL dataset:  98%|█████████▊| 5899/6000 [00:03<00:00, 1925.60 examples/s]Processing tokenized train KL dataset: 100%|██████████| 6000/6000 [00:03<00:00, 1648.42 examples/s]
+Extracting eval KL dataset:   0%|          | 0/600 [00:00<?, ? examples/s]Extracting eval KL dataset:  34%|███▍      | 206/600 [00:00<00:00, 2030.47 examples/s]Extracting eval KL dataset:  84%|████████▍ | 504/600 [00:00<00:00, 1986.39 examples/s]Extracting eval KL dataset: 100%|██████████| 600/600 [00:00<00:00, 1951.68 examples/s]
+Processing tokenized eval KL dataset:   0%|          | 0/600 [00:00<?, ? examples/s]Processing tokenized eval KL dataset:  39%|███▉      | 234/600 [00:00<00:00, 2302.33 examples/s]Processing tokenized eval KL dataset:  95%|█████████▌| 571/600 [00:00<00:00, 2254.10 examples/s]Processing tokenized eval KL dataset: 100%|██████████| 600/600 [00:00<00:00, 1327.11 examples/s]
+2026-04-15 12:53:12 [WARNING] [RANK 0] You have different amounts of desirable/positive and undesirable/negative examples but the weights on the desirable and undesirable losses don't seem to be in an ideal range. Based on your data, we recommend EITHER desirable_weight in [1.01, 1.34] or undesirable_weight in [0.75, 0.99] (but NOT BOTH). See the documentation on how to optimally set these weights.
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'pad_token_id': 2}.
+2026-04-15 12:53:12 [WARNING] The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'pad_token_id': 2}.
+  0%|          | 0/200 [00:00<?, ?it/s]/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.pin_memory() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:46.)
+  return data.pin_memory(device)
+/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/utils/data/_utils/pin_memory.py:57: DeprecationWarning: The argument 'device' of Tensor.is_pinned() is deprecated. Please do not pass this argument. (Triggered internally at /pytorch/aten/src/ATen/native/Memory.cpp:31.)
+  return data.pin_memory(device)
+  0%|          | 1/200 [00:02<06:52,  2.07s/it]  1%|          | 2/200 [00:03<06:27,  1.95s/it]  2%|▏         | 3/200 [00:05<06:02,  1.84s/it]  2%|▏         | 4/200 [00:08<06:52,  2.10s/it]  2%|▎         | 5/200 [00:10<06:34,  2.02s/it]  3%|▎         | 6/200 [00:12<06:47,  2.10s/it]2026-04-15 12:53:27 [ERROR] FAILED: CUDA out of memory. Tried to allocate 98.00 MiB. GPU 0 has a total capacity of 23.55 GiB of which 1.81 MiB is free. Including non-PyTorch memory, this process has 23.54 GiB memory in use. Of the allocated memory 22.25 GiB is allocated by PyTorch, and 784.47 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
 Traceback (most recent call last):
   File "/cache/zhangjing/spectral-flow-probe/experiments/_exp2_worker.py", line 217, in main
     result = run_kto(args.model_path, args.model_name, args.gpu_id,
-  File "/cache/zhangjing/spectral-flow-probe/experiments/_exp2_worker.py", line 111, in run_kto
-    trainer = KTOTrainer(
-  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/trl/trainer/kto_trainer.py", line 36, in __init__
-    super().__init__(*args, **kwargs)
-  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/trl/experimental/kto/kto_trainer.py", line 527, in __init__
-    train_dataset = train_dataset.map(
-  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/datasets/arrow_dataset.py", line 574, in wrapper
-    out: Union["Dataset", "DatasetDict"] = func(self, *args, **kwargs)
-  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/datasets/arrow_dataset.py", line 3632, in map
-    for rank, done, content in Dataset._map_single(**unprocessed_kwargs):
-  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/datasets/arrow_dataset.py", line 3972, in _map_single
-    for i, example in iter_outputs(shard_iterable):
-  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/datasets/arrow_dataset.py", line 3950, in iter_outputs
-    yield i, apply_function(example, i, offset=offset)
-  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/datasets/arrow_dataset.py", line 3871, in apply_function
-    processed_inputs = function(*fn_args, *additional_args, **fn_kwargs)
-  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/trl/data_utils.py", line 396, in maybe_apply_chat_template
-    return apply_chat_template(example, tokenizer, tools, **template_kwargs)
-  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/trl/data_utils.py", line 249, in apply_chat_template
-    prompt = tokenizer.apply_chat_template(
-  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/transformers/tokenization_utils_base.py", line 3051, in apply_chat_template
-    chat_template = self.get_chat_template(chat_template, tools)
-  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/transformers/tokenization_utils_base.py", line 3233, in get_chat_template
-    raise ValueError(
-ValueError: Cannot use chat template functions because tokenizer.chat_template is not set and no template argument was passed! For information about writing templates and setting the tokenizer.chat_template attribute, please see the documentation at https://huggingface.co/docs/transformers/main/en/chat_templating
-2026-04-14 21:23:23 [INFO] Saved: /cache/zhangjing/spectral-flow-probe/experiments/results/exp2_universality/Mistral-7B_KTO_result.json
-2026-04-14 21:23:23 [INFO] [Mistral-7B_KTO] Done in 1.6 min — FAILED
+  File "/cache/zhangjing/spectral-flow-probe/experiments/_exp2_worker.py", line 116, in run_kto
+    trainer.train()
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/transformers/trainer.py", line 1424, in train
+    return inner_training_loop(
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/transformers/trainer.py", line 1506, in _inner_training_loop
+    self._run_epoch(
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/transformers/trainer.py", line 1734, in _run_epoch
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/transformers/trainer.py", line 1906, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/trl/experimental/kto/kto_trainer.py", line 1240, in compute_loss
+    loss, metrics = self.get_batch_loss_metrics(model, inputs)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/trl/experimental/kto/kto_trainer.py", line 1138, in get_batch_loss_metrics
+    forward_output = self.forward(model, batch)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/trl/experimental/kto/kto_trainer.py", line 886, in forward
+    outputs = model(
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/accelerate/utils/operations.py", line 823, in forward
+    return model_forward(*args, **kwargs)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/accelerate/utils/operations.py", line 811, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/amp/autocast_mode.py", line 44, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/peft/peft_model.py", line 1923, in forward
+    return self.base_model(
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/peft/tuners/tuners_utils.py", line 311, in forward
+    return self.model.forward(*args, **kwargs)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/transformers/utils/generic.py", line 876, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/transformers/models/mistral/modeling_mistral.py", line 447, in forward
+    outputs: BaseModelOutputWithPast = self.model(
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/transformers/utils/generic.py", line 952, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/transformers/utils/output_capturing.py", line 248, in wrapper
+    outputs = func(self, *args, **kwargs)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/transformers/models/mistral/modeling_mistral.py", line 385, in forward
+    hidden_states = decoder_layer(
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/transformers/modeling_layers.py", line 93, in __call__
+    return super().__call__(*args, **kwargs)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/transformers/models/mistral/modeling_mistral.py", line 238, in forward
+    hidden_states = self.mlp(hidden_states)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/cache/zhangjing/miniconda3/envs/sde_scan/lib/python3.10/site-packages/transformers/models/mistral/modeling_mistral.py", line 47, in forward
+    down_proj = self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 98.00 MiB. GPU 0 has a total capacity of 23.55 GiB of which 1.81 MiB is free. Including non-PyTorch memory, this process has 23.54 GiB memory in use. Of the allocated memory 22.25 GiB is allocated by PyTorch, and 784.47 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+  3%|▎         | 6/200 [00:13<07:32,  2.33s/it]
+2026-04-15 12:53:27 [INFO] Saved: /cache/zhangjing/spectral-flow-probe/experiments/results/exp2_universality/Mistral-7B_KTO_result.json
+2026-04-15 12:53:27 [INFO] [Mistral-7B_KTO] Done in 2.1 min — FAILED
 sys:1: DeprecationWarning: builtin type swigvarlink has no __module__ attribute

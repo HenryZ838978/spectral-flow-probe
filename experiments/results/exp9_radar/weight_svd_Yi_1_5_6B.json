@@ -1,0 +1,38 @@
+{
+  "family": "Yi-1.5-6B",
+  "global_pct": 24.64725873614451,
+  "svd": {
+    "lm_head": {
+      "mean_spec_diff": 0.0012131790863350034,
+      "mean_pr_pct": -0.220739108088895
+    },
+    "down_proj": {
+      "mean_spec_diff": 0.0006305334950411634,
+      "mean_pr_pct": 0.14007682728537083
+    },
+    "gate_proj": {
+      "mean_spec_diff": 0.000658905772070284,
+      "mean_pr_pct": 0.09690140404513695
+    },
+    "up_proj": {
+      "mean_spec_diff": 0.0006278846522036474,
+      "mean_pr_pct": 0.0656997954328868
+    },
+    "k_proj": {
+      "mean_spec_diff": 0.0008692647097632289,
+      "mean_pr_pct": 0.10130395091805723
+    },
+    "o_proj": {
+      "mean_spec_diff": 0.000925966108297871,
+      "mean_pr_pct": 0.29430640497401883
+    },
+    "q_proj": {
+      "mean_spec_diff": 0.0007412445575027959,
+      "mean_pr_pct": 0.12345935628250893
+    },
+    "v_proj": {
+      "mean_spec_diff": 0.0004468790662031097,
+      "mean_pr_pct": 0.05377105054479808
+    }
+  }
+}

@@ -2,6 +2,6 @@
   "model": "Mistral-7B",
   "method": "KTO",
   "status": "FAILED",
-  "error": "Cannot use chat template functions because tokenizer.chat_template is not set and no template argument was passed! For information about writing templates and setting the tokenizer.chat_template attribute, please see the documentation at https://huggingface.co/docs/transformers/main/en/chat_templating",
-  "elapsed_min": 1.6132505019505818
+  "error": "CUDA out of memory. Tried to allocate 98.00 MiB. GPU 0 has a total capacity of 23.55 GiB of which 1.81 MiB is free. Including non-PyTorch memory, this process has 23.54 GiB memory in use. Of the allocated memory 22.25 GiB is allocated by PyTorch, and 784.47 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)",
+  "elapsed_min": 2.0966426690419513
 }

@@ -2,6 +2,17 @@
 
 Key insight: PR = ||H||_F^4 / ||H^T H||_F^2  is fully differentiable
 using only matrix norms — no SVD needed in the backward pass.
+
+⚠️  v2 reinterpretation:
+    The v1 framing was "prevent PR collapse during RL". We now know RL
+    (in practice, on real RLHF pipelines) does not collapse PR globally —
+    it rotates the singular vectors per query type. This loss should be
+    interpreted as "constrain bandwidth redistribution magnitude on a
+    specific query band", NOT "prevent global PR drop".
+
+    The mathematical content is unchanged. Use it band-by-band: feed it
+    hidden states from a specific functional band (e.g., creative-band
+    prompts) to keep RL from over-suppressing that band's bandwidth.
 """
 from __future__ import annotations
 

@@ -1,0 +1,214 @@
+{
+  "model_size": "1.7B",
+  "base_path": "/cache/zhangjing/models/Qwen3-1.7B",
+  "dpo_path": "/cache/zhangjing/spectral-flow-probe/experiments/results/exp5b_fullft_1.7B/checkpoints/step_800",
+  "n_common_params": 310,
+  "global_rel_change": 0.00016508724230700263,
+  "component_summary": {
+    "down_proj": {
+      "mean_rel_change": 0.0002544395946598071,
+      "max_rel_change": 0.003435300233561218,
+      "std_rel_change": 0.0006125535634043453,
+      "n_params": 28
+    },
+    "embed_tokens": {
+      "mean_rel_change": 5.1704920419467156e-05,
+      "max_rel_change": 5.1704920419467156e-05,
+      "std_rel_change": 0.0,
+      "n_params": 1
+    },
+    "final_norm": {
+      "mean_rel_change": 0.0,
+      "max_rel_change": 0.0,
+      "std_rel_change": 0.0,
+      "n_params": 1
+    },
+    "gate_proj": {
+      "mean_rel_change": 0.00011819830314418905,
+      "max_rel_change": 0.0001682251869250356,
+      "std_rel_change": 2.7729375903914646e-05,
+      "n_params": 28
+    },
+    "k_proj": {
+      "mean_rel_change": 0.00016973201188142384,
+      "max_rel_change": 0.00030123080522148784,
+      "std_rel_change": 4.1452236680020033e-05,
+      "n_params": 28
+    },
+    "layer_norm": {
+      "mean_rel_change": 1.4248911746820357e-06,
+      "max_rel_change": 2.623895520275692e-05,
+      "std_rel_change": 3.176583179608783e-06,
+      "n_params": 112
+    },
+    "o_proj": {
+      "mean_rel_change": 0.000171686829841777,
+      "max_rel_change": 0.00021067819391404428,
+      "std_rel_change": 2.6692360824422164e-05,
+      "n_params": 28
+    },
+    "q_proj": {
+      "mean_rel_change": 0.00013723263261344778,
+      "max_rel_change": 0.00026650032491650497,
+      "std_rel_change": 2.9189582377775942e-05,
+      "n_params": 28
+    },
+    "up_proj": {
+      "mean_rel_change": 0.00014367375571974826,
+      "max_rel_change": 0.00020723236772527412,
+      "std_rel_change": 3.1329978694981514e-05,
+      "n_params": 28
+    },
+    "v_proj": {
+      "mean_rel_change": 0.00025739286281530526,
+      "max_rel_change": 0.0008860731581976836,
+      "std_rel_change": 0.00018827486973661478,
+      "n_params": 28
+    }
+  },
+  "layer_summary": {
+    "0": {
+      "mean_rel_change": 7.776274891858015e-05,
+      "max_rel_change": 0.00015219640287463695
+    },
+    "1": {
+      "mean_rel_change": 8.371417148603919e-05,
+      "max_rel_change": 0.0001843874827392676
+    },
+    "2": {
+      "mean_rel_change": 0.0003797977762778204,
+      "max_rel_change": 0.003435300233561218
+    },
+    "3": {
+      "mean_rel_change": 7.740596111783484e-05,
+      "max_rel_change": 0.00014396491457412876
+    },
+    "4": {
+      "mean_rel_change": 8.08265724189207e-05,
+      "max_rel_change": 0.00015344737962030098
+    },
+    "5": {
+      "mean_rel_change": 8.511472496798782e-05,
+      "max_rel_change": 0.0001490197647455944
+    },
+    "6": {
+      "mean_rel_change": 9.561446474297495e-05,
+      "max_rel_change": 0.00020284703917820019
+    },
+    "7": {
+      "mean_rel_change": 8.532461231627928e-05,
+      "max_rel_change": 0.00014914773375259324
+    },
+    "8": {
+      "mean_rel_change": 8.69200407194898e-05,
+      "max_rel_change": 0.0001631248490255096
+    },
+    "9": {
+      "mean_rel_change": 0.0001042648861840494,
+      "max_rel_change": 0.00026184269308487457
+    },
+    "10": {
+      "mean_rel_change": 9.379658553336834e-05,
+      "max_rel_change": 0.0001688705419797714
+    },
+    "11": {
+      "mean_rel_change": 0.00012340766432977364,
+      "max_rel_change": 0.00045056398027062803
+    },
+    "12": {
+      "mean_rel_change": 0.00014233377537504083,
+      "max_rel_change": 0.000627153057912444
+    },
+    "13": {
+      "mean_rel_change": 0.00019644678596720657,
+      "max_rel_change": 0.0008860731581976836
+    },
+    "14": {
+      "mean_rel_change": 0.00014250735982568734,
+      "max_rel_change": 0.0004757313879469781
+    },
+    "15": {
+      "mean_rel_change": 0.00016087084343478818,
+      "max_rel_change": 0.0006377654539721421
+    },
+    "16": {
+      "mean_rel_change": 0.0001259361933881658,
+      "max_rel_change": 0.0003518527741626549
+    },
+    "17": {
+      "mean_rel_change": 9.9200374441429e-05,
+      "max_rel_change": 0.00019565996435880146
+    },
+    "18": {
+      "mean_rel_change": 0.00012179529886037923,
+      "max_rel_change": 0.0003453455140430595
+    },
+    "19": {
+      "mean_rel_change": 0.00010798561514166,
+      "max_rel_change": 0.00023246607276982464
+    },
+    "20": {
+      "mean_rel_change": 9.966958969540267e-05,
+      "max_rel_change": 0.00020084372493552597
+    },
+    "21": {
+      "mean_rel_change": 9.037546784046274e-05,
+      "max_rel_change": 0.00018017887287034525
+    },
+    "22": {
+      "mean_rel_change": 8.904071080631065e-05,
+      "max_rel_change": 0.00017579912212991935
+    },
+    "23": {
+      "mean_rel_change": 8.789869513248801e-05,
+      "max_rel_change": 0.00018428100064611842
+    },
+    "24": {
+      "mean_rel_change": 9.454802815230247e-05,
+      "max_rel_change": 0.00020921941397240956
+    },
+    "25": {
+      "mean_rel_change": 9.394310052992772e-05,
+      "max_rel_change": 0.0001955060950025793
+    },
+    "26": {
+      "mean_rel_change": 9.148062962468388e-05,
+      "max_rel_change": 0.00022138897118980792
+    },
+    "27": {
+      "mean_rel_change": 8.434055463312293e-05,
+      "max_rel_change": 0.00016161956181667323
+    }
+  },
+  "svd_summary": {
+    "down_proj": {
+      "mean_spectral_diff": 2.808411215328631e-07,
+      "mean_pr_change_pct": 7.726433976811693e-06
+    },
+    "gate_proj": {
+      "mean_spectral_diff": 1.2838682193562689e-07,
+      "mean_pr_change_pct": 4.882112224351209e-06
+    },
+    "up_proj": {
+      "mean_spectral_diff": 1.7001611369542908e-07,
+      "mean_pr_change_pct": -3.9508550095622184e-06
+    },
+    "k_proj": {
+      "mean_spectral_diff": 1.9506162577239854e-07,
+      "mean_pr_change_pct": -2.4930256019820137e-06
+    },
+    "o_proj": {
+      "mean_spectral_diff": 2.1265084728026652e-07,
+      "mean_pr_change_pct": -5.051511309073972e-06
+    },
+    "q_proj": {
+      "mean_spectral_diff": 1.1828297122714762e-07,
+      "mean_pr_change_pct": -3.8898694667154665e-06
+    },
+    "v_proj": {
+      "mean_spectral_diff": 2.3731664049770578e-07,
+      "mean_pr_change_pct": -3.7442078068492677e-06
+    }
+  },
+  "elapsed_seconds": 350.89502239227295
+}

@@ -10,7 +10,7 @@ build/
 .venv/
 venv/
 test_diagnosis.png
-test_e2e.py
+test_radar.png
 
 # Large training artifacts (checkpoint weights)
 experiments/results/**/checkpoint-*/
@@ -20,3 +20,17 @@ experiments/results/**/train_*/
 experiments/results/**/*_DPO/
 experiments/results/**/*_KTO/
 experiments/results/**/*_GRPO/
+
+# Large log files and training runs
+experiments/results/run_*/
+experiments/results/exp6_sensitivity/
+experiments/results/*.log
+experiments/results/**/*.log
+experiments/results/**/scan_*.log
+experiments/results/**/svd_*.log
+experiments/results/**/band0_*.log
+experiments/results/**/universality_*master.log
+
+# Misc
+*.swp
+.DS_Store

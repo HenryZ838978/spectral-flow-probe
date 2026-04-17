@@ -2,6 +2,6 @@
   "model": "Qwen3-4B",
   "method": "KTO",
   "status": "FAILED",
-  "error": "Actual (not effective) batch size must be > 1. KTO will not work properly because the KL term will be equivalent to the implied reward.",
-  "elapsed_min": 1.9534257729848226
+  "error": "CUDA out of memory. Tried to allocate 1.59 GiB. GPU 0 has a total capacity of 23.55 GiB of which 355.81 MiB is free. Including non-PyTorch memory, this process has 23.19 GiB memory in use. Of the allocated memory 22.10 GiB is allocated by PyTorch, and 582.72 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)",
+  "elapsed_min": 2.329433727264404
 }
